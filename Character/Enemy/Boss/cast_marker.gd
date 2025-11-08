@@ -1,0 +1,2 @@
+class_name CastMarker
+extends Marker2D

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://x0uh23s60f3g"]
+
+[ext_resource type="Script" uid="uid://cq5cuycwg4xpt" path="res://Quests/quest_reward_item.gd" id="1_scnn1"]
+[ext_resource type="Resource" uid="uid://caxkn2ntd6kn5" path="res://GUI/Inventory/_items/stone.tres" id="2_i6q2f"]
+[ext_resource type="Script" uid="uid://dvqmvnexrn7rg" path="res://Quests/quest_resource.gd" id="2_m6dut"]
+
+[sub_resource type="Resource" id="Resource_q0c1h"]
+script = ExtResource("1_scnn1")
+item = ExtResource("2_i6q2f")
+quantity = 13
+metadata/_custom_type_script = "uid://cq5cuycwg4xpt"
+
+[resource]
+script = ExtResource("2_m6dut")
+title = "Long Quest"
+description = "A long quest that takes a long time to complete. It has a lot of steps. It gives a lot of rewards."
+steps = Array[String](["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"])
+reward_items = Array[ExtResource("1_scnn1")]([SubResource("Resource_q0c1h")])
+metadata/_custom_type_script = "uid://dvqmvnexrn7rg"

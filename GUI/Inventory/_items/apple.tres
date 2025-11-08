@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://bm2x77yk6lveo"]
+
+[ext_resource type="Script" uid="uid://203wldfhfjcg" path="res://GUI/Inventory/_item_effects/item_effect.gd" id="1_af7px"]
+[ext_resource type="Script" uid="uid://dpo7eqm6ty8oj" path="res://GUI/Inventory/_item_effects/item_effect_apple.gd" id="2_22ch3"]
+[ext_resource type="Texture2D" uid="uid://bcvs2lo77u08p" path="res://ASSETS/HUD/Inventory/items.png" id="2_inp6d"]
+[ext_resource type="Script" uid="uid://v4814yfjnsg6" path="res://GUI/Inventory/item_data.gd" id="4_3o10n"]
+
+[sub_resource type="Resource" id="Resource_af7px"]
+script = ExtResource("2_22ch3")
+metadata/_custom_type_script = "uid://dpo7eqm6ty8oj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5o02"]
+atlas = ExtResource("2_inp6d")
+region = Rect2(192, 0, 32, 32)
+
+[resource]
+script = ExtResource("4_3o10n")
+name = "Apple"
+description = "It's red and tasty! Restores 1 heart!"
+shop_description = "This shiny red apple will restore your health if you eat it."
+texture = SubResource("AtlasTexture_w5o02")
+effects = Array[ExtResource("1_af7px")]([SubResource("Resource_af7px")])
+shop_price = 10
+metadata/_custom_type_script = "uid://v4814yfjnsg6"

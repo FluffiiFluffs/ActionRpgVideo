@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf1ygojhx4wjh"]
+
+[ext_resource type="Script" uid="uid://dnqoy1klts45y" path="res://Common/AutoSaver/auto_saver.gd" id="1_ayvmy"]
+[ext_resource type="Theme" uid="uid://v3g7k24h8ox3" path="res://GUI/UITHEME.tres" id="2_hg0v0"]
+
+[sub_resource type="Animation" id="Animation_hg0v0"]
+resource_name = "game_saved"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oyd72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oyd72"]
+_data = {
+&"RESET": SubResource("Animation_oyd72"),
+&"game_saved": SubResource("Animation_hg0v0")
+}
+
+[node name="AutoSaver" type="CanvasLayer"]
+script = ExtResource("1_ayvmy")
+
+[node name="AutoSaveNode2D" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_hg0v0")
+text = "GAME SAVED"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_oyd72")
+}

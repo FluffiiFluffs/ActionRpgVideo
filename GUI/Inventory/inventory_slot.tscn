@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c421cipfkxiy4"]
+
+[ext_resource type="Script" uid="uid://crgw3h7jnwxhr" path="res://GUI/Inventory/inventory_slot_UI.gd" id="1_anojb"]
+[ext_resource type="Theme" uid="uid://v3g7k24h8ox3" path="res://GUI/UITHEME.tres" id="1_f7yqn"]
+[ext_resource type="Texture2D" uid="uid://bcvs2lo77u08p" path="res://ASSETS/HUD/Inventory/items.png" id="2_qlrrd"]
+[ext_resource type="FontFile" uid="uid://b4d17s52o0wjs" path="res://ASSETS/FONTS/PixelOperator/PixelOperator8.ttf" id="3_qlrrd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anojb"]
+atlas = ExtResource("2_qlrrd")
+region = Rect2(0, 0, 32, 32)
+
+[node name="InventorySlot" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_anojb")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+focus_behavior_recursive = 2
+theme = ExtResource("1_f7yqn")
+theme_type_variation = &"InventoryButton"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_anojb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_qlrrd")
+theme_override_font_sizes/font_size = 8
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 2

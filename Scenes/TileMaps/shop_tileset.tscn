@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dap3qlxnk7wl1"]
+
+[ext_resource type="TileSet" uid="uid://vnxwfqvsaak4" path="res://Scenes/TileMaps/shop_tileset.tres" id="1_qk113"]
+
+[node name="Shop" type="TileMapLayer"]
+y_sort_enabled = true
+tile_set = ExtResource("1_qk113")
+rendering_quadrant_size = 32

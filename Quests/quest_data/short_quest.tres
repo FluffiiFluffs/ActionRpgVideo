@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://3uole1625w1r"]
+
+[ext_resource type="Script" uid="uid://cq5cuycwg4xpt" path="res://Quests/quest_reward_item.gd" id="1_hp8qs"]
+[ext_resource type="Resource" uid="uid://caxkn2ntd6kn5" path="res://GUI/Inventory/_items/stone.tres" id="2_eb714"]
+[ext_resource type="Script" uid="uid://dvqmvnexrn7rg" path="res://Quests/quest_resource.gd" id="2_mgcha"]
+
+[sub_resource type="Resource" id="Resource_4u3bu"]
+script = ExtResource("1_hp8qs")
+item = ExtResource("2_eb714")
+metadata/_custom_type_script = "uid://cq5cuycwg4xpt"
+
+[resource]
+script = ExtResource("2_mgcha")
+title = "Short Quest"
+description = "A Short Quest! A single step. A single reward."
+steps = Array[String](["Step 1"])
+reward_items = Array[ExtResource("1_hp8qs")]([SubResource("Resource_4u3bu")])
+metadata/_custom_type_script = "uid://dvqmvnexrn7rg"

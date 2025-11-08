@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://cdhkwre2gwiwl"]
+
+[ext_resource type="Script" uid="uid://cq5cuycwg4xpt" path="res://Quests/quest_reward_item.gd" id="1_hp8qs"]
+[ext_resource type="Resource" uid="uid://bm2x77yk6lveo" path="res://GUI/Inventory/_items/apple.tres" id="2_ciipo"]
+[ext_resource type="Script" uid="uid://dvqmvnexrn7rg" path="res://Quests/quest_resource.gd" id="2_mgcha"]
+
+[sub_resource type="Resource" id="Resource_4u3bu"]
+script = ExtResource("1_hp8qs")
+item = ExtResource("2_ciipo")
+quantity = 3
+metadata/_custom_type_script = "uid://cq5cuycwg4xpt"
+
+[resource]
+script = ExtResource("2_mgcha")
+title = "Medium Quest"
+description = "A quest of medium length. It takes a medium amount of steps and time to complete. It gives a medium amount of rewards."
+steps = Array[String](["Step 1", "Step 2", "Step 3"])
+reward_items = Array[ExtResource("1_hp8qs")]([SubResource("Resource_4u3bu")])
+metadata/_custom_type_script = "uid://dvqmvnexrn7rg"

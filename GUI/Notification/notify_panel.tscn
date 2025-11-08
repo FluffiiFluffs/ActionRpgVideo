@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://htyetfiyidll"]
+
+[ext_resource type="Script" uid="uid://00pbobn6jjl" path="res://GUI/Notification/notify_panel.gd" id="1_cjdn1"]
+[ext_resource type="Texture2D" uid="uid://b2lxe6vdv880x" path="res://ASSETS/Dialogue/panel_notification.png" id="1_y4xpu"]
+[ext_resource type="FontFile" uid="uid://b4xnhb2y0po8i" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorSC-Bold.ttf" id="2_fuldj"]
+[ext_resource type="FontFile" uid="uid://dvkdxpwvqxvk5" path="res://ASSETS/FONTS/PixelOperator/PixelOperator.ttf" id="3_qhy37"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fuldj"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+texture = ExtResource("1_y4xpu")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="NotifyPanel" type="CanvasLayer"]
+script = ExtResource("1_cjdn1")
+
+[node name="NotifyPositioner" type="Control" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NotifyPositioner"]
+layout_mode = 1
+offset_right = 289.0
+offset_bottom = 69.0
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="NotifyPositioner/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fuldj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotifyPositioner/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="NotifyPositioner/MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.85882354, 0.5529412, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fuldj")
+text = "Notification Type "
+autowrap_mode = 3
+
+[node name="MessageLabel" type="Label" parent="NotifyPositioner/MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qhy37")
+text = "Notification message"
+autowrap_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true

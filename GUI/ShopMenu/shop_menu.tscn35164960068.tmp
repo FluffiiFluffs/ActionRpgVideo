@@ -1,0 +1,466 @@
+[gd_scene load_steps=22 format=3 uid="uid://dfe7uid4ct6nk"]
+
+[ext_resource type="Theme" uid="uid://v3g7k24h8ox3" path="res://GUI/UITHEME.tres" id="1_bs1cb"]
+[ext_resource type="Script" uid="uid://bgsnqvr6qktgt" path="res://GUI/ShopMenu/shop_menu.gd" id="1_gjfy2"]
+[ext_resource type="Shader" uid="uid://oiygmccmcyhm" path="res://ASSETS/SHADERS/blur.gdshader" id="1_keui0"]
+[ext_resource type="FontFile" uid="uid://mx6qiuq7jc8k" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorHB.ttf" id="2_jbujb"]
+[ext_resource type="Resource" uid="uid://bbj8cysnncfjt" path="res://GUI/ShopMenu/terra_shop_item_list.tres" id="2_pc6pd"]
+[ext_resource type="Texture2D" uid="uid://bcvs2lo77u08p" path="res://ASSETS/HUD/Inventory/items.png" id="3_jw7mb"]
+[ext_resource type="PackedScene" uid="uid://dtnrq00xnuqoo" path="res://GUI/ShopMenu/shop_item_button.tscn" id="5_40h01"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40h01"]
+resource_local_to_scene = true
+shader = ExtResource("1_keui0")
+shader_parameter/blur_amount = 4.00000019
+shader_parameter/tint = Color(0, 0, 0, 1)
+shader_parameter/tint_strength = 0.50000002375
+shader_parameter/saturation = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jbujb"]
+load_path = "res://.godot/imported/items.png-b727d202f8d9a2e40932136eb3c3a7af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw7mb"]
+atlas = SubResource("CompressedTexture2D_jbujb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_keui0"]
+texture = SubResource("AtlasTexture_jw7mb")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+expand_margin_top = 2.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keui0"]
+atlas = ExtResource("3_jw7mb")
+region = Rect2(8, 8, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xox24"]
+load_path = "res://.godot/imported/items.png-b727d202f8d9a2e40932136eb3c3a7af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euwqb"]
+atlas = SubResource("CompressedTexture2D_xox24")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bs1cb"]
+texture = SubResource("AtlasTexture_euwqb")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_top = 2.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_gjfy2"]
+resource_name = "open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuPositioner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuPositioner:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuPositioner:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pc6pd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuPositioner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuPositioner:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuPositioner:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ymnb1"]
+resource_name = "closed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuPositioner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuPositioner:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuPositioner:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -325)]
+}
+
+[sub_resource type="Animation" id="Animation_ae7ll"]
+resource_name = "closing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuPositioner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuPositioner:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuPositioner:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -325)]
+}
+
+[sub_resource type="Animation" id="Animation_q7vkk"]
+resource_name = "opening"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuPositioner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuPositioner:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuPositioner:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -325), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ae7ll"]
+_data = {
+&"RESET": SubResource("Animation_pc6pd"),
+&"closed": SubResource("Animation_ymnb1"),
+&"closing": SubResource("Animation_ae7ll"),
+&"open": SubResource("Animation_gjfy2"),
+&"opening": SubResource("Animation_q7vkk")
+}
+
+[node name="ShopMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_gjfy2")
+shop_data = ExtResource("2_pc6pd")
+
+[node name="MenuPositioner" type="Control" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="MenuPositioner"]
+process_mode = 3
+material = SubResource("ShaderMaterial_40h01")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuPositioner"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuPositioner/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MenuPositioner/MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="ExitButton" type="Button" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 0
+focus_behavior_recursive = 2
+theme = ExtResource("1_bs1cb")
+theme_type_variation = &"BorderButton"
+text = "Exit"
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer2"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_keui0")
+
+[node name="ShopNameLabel" type="Label" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_jbujb")
+text = "Shop Name"
+
+[node name="PanelContainer2" type="PanelContainer" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer2"]
+process_mode = 3
+custom_minimum_size = Vector2(76, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_keui0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="GemTextureRect" type="TextureRect" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = SubResource("AtlasTexture_keui0")
+stretch_mode = 2
+
+[node name="GemX" type="Label" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_jbujb")
+text = "x"
+
+[node name="GemAmountLabel" type="Label" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer2/HBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_jbujb")
+text = "0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuPositioner/MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bs1cb")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel"]
+process_mode = 3
+layout_mode = 2
+focus_mode = 2
+focus_behavior_recursive = 2
+mouse_filter = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="ShopItemContainer" type="VBoxContainer" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel/ScrollContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+focus_mode = 2
+focus_behavior_recursive = 2
+mouse_filter = 2
+
+[node name="ShopItemButton" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel/ScrollContainer/ShopItemContainer" instance=ExtResource("5_40h01")]
+process_mode = 3
+layout_mode = 2
+
+[node name="ShopItemButton2" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel/ScrollContainer/ShopItemContainer" instance=ExtResource("5_40h01")]
+process_mode = 3
+layout_mode = 2
+
+[node name="ShopItemButton3" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel/ScrollContainer/ShopItemContainer" instance=ExtResource("5_40h01")]
+process_mode = 3
+layout_mode = 2
+
+[node name="ShopItemButton4" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel/ScrollContainer/ShopItemContainer" instance=ExtResource("5_40h01")]
+process_mode = 3
+layout_mode = 2
+
+[node name="ShopItemButton5" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel/ScrollContainer/ShopItemContainer" instance=ExtResource("5_40h01")]
+process_mode = 3
+layout_mode = 2
+
+[node name="ShopItemButton6" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel/ScrollContainer/ShopItemContainer" instance=ExtResource("5_40h01")]
+process_mode = 3
+layout_mode = 2
+
+[node name="ShopItemButton7" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel/ScrollContainer/ShopItemContainer" instance=ExtResource("5_40h01")]
+process_mode = 3
+layout_mode = 2
+
+[node name="ShopItemButton8" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel/ScrollContainer/ShopItemContainer" instance=ExtResource("5_40h01")]
+process_mode = 3
+layout_mode = 2
+
+[node name="Panel2" type="PanelContainer" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bs1cb")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuPositioner/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_ae7ll")
+}

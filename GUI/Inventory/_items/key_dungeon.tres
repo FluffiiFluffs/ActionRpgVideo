@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://bvwr7t2eea52s"]
+
+[ext_resource type="Script" uid="uid://203wldfhfjcg" path="res://GUI/Inventory/_item_effects/item_effect.gd" id="1_261i2"]
+[ext_resource type="Script" uid="uid://v4814yfjnsg6" path="res://GUI/Inventory/item_data.gd" id="2_mrwbb"]
+[ext_resource type="AudioStream" uid="uid://e1y3pdudg4ys" path="res://ASSETS/SOUNDS/key 1.wav" id="3_ikswg"]
+[ext_resource type="Texture2D" uid="uid://bcvs2lo77u08p" path="res://ASSETS/HUD/Inventory/items.png" id="3_mrwbb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikswg"]
+atlas = ExtResource("3_mrwbb")
+region = Rect2(232, 8, 16, 18)
+
+[resource]
+script = ExtResource("2_mrwbb")
+name = "Dungeon Key"
+description = "It's a key to a door. You will probably need it later."
+shop_description = "This key might be useful later. They're rare, so this is the best price I can give."
+texture = SubResource("AtlasTexture_ikswg")
+sound_effect = ExtResource("3_ikswg")
+shop_price = 300
+metadata/_custom_type_script = "uid://v4814yfjnsg6"

@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://docsdibbb82a5"]
+
+[ext_resource type="Texture2D" uid="uid://ije8g2shy6xj" path="res://ASSETS/OBJECT/lttp_lightworld_tree_2x.png" id="1_h3wps"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oxq16"]
+resource_local_to_scene = true
+radius = 28.0
+height = 128.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hg0qv"]
+resource_local_to_scene = true
+radius = 25.0
+height = 116.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_thx4t"]
+
+[node name="Tree" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(0, -45)
+
+[node name="LttpLightworldTree2x" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 9)
+texture = ExtResource("1_h3wps")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 9)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, -5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_oxq16")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 29)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_hg0qv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
+z_index = 1
+position = Vector2(0, 69)
+shape = SubResource("CapsuleShape2D_thx4t")

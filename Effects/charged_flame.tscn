@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://4xrbunb2w7gm"]
+
+[ext_resource type="Texture2D" uid="uid://dq3oxtgounk3e" path="res://ASSETS/EFFECTS/SpinAttack/charged_spark.png" id="1_l6h2c"]
+[ext_resource type="Script" uid="uid://xwjpecgug40u" path="res://Effects/charged_flame.gd" id="2_vt7y1"]
+
+[sub_resource type="Animation" id="Animation_blisr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_r0a2v"]
+resource_name = "blip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0pe2j"]
+_data = {
+&"RESET": SubResource("Animation_blisr"),
+&"blip": SubResource("Animation_r0a2v")
+}
+
+[node name="ChargedFlame" type="Sprite2D"]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_l6h2c")
+hframes = 5
+script = ExtResource("2_vt7y1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_0pe2j")
+}
+autoplay = "blip"

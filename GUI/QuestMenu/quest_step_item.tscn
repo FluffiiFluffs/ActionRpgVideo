@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfbwjfqfdqw7e"]
+
+[ext_resource type="Script" uid="uid://cl4npgarlhfhn" path="res://GUI/QuestMenu/quest_step_item.gd" id="1_jwuet"]
+[ext_resource type="Texture2D" uid="uid://baektwq8mrsv2" path="res://ASSETS/Dialogue/checkbox.png" id="2_aqe2w"]
+[ext_resource type="FontFile" uid="uid://tn24nx6j3jbi" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorSC.ttf" id="3_4h8f3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h8f3"]
+atlas = ExtResource("2_aqe2w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aqe2w"]
+load_path = "res://.godot/imported/checkbox.png-ab40c047c7dabb33c3b8cbb5778bdd1b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t33tk"]
+atlas = SubResource("CompressedTexture2D_aqe2w")
+region = Rect2(16, 0, 16, 16)
+
+[node name="QuestStepItem" type="Control"]
+custom_minimum_size = Vector2(250, 22)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jwuet")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unchecked" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_4h8f3")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Checked" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_t33tk")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_4h8f3")
+text = "Step"

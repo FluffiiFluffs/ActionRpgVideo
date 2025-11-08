@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdpmtvpkplvrj"]
+
+[ext_resource type="Script" uid="uid://k7jto4ygib61" path="res://Props/Interactables/PushableStatue/pushable_statue.gd" id="1_dtsm1"]
+[ext_resource type="Texture2D" uid="uid://ctbsllgulbi57" path="res://ASSETS/TILEMAP/dungeon_props.png" id="2_62pab"]
+[ext_resource type="AudioStream" uid="uid://cb0fgdhu2ex6m" path="res://ASSETS/SOUNDS/large object moving.wav" id="3_236em"]
+[ext_resource type="PackedScene" uid="uid://dx11vv8h5nuot" path="res://Common/PersistentDataHandler/persistent_data_handler.tscn" id="4_kq5ih"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_236em"]
+atlas = ExtResource("2_62pab")
+region = Rect2(384, 0, 32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62pab"]
+size = Vector2(28, 12)
+
+[node name="PushableStatue" type="RigidBody2D"]
+y_sort_enabled = true
+collision_layer = 16
+collision_mask = 273
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_dtsm1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -1)
+texture = SubResource("AtlasTexture_236em")
+offset = Vector2(-1, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_62pab")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_236em")
+max_polyphony = 4
+
+[node name="PersistentDataHandler" parent="." instance=ExtResource("4_kq5ih")]
+unique_name_in_owner = true

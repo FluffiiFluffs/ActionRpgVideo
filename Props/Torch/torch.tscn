@@ -1,0 +1,192 @@
+[gd_scene load_steps=12 format=4 uid="uid://cmeqnsulvkdlg"]
+
+[ext_resource type="Texture2D" uid="uid://ddvqgt1cw7ls4" path="res://ASSETS/OBJECT/lttp_torch_spritesheet.png" id="1_crevm"]
+[ext_resource type="Script" uid="uid://bab6bd12flypb" path="res://Props/Torch/torch.gd" id="1_ojqv1"]
+[ext_resource type="TileSet" uid="uid://rfb8c1tvg7q7" path="res://Scenes/TileMaps/dungeon01_tileset.tres" id="3_ae16t"]
+
+[sub_resource type="Gradient" id="Gradient_ojqv1"]
+offsets = PackedFloat32Array(0, 0.07317073, 0.124390244, 0.7268293, 0.83902436, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 0.88235295, 0.2509804, 1, 0.69455284, 0.50307226, 0.10875818, 1, 0.4609756, 0.21303417, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ae16t"]
+gradient = SubResource("Gradient_ojqv1")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.2, 0.5)
+
+[sub_resource type="Animation" id="Animation_ae16t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture:fill_to")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_crevm"]
+resource_name = "lit"
+length = 1.8000034
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture:fill_to")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.5), Vector2(0.09, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ojqv1"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yrmxv"]
+_data = {
+&"RESET": SubResource("Animation_ae16t"),
+&"lit": SubResource("Animation_crevm"),
+&"off": SubResource("Animation_ojqv1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crevm"]
+size = Vector2(32, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojqv1"]
+
+[node name="Torch" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ojqv1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -3)
+enabled = false
+energy = 0.75
+texture = SubResource("GradientTexture2D_ae16t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -14)
+scale = Vector2(2, 2)
+texture = ExtResource("1_crevm")
+offset = Vector2(0, 7)
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_yrmxv")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_crevm")
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_ojqv1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+tile_map_data = PackedByteArray("AAD9//3/AgADAAEAAAD9//7/AgADAAIAAAD9////AgADAAAAAAD+//3/AgADAAAAAAD+//7/AgADAAEAAAD+////AgADAAIAAAD///3/AgAAAAAAAAD///7/AgAAAAEAAAD/////AgAAAAIAAAAAAP3/AgABAAAAAAAAAP7/AgABAAEAAAAAAP//AgABAAIAAAABAP3/AgACAAAAAAABAP7/AgACAAEAAAABAP//AgACAAIAAAACAP3/AgADAAAAAAACAP7/AgADAAEAAAACAP//AgADAAIAAAADAP3/AgAAAAAAAAADAP7/AgAAAAEAAAADAP//AgAAAAIAAAD9/wAAAgADAAEAAAD9/wEAAgADAAIAAAD9/wIAAgADAAAAAAD+/wAAAgADAAAAAAD+/wEAAgADAAEAAAD+/wIAAgADAAIAAAD//wAAAgACAAAAAAD//wEAAgAAAAAAAAD//wIAAgADAAAAAAAAAAAAAgAAAAAAAAAAAAEAAgABAAAAAAAAAAIAAgAAAAAAAAABAAAAAgABAAAAAAABAAEAAgACAAAAAAABAAIAAgABAAAAAAACAAAAAgACAAAAAAACAAEAAgADAAAAAAACAAIAAgAAAAAAAAADAAAAAgAAAAAAAAADAAEAAgAAAAEAAAADAAIAAgABAAAAAAD9//z/AgADAAIAAAD+//z/AgADAAIAAAD///z/AgACAAEAAAAAAPz/AgAAAAEAAAABAPz/AgABAAEAAAACAPz/AgAAAAIAAAADAPz/AgABAAIAAAD//wMAAgABAAAAAAAAAAMAAgACAAAAAAABAAMAAgADAAAAAAACAAMAAgAAAAAAAAD8/wIAAgADAAIAAAD8/wMAAgADAAAAAAD9/wMAAgADAAAAAAD+/wMAAgAAAAAAAAD8/wAAAgADAAAAAAD8/wEAAgADAAEAAAD8//3/AgADAAAAAAD8//7/AgADAAEAAAD8////AgADAAIAAAD8//z/AgADAAIAAAADAAMAAgABAAAAAAD7//z/AgACAAIAAAD7//3/AgACAAAAAAD7//7/AgACAAEAAAD7////AgACAAIAAAD7/wAAAgACAAAAAAD7/wEAAgACAAEAAAD7/wIAAgACAAIAAAD7/wMAAgACAAAAAAAEAPz/AgAAAAAAAAAEAP3/AgAAAAEAAAAEAP7/AgAAAAIAAAAEAP//AgAAAAAAAAAEAAMAAgAAAAAAAAAEAAIAAgAAAAAAAAAEAAEAAgAAAAIAAAAEAAAAAgAAAAEAAAAEAPv/AgAAAAEAAAADAPv/AgABAAEAAAACAPv/AgAAAAEAAAABAPv/AgACAAIAAAAAAPv/AgABAAIAAAD///v/AgAAAAIAAAD+//v/AgADAAEAAAD9//v/AgADAAEAAAD8//v/AgADAAEAAAD7//v/AgACAAEAAAD7/wQAAgACAAEAAAD8/wQAAgADAAEAAAD9/wQAAgADAAEAAAD+/wQAAgAAAAEAAAD//wQAAgABAAEAAAAAAAQAAgACAAEAAAABAAQAAgADAAEAAAACAAQAAgAAAAEAAAADAAQAAgABAAEAAAAEAAQAAgAAAAEAAAD6/wQAAgABAAEAAAD6/wMAAgABAAAAAAD6/wIAAgABAAIAAAAEAPr/AgAAAAAAAAADAPr/AgABAAAAAAACAPr/AgAAAAAAAAABAPr/AgACAAEAAAAAAPr/AgABAAEAAAD///r/AgAAAAEAAAD+//r/AgADAAAAAAD9//r/AgADAAAAAAD8//r/AgADAAAAAAD7//r/AgACAAAAAAAFAAQAAgABAAEAAAAFAAMAAgABAAAAAAAFAAIAAgABAAAAAAAFAAEAAgABAAIAAAAFAAAAAgABAAEAAAAFAP//AgABAAAAAAAFAP7/AgABAAIAAAAFAP3/AgABAAEAAAAFAPz/AgABAAAAAAAFAPv/AgABAAEAAAAFAPr/AgABAAAAAAAGAPr/AgACAAAAAAAGAPv/AgACAAEAAAAGAPz/AgACAAAAAAAGAP3/AgACAAEAAAAGAP7/AgACAAIAAAAGAP//AgACAAAAAAAGAAAAAgACAAEAAAAGAAEAAgACAAIAAAAGAAIAAgACAAAAAAAGAAMAAgACAAAAAAAGAAQAAgACAAEAAAD6////AgABAAIAAAD6/wAAAgABAAAAAAD6/wEAAgABAAEAAAD6//z/AgABAAIAAAD6//3/AgABAAAAAAD6//7/AgABAAEAAAD6//r/AgABAAAAAAD6//v/AgABAAEAAAD6/wUAAgABAAIAAAD7/wUAAgACAAIAAAD8/wUAAgADAAIAAAD9/wUAAgADAAIAAAD+/wUAAgAAAAIAAAD//wUAAgABAAIAAAAAAAUAAgACAAIAAAABAAUAAgADAAIAAAACAAUAAgAAAAIAAAADAAUAAgABAAIAAAAEAAUAAgAAAAIAAAAFAAUAAgABAAIAAAAGAAUAAgACAAIAAAD5/wMAAgAAAAAAAAD5/wQAAgAAAAEAAAD5/wUAAgAAAAIAAAD5/wAAAgAAAAAAAAD5/wEAAgAAAAEAAAD5/wIAAgAAAAIAAAD5//3/AgAAAAAAAAD5//7/AgAAAAEAAAD5////AgAAAAIAAAD5//r/AgAAAAAAAAD5//v/AgAAAAEAAAD5//z/AgAAAAIAAAA=")
+tile_set = ExtResource("3_ae16t")
+metadata/_edit_lock_ = true

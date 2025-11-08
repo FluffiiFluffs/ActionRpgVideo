@@ -1,0 +1,40 @@
+class_name EnemyStateIdle extends EnemyState
+
+@export var anim_name : String = "idle"
+
+@export_category("AI")
+@export var state_duration_min: float = 1.5
+@export var state_duration_max : float = 3.0
+@export var next_state: EnemyState
+
+var _timer : float = 0.0
+
+
+##What happens when state is initialized
+func init() -> void:
+	pass
+
+func _ready() -> void:
+	pass
+	
+## What happens when the state is entered
+func enter() -> void:
+	enemy.velocity = Vector2.ZERO
+	_timer = randf_range(state_duration_min, state_duration_max)
+	enemy.update_animation( anim_name )
+	pass
+## What happens when the state is exited
+func exit() -> void:
+	pass
+	
+	
+## What happens during _process(): update while state is running
+func process (_delta : float) -> EnemyState:
+	_timer -= _delta
+	if _timer <= 0:
+		return next_state
+	return null
+
+## What happens during _physics_process(): update state is running
+func physics( _delta: float) -> EnemyState:
+	return null	

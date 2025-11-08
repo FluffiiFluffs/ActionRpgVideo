@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5yw7l8ol1rfm"]
+
+[ext_resource type="Script" uid="uid://d3fa61dqyfrg6" path="res://Common/ItemDropper/item_dropper.gd" id="1_yuyd4"]
+[ext_resource type="Theme" uid="uid://v3g7k24h8ox3" path="res://GUI/UITHEME.tres" id="2_2osy1"]
+[ext_resource type="AudioStream" uid="uid://0y34p3go122f" path="res://ASSETS/SOUNDS/item get 1.wav" id="3_s745b"]
+[ext_resource type="PackedScene" uid="uid://dx11vv8h5nuot" path="res://Common/PersistentDataHandler/persistent_data_handler.tscn" id="4_03xtq"]
+
+[node name="ItemDropper" type="Node2D"]
+script = ExtResource("1_yuyd4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Label" type="Label" parent="Sprite2D"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -34.5
+offset_right = 36.0
+offset_bottom = -18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2osy1")
+theme_override_font_sizes/font_size = 8
+text = "ITEM DROP"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_s745b")
+volume_db = -5.0
+
+[node name="HasDroppedDataHandler" parent="." instance=ExtResource("4_03xtq")]
+unique_name_in_owner = true

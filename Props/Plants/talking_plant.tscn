@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctvwq012tnk1d"]
+
+[ext_resource type="Script" uid="uid://c872jg2jegyqh" path="res://Props/Plants/talking_plant.gd" id="1_klo4t"]
+[ext_resource type="Shader" uid="uid://cpycyu56ew6yc" path="res://ASSETS/SHADERS/tree_shader.gdshader" id="2_g8bf6"]
+[ext_resource type="PackedScene" uid="uid://hq48qaqxf1hw" path="res://Common/Hitbox/hit_box.tscn" id="4_g8bf6"]
+[ext_resource type="Texture2D" uid="uid://bhrgssptquye1" path="res://ASSETS/OBJECT/lttp_bush_2x.png" id="4_qh041"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8bf6"]
+resource_local_to_scene = true
+shader = ExtResource("2_g8bf6")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc2yy"]
+size = Vector2(24, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ueeei"]
+size = Vector2(4, 4)
+
+[node name="TalkingPlant" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_klo4t")
+
+[node name="PlantSprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.6501592, 0.6501592, 0.6501592, 1)
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_g8bf6")
+position = Vector2(0, -24)
+texture = ExtResource("4_qh041")
+offset = Vector2(0, 24)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 0
+
+[node name="StaticBodyCollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_jc2yy")
+
+[node name="HitBox" parent="." instance=ExtResource("4_g8bf6")]
+unique_name_in_owner = true
+collision_layer = 2048
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_ueeei")
+debug_color = Color(0.70196074, 0.097471625, 0, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+max_polyphony = 4

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://dd8qr7jyotrkq"]
+
+[ext_resource type="Script" uid="uid://203wldfhfjcg" path="res://GUI/Inventory/_item_effects/item_effect.gd" id="1_mwvd1"]
+[ext_resource type="Script" uid="uid://v4814yfjnsg6" path="res://GUI/Inventory/item_data.gd" id="1_svk0p"]
+[ext_resource type="Script" uid="uid://bynmcauwpl7tc" path="res://GUI/Inventory/_item_effects/item_effect_gem.gd" id="2_8nuxx"]
+[ext_resource type="AudioStream" uid="uid://biirrjkp8qf8a" path="res://ASSETS/SOUNDS/rupee.wav" id="4_v737s"]
+
+[sub_resource type="Resource" id="Resource_v737s"]
+script = ExtResource("2_8nuxx")
+use_description = "You got a gem"
+metadata/_custom_type_script = "uid://bynmcauwpl7tc"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_svk0p"]
+load_path = "res://.godot/imported/items.png-b727d202f8d9a2e40932136eb3c3a7af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke32t"]
+atlas = SubResource("CompressedTexture2D_svk0p")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_svk0p")
+name = "Gem"
+description = "A gem with a faint sparkle."
+texture = SubResource("AtlasTexture_ke32t")
+effects = Array[ExtResource("1_mwvd1")]([SubResource("Resource_v737s")])
+sound_effect = ExtResource("4_v737s")
+use_on_pickup = true
+metadata/_custom_type_script = "uid://v4814yfjnsg6"

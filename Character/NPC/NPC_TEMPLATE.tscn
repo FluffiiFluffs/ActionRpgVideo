@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://bntv2go28m4nj"]
+
+[ext_resource type="Script" uid="uid://8k1x3wksbkoq" path="res://Character/NPC/npc.gd" id="1_oyfq3"]
+[ext_resource type="Texture2D" uid="uid://b0lh5gbncay1t" path="res://ASSETS/OBJECT/lttp_world_heart_2x.png" id="2_vwv3a"]
+[ext_resource type="Texture2D" uid="uid://bu3fub213momw" path="res://ASSETS/EFFECTS/Shadow.png" id="3_3bdkq"]
+[ext_resource type="Script" uid="uid://bknf8jdoaffu5" path="res://Character/NPC/NPCBehavior/npc_state_machine.gd" id="4_6a6qb"]
+[ext_resource type="Script" uid="uid://8qi4n8fgi3cg" path="res://Character/NPC/NPCBehavior/npc_state_idle.gd" id="4_tkhff"]
+[ext_resource type="Script" uid="uid://bfni4glkb2j68" path="res://Character/NPC/NPCBehavior/npc_state_wander.gd" id="5_6a6qb"]
+[ext_resource type="Script" uid="uid://cxv6leyte2w1e" path="res://Character/NPC/NPCBehavior/npc_talk.gd" id="6_ij2qw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3bdkq"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2dqh"]
+
+[node name="NPCTEMPLATE" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 16
+motion_mode = 1
+script = ExtResource("1_oyfq3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+texture = ExtResource("2_vwv3a")
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.35000002)
+show_behind_parent = true
+position = Vector2(0, 22)
+texture = ExtResource("3_3bdkq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 13)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_3bdkq")
+debug_color = Color(0, 0.6, 0.69803923, 0.16862746)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_m2dqh")
+}
+
+[node name="NPCStateMachine" type="Node" parent="."]
+script = ExtResource("4_6a6qb")
+
+[node name="Idle" type="Node" parent="NPCStateMachine"]
+script = ExtResource("4_tkhff")
+
+[node name="Wander" type="Node" parent="NPCStateMachine"]
+script = ExtResource("5_6a6qb")
+
+[node name="Talk" type="Node" parent="NPCStateMachine"]
+script = ExtResource("6_ij2qw")

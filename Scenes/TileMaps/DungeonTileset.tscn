@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd03c3imtjd5o"]
+
+[ext_resource type="TileSet" uid="uid://rfb8c1tvg7q7" path="res://Scenes/TileMaps/dungeon01_tileset.tres" id="1_xk2ax"]
+[ext_resource type="Script" uid="uid://chwdof4aq51y0" path="res://Scenes/TileMaps/level_tilemap.gd" id="2_dhus5"]
+
+[node name="Dungeon01" type="TileMapLayer"]
+z_index = -1
+tile_set = ExtResource("1_xk2ax")
+rendering_quadrant_size = 32
+script = ExtResource("2_dhus5")

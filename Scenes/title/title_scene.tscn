@@ -1,0 +1,386 @@
+[gd_scene load_steps=21 format=4 uid="uid://km766l0xtbmw"]
+
+[ext_resource type="Script" uid="uid://bhbculwrm4y3f" path="res://Scenes/title/title_scene.gd" id="1_vieyv"]
+[ext_resource type="PackedScene" uid="uid://lh05kfhc3rg0" path="res://Scenes/TileMaps/GrassTileset.tscn" id="1_vn8q0"]
+[ext_resource type="Texture2D" uid="uid://bvkddvdagruty" path="res://ASSETS/CHARACTER/player_sprite.png" id="2_g6qg1"]
+[ext_resource type="PackedScene" uid="uid://dv7imctt71hrm" path="res://Scenes/TileMaps/PlantsTileset.tscn" id="2_hdypw"]
+[ext_resource type="PackedScene" uid="uid://hoapuxatrjjn" path="res://Character/Enemy/Slime/enemy_slime.tscn" id="3_sgfha"]
+[ext_resource type="PackedScene" uid="uid://dektwyqbnhmx" path="res://Character/NPC/Toriel/npc_toriel.tscn" id="4_7qkkl"]
+[ext_resource type="PackedScene" uid="uid://docsdibbb82a5" path="res://Props/Plants/tree.tscn" id="6_pfkij"]
+[ext_resource type="PackedScene" uid="uid://cvrxp5lfvqm5b" path="res://Scenes/Test/newplayertest.tscn" id="7_pfkij"]
+[ext_resource type="Shader" uid="uid://oiygmccmcyhm" path="res://ASSETS/SHADERS/blur.gdshader" id="8_po67x"]
+[ext_resource type="FontFile" uid="uid://b8pjrx1k5m76o" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorMono8-Bold.ttf" id="9_gqpvr"]
+[ext_resource type="Theme" uid="uid://v3g7k24h8ox3" path="res://GUI/UITHEME.tres" id="10_0xmg1"]
+[ext_resource type="AudioStream" uid="uid://cx3g60q4ed3x6" path="res://ASSETS/MUSIC/lttp_kakariko_village.mp3" id="12_7dk4i"]
+[ext_resource type="PackedScene" uid="uid://bi6bn1q2hdswc" path="res://Scenes/level_transition.tscn" id="13_0o424"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdypw"]
+size = Vector2(576, 168)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfkij"]
+size = Vector2(577, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_po67x"]
+size = Vector2(20, 336)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqpvr"]
+shader = ExtResource("8_po67x")
+shader_parameter/blur_amount = 0.750000035625
+shader_parameter/tint = Color(0, 0, 0, 1)
+shader_parameter/tint_strength = 0.50000002375
+shader_parameter/saturation = 1.0
+
+[sub_resource type="Animation" id="Animation_vieyv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HBoxContainer/NEWGAMEButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HBoxContainer/CONTINUEButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HBoxContainer/CONTINUEButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HBoxContainer/NEWGAMEButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0xmg1"]
+resource_name = "fade_in"
+length = 1.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HBoxContainer/NEWGAMEButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HBoxContainer/CONTINUEButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HBoxContainer/CONTINUEButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1.0500001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HBoxContainer/NEWGAMEButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 1.0500001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.0510001),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"focus_newgame_button"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7dk4i"]
+_data = {
+&"RESET": SubResource("Animation_vieyv"),
+&"fade_in": SubResource("Animation_0xmg1")
+}
+
+[node name="TitleScene" type="Node2D"]
+process_mode = 3
+y_sort_enabled = true
+script = ExtResource("1_vieyv")
+
+[node name="Props" type="Node2D" parent="."]
+process_mode = 3
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Grass01" parent="Props" instance=ExtResource("1_vn8q0")]
+process_mode = 3
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAQAAAAAAAEAAAAEAAUAAAAAAAIAAAAMAAcAAAAAAAMAAAADAAMAAAAAAAQAAAADAAIAAAAAAAUAAAADAAAAAAAAAAYAAAADAAEAAAAAAAcAAAACAAIAAAAAAAgAAAACAAAAAAAAAAkAAAABAAEAAAABAAAAAAADAAQAAAABAAEAAAAEAAUAAAABAAIAAAAMAAcAAAABAAMAAAAAAAMAAAABAAQAAAABAAEAAAABAAUAAAABAAMAAAABAAYAAAADAAEAAAABAAcAAAACAAMAAAABAAgAAAAAAAIAAAABAAkAAAAAAAAAAAACAAAAAAAEAAQAAAACAAEAAAACAAUAAAACAAIAAAAMAAcAAAACAAMAAAAAAAAAAAACAAQAAAAAAAIAAAACAAUAAAADAAEAAAACAAYAAAACAAEAAAACAAcAAAAAAAAAAAACAAgAAAADAAMAAAACAAkAAAADAAMAAAADAAAAAAACAAQAAAADAAEAAAACAAUAAAADAAIAAAAMAAcAAAADAAMAAAACAAEAAAADAAQAAAABAAAAAAADAAUAAAACAAMAAAADAAYAAAAAAAAAAAADAAcAAAABAAAAAAADAAgAAAAAAAMAAAADAAkAAAACAAEAAAAEAAAAAAACAAQAAAAEAAEAAAADAAUAAAAEAAIAAAAMAAcAAAAEAAMAAAADAAMAAAAEAAQAAAAAAAAAAAAEAAUAAAADAAMAAAAEAAYAAAADAAIAAAAEAAcAAAADAAEAAAAEAAgAAAACAAAAAAAEAAkAAAACAAIAAAAFAAAAAAAHAAQAAAAFAAEAAAAHAAUAAAAFAAIAAAAHAAYAAAAFAAMAAAADAAMAAAAFAAQAAAADAAMAAAAFAAUAAAAAAAAAAAAFAAYAAAABAAEAAAAFAAcAAAACAAEAAAAFAAgAAAADAAMAAAAFAAkAAAADAAMAAAAGAAAAAAACAAMAAAAGAAEAAAADAAEAAAAGAAIAAAABAAAAAAAGAAMAAAADAAEAAAAGAAQAAAAAAAMAAAAGAAUAAAACAAIAAAAGAAYAAAAAAAIAAAAGAAcAAAACAAMAAAAGAAgAAAACAAMAAAAGAAkAAAAAAAIAAAAHAAAAAAADAAMAAAAHAAEAAAACAAIAAAAHAAIAAAADAAEAAAAHAAMAAAAAAAEAAAAHAAQAAAABAAMAAAAHAAUAAAACAAIAAAAHAAYAAAADAAAAAAAHAAcAAAAAAAIAAAAHAAgAAAABAAMAAAAHAAkAAAABAAMAAAAIAAAAAAACAAIAAAAIAAEAAAADAAIAAAAIAAIAAAADAAEAAAAIAAMAAAABAAIAAAAIAAQAAAACAAIAAAAIAAUAAAAAAAIAAAAIAAYAAAACAAAAAAAIAAcAAAACAAIAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAIAAAAJAAAAAAACAAIAAAAJAAEAAAACAAMAAAAJAAIAAAAAAAIAAAAJAAMAAAAAAAIAAAAJAAQAAAABAAAAAAAJAAUAAAAAAAEAAAAJAAYAAAACAAIAAAAJAAcAAAADAAAAAAAJAAgAAAADAAEAAAAJAAkAAAABAAMAAAAKAAAAAAAAAAMAAAAKAAEAAAADAAIAAAAKAAIAAAABAAIAAAAKAAMAAAADAAMAAAAKAAQAAAACAAMAAAAKAAUAAAADAAAAAAAKAAYAAAADAAIAAAAKAAcAAAADAAIAAAAKAAgAAAADAAIAAAAKAAkAAAADAAAAAAALAAAAAAACAAMAAAALAAEAAAAAAAEAAAALAAIAAAACAAIAAAALAAMAAAAAAAAAAAALAAQAAAAAAAEAAAALAAUAAAADAAIAAAALAAYAAAADAAIAAAALAAcAAAABAAIAAAALAAgAAAACAAAAAAALAAkAAAABAAAAAAAMAAAAAAAIAAQAAAAMAAEAAAAIAAUAAAAMAAIAAAAIAAYAAAAMAAMAAAAAAAIAAAAMAAQAAAADAAIAAAAMAAUAAAACAAMAAAAMAAYAAAACAAIAAAAMAAcAAAABAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAABAAMAAAANAAAAAAACAAQAAAANAAEAAAADAAUAAAANAAIAAAALAAcAAAANAAMAAAABAAAAAAANAAQAAAAAAAAAAAANAAUAAAABAAEAAAANAAYAAAABAAAAAAANAAcAAAADAAMAAAANAAgAAAABAAEAAAANAAkAAAACAAEAAAAOAAAAAAACAAQAAAAOAAEAAAADAAUAAAAOAAIAAAAMAAcAAAAOAAMAAAADAAIAAAAOAAQAAAADAAIAAAAOAAUAAAABAAAAAAAOAAYAAAACAAIAAAAOAAcAAAABAAEAAAAOAAgAAAAAAAAAAAAOAAkAAAADAAEAAAAPAAAAAAACAAQAAAAPAAEAAAACAAUAAAAPAAIAAAAMAAcAAAAPAAMAAAACAAEAAAAPAAQAAAABAAIAAAAPAAUAAAACAAAAAAAPAAYAAAAAAAMAAAAPAAcAAAABAAEAAAAPAAgAAAACAAMAAAAPAAkAAAACAAAAAAAQAAAAAAADAAQAAAAQAAEAAAAEAAUAAAAQAAIAAAAMAAcAAAAQAAMAAAADAAMAAAAQAAQAAAACAAAAAAAQAAUAAAADAAMAAAAQAAYAAAAAAAEAAAAQAAcAAAADAAEAAAAQAAgAAAABAAAAAAAQAAkAAAAAAAEAAAARAAAAAAAEAAQAAAARAAEAAAAEAAUAAAARAAIAAAAMAAcAAAARAAMAAAABAAEAAAARAAQAAAACAAIAAAARAAUAAAAAAAIAAAARAAYAAAADAAAAAAARAAcAAAAAAAMAAAARAAgAAAABAAAAAAARAAkAAAABAAEAAAA=")
+metadata/_edit_lock_ = true
+
+[node name="PlantsTileMapLayer" parent="Props" instance=ExtResource("2_hdypw")]
+process_mode = 3
+tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAQADAAAAAAAAAAAAAQACAAAAAAAAAAAAAQAOAAAAAAAAAAAAAQAPAAAAAAAAAAAAAQAQAAAAAAAAAAAAAQACAAgAAAAAAAAAAQAPAAgAAAAAAAAAAQA=")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Props"]
+process_mode = 3
+position = Vector2(284, 21)
+texture = ExtResource("2_g6qg1")
+hframes = 16
+vframes = 8
+frame = 76
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Props"]
+process_mode = 3
+position = Vector2(284, 32)
+
+[node name="Slime" parent="Props" instance=ExtResource("3_sgfha")]
+process_mode = 3
+position = Vector2(88, 224)
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Props"]
+process_mode = 3
+collision_layer = 816
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/StaticBody2D"]
+process_mode = 3
+position = Vector2(288, 84)
+shape = SubResource("RectangleShape2D_hdypw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Props/StaticBody2D"]
+process_mode = 3
+position = Vector2(288.5, 328)
+shape = SubResource("RectangleShape2D_pfkij")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Props/StaticBody2D"]
+process_mode = 3
+position = Vector2(0, 168)
+shape = SubResource("RectangleShape2D_po67x")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Props/StaticBody2D"]
+process_mode = 3
+position = Vector2(576, 168)
+shape = SubResource("RectangleShape2D_po67x")
+
+[node name="NPC_Toriel" parent="Props" instance=ExtResource("4_7qkkl")]
+process_mode = 3
+position = Vector2(472, 224)
+collision_layer = 816
+npc_can_wander = true
+npc_will_patrol = false
+
+[node name="Tree" parent="Props" instance=ExtResource("6_pfkij")]
+process_mode = 3
+position = Vector2(80, 80)
+
+[node name="Tree2" parent="Props" instance=ExtResource("6_pfkij")]
+process_mode = 3
+position = Vector2(496, 80)
+
+[node name="Newplayertest" parent="Props" instance=ExtResource("7_pfkij")]
+process_mode = 3
+position = Vector2(288, 184)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+process_mode = 3
+material = SubResource("ShaderMaterial_gqpvr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -134.0
+offset_right = 216.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.8509804, 0.34117648, 0.38431373, 1)
+theme_override_colors/font_outline_color = Color(0.98039216, 0.95686275, 0.9098039, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 25
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("9_gqpvr")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave]GAME[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="NEWGAMEButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_0xmg1")
+text = "NEW GAME"
+
+[node name="CONTINUEButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("10_0xmg1")
+text = "CONTINUE"
+
+[node name="SecretButton" type="Button" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+z_index = 5
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95000005
+anchor_top = 0.90400004
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.799988
+offset_top = 3.1039734
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control"]
+process_mode = 3
+root_node = NodePath("../VBoxContainer/RichTextLabel")
+libraries = {
+&"": SubResource("AnimationLibrary_7dk4i")
+}
+autoplay = "fade_in"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("12_7dk4i")
+volume_db = -20.0
+autoplay = true
+
+[node name="LevelTransition" parent="." instance=ExtResource("13_0o424")]
+position = Vector2(-24, -16)
+target_transition_area = ""

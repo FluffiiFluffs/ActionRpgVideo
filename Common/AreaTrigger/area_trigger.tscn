@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://coy42x0vpntru"]
+
+[ext_resource type="Script" uid="uid://dl8de2acx2vhy" path="res://Common/AreaTrigger/area_trigger.gd" id="1_m1d4f"]
+[ext_resource type="PackedScene" uid="uid://dx11vv8h5nuot" path="res://Common/PersistentDataHandler/persistent_data_handler.tscn" id="2_i57nd"]
+
+[node name="AreaTrigger" type="Area2D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_m1d4f")
+
+[node name="PersistentDataHandler" parent="." instance=ExtResource("2_i57nd")]
+unique_name_in_owner = true

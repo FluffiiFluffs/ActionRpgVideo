@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ShopData" load_steps=10 format=3 uid="uid://bbj8cysnncfjt"]
+
+[ext_resource type="Script" uid="uid://7s0oyjgipxx1" path="res://GUI/ShopMenu/shop_data.gd" id="1_ljhqv"]
+[ext_resource type="Script" uid="uid://v4814yfjnsg6" path="res://GUI/Inventory/item_data.gd" id="2_mcnb0"]
+[ext_resource type="Resource" uid="uid://bm2x77yk6lveo" path="res://GUI/Inventory/_items/apple.tres" id="3_5xhuk"]
+[ext_resource type="Resource" uid="uid://d20pmvpj6mvw7" path="res://Common/DialogInteraction/DialogResources/terra_npc_resource.tres" id="3_mcnb0"]
+[ext_resource type="Resource" uid="uid://cw0iwxhur2eog" path="res://GUI/Inventory/_items/potion.tres" id="4_k8sx8"]
+[ext_resource type="Resource" uid="uid://ceypqdbn3ay7f" path="res://GUI/Inventory/_items/healing_heart.tres" id="4_sfs3t"]
+[ext_resource type="Resource" uid="uid://bvwr7t2eea52s" path="res://GUI/Inventory/_items/key_dungeon.tres" id="6_xe0gf"]
+[ext_resource type="Resource" uid="uid://caxkn2ntd6kn5" path="res://GUI/Inventory/_items/stone.tres" id="7_xe0gf"]
+[ext_resource type="Resource" uid="uid://32jy28ikil25" path="res://GUI/Inventory/_items/big_heart.tres" id="8_kq36r"]
+
+[resource]
+script = ExtResource("1_ljhqv")
+shopname = "Terra's Moprhs"
+shopkeeper = ExtResource("3_mcnb0")
+shop_item_list = Array[ExtResource("2_mcnb0")]([ExtResource("3_5xhuk"), ExtResource("4_k8sx8"), ExtResource("4_sfs3t"), ExtResource("6_xe0gf"), ExtResource("7_xe0gf"), ExtResource("8_kq36r"), null])
+metadata/_custom_type_script = "uid://7s0oyjgipxx1"

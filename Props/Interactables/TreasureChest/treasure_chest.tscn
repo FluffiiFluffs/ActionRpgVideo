@@ -1,0 +1,358 @@
+[gd_scene load_steps=21 format=3 uid="uid://su2fkrk2pl5m"]
+
+[ext_resource type="Texture2D" uid="uid://bycnda6doadkw" path="res://ASSETS/OBJECT/lttp_chest_spritesheet.png" id="1_3rqan"]
+[ext_resource type="Script" uid="uid://bw5n6nku46c8w" path="res://Props/Interactables/TreasureChest/treasure_chest.gd" id="1_poi1a"]
+[ext_resource type="Resource" uid="uid://ceypqdbn3ay7f" path="res://GUI/Inventory/_items/healing_heart.tres" id="2_utxfi"]
+[ext_resource type="FontFile" uid="uid://mx6qiuq7jc8k" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorHB.ttf" id="3_uoljy"]
+[ext_resource type="AudioStream" uid="uid://kbed3wu8iq4p" path="res://ASSETS/SOUNDS/chest open.wav" id="4_2spxi"]
+[ext_resource type="Texture2D" uid="uid://b0lh5gbncay1t" path="res://ASSETS/OBJECT/lttp_world_heart_2x.png" id="4_updaq"]
+[ext_resource type="AudioStream" uid="uid://0y34p3go122f" path="res://ASSETS/SOUNDS/item get 1.wav" id="5_poi1a"]
+[ext_resource type="PackedScene" uid="uid://dx11vv8h5nuot" path="res://Common/PersistentDataHandler/persistent_data_handler.tscn" id="8_updaq"]
+
+[sub_resource type="Curve" id="Curve_poi1a"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_utxfi"]
+curve = SubResource("Curve_poi1a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_poi1a"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+hue_variation_min = -1.0
+hue_variation_max = 0.99999994
+hue_variation_curve = SubResource("CurveTexture_utxfi")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_updaq"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d7r6a"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uoljy"]
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mejnr"]
+size = Vector2(28, 20)
+
+[sub_resource type="Animation" id="Animation_mejnr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ItemSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ItemSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_uoljy"]
+resource_name = "closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2spxi"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_poi1a"]
+resource_name = "open_chest"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ItemSprite:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -26)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ItemSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.2, 1.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_2spxi")
+}, {
+"end_offset": 0.34796017,
+"start_offset": 0.0,
+"stream": ExtResource("5_poi1a")
+}],
+"times": PackedFloat32Array(0, 0.13333334)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GPUParticles2D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_poi1a"]
+_data = {
+&"RESET": SubResource("Animation_mejnr"),
+&"closed": SubResource("Animation_uoljy"),
+&"open": SubResource("Animation_2spxi"),
+&"open_chest": SubResource("Animation_poi1a")
+}
+
+[node name="TreasureChest" type="Node2D"]
+process_mode = 3
+y_sort_enabled = true
+script = ExtResource("1_poi1a")
+item_data = ExtResource("2_utxfi")
+quantity = 22
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+texture = ExtResource("1_3rqan")
+hframes = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 1)
+emitting = false
+amount = 3
+amount_ratio = 0.75
+process_material = SubResource("ParticleProcessMaterial_poi1a")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+material = SubResource("CanvasItemMaterial_updaq")
+position = Vector2(0, -5)
+texture = ExtResource("4_updaq")
+
+[node name="Label" type="Label" parent="ItemSprite"]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_d7r6a")
+anchors_preset = -1
+anchor_right = 4.591
+anchor_bottom = 0.88100004
+offset_left = 17.0
+offset_top = -10.0
+offset_right = -10.001999
+offset_bottom = -6.3340006
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_uoljy")
+theme_override_font_sizes/font_size = 16
+text = "x 22"
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerDetectionArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+metadata/_edit_lock_ = true
+
+[node name="PlayerDetectionCollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea2D"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_uoljy")
+debug_color = Color(0.7021107, 0.30943933, 0.28918967, 0.23500001)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_mejnr")
+debug_color = Color(0.18631536, 0.07846785, 0.7021107, 0.24400002)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_poi1a")
+}
+autoplay = "closed"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="IsOpenPersistence" parent="." instance=ExtResource("8_updaq")]
+unique_name_in_owner = true

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bet08hiynme3b"]
+
+[ext_resource type="Script" uid="uid://coxym7vvserg1" path="res://Common/VisionArea/vision_area.gd" id="1_sgpu4"]
+
+[node name="VisionArea" type="Area2D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_sgpu4")

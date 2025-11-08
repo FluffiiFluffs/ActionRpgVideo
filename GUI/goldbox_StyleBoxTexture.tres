@@ -1,0 +1,16 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://dld3x6kbbeh8t"]
+
+[ext_resource type="Texture2D" uid="uid://bcvs2lo77u08p" path="res://ASSETS/HUD/Inventory/items.png" id="1_ijrst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouuo2"]
+atlas = ExtResource("1_ijrst")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+texture = SubResource("AtlasTexture_ouuo2")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_top = 2.0
+region_rect = Rect2(0, 0, 32, 32)

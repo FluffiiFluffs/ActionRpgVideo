@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b24sdupginlei"]
+
+[ext_resource type="Script" uid="uid://bvejhtym1dxy7" path="res://GUI/QuestMenu/quest_item.gd" id="1_xcara"]
+[ext_resource type="FontFile" uid="uid://b4xnhb2y0po8i" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorSC-Bold.ttf" id="2_e3xuv"]
+[ext_resource type="FontFile" uid="uid://bf2tbhrm0kjmp" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorMono.ttf" id="2_xcara"]
+
+[node name="QuestItem" type="Button"]
+custom_minimum_size = Vector2(249, 48)
+script = ExtResource("1_xcara")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_e3xuv")
+text = "Current Quest Title But Cut Off Kinda Quickly."
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="StepLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_xcara")
+text = "Progress: 1/5"

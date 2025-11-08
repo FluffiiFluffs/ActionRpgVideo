@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckeg6flcae771"]
+
+[ext_resource type="Script" uid="uid://eycgtrqr6an" path="res://Props/Interactables/PressurePlate/pressure_plate.gd" id="1_3u8ha"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3u8ha"]
+load_path = "res://.godot/imported/dungeon_props.png-ac0bac32018527ed17d8dc6deecf880c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6eed"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_3u8ha")
+region = Rect2(385, 65, 30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwcyg"]
+size = Vector2(7.5, 7.5)
+
+[node name="PressurePlate" type="Node2D"]
+z_index = -1
+script = ExtResource("1_3u8ha")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("AtlasTexture_g6eed")
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 273
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bwcyg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://c40l3rrko24vr"]
+
+[ext_resource type="Script" uid="uid://cq5cuycwg4xpt" path="res://Quests/quest_reward_item.gd" id="1_pbrip"]
+[ext_resource type="Resource" uid="uid://bm2x77yk6lveo" path="res://GUI/Inventory/_items/apple.tres" id="2_218b0"]
+[ext_resource type="Resource" uid="uid://dd8qr7jyotrkq" path="res://GUI/Inventory/_items/gem.tres" id="2_oppt8"]
+[ext_resource type="Script" uid="uid://dvqmvnexrn7rg" path="res://Quests/quest_resource.gd" id="3_oppt8"]
+
+[sub_resource type="Resource" id="Resource_4u3bu"]
+script = ExtResource("1_pbrip")
+item = ExtResource("2_oppt8")
+quantity = 250
+metadata/_custom_type_script = "uid://cq5cuycwg4xpt"
+
+[sub_resource type="Resource" id="Resource_pbrip"]
+script = ExtResource("1_pbrip")
+item = ExtResource("2_218b0")
+quantity = 5
+metadata/_custom_type_script = "uid://cq5cuycwg4xpt"
+
+[resource]
+script = ExtResource("3_oppt8")
+title = "Show Him Your Sausage"
+description = "A talking bush has requested that you show a nearby tree your sausage."
+steps = Array[String](["Sausage Shown"])
+reward_items = Array[ExtResource("1_pbrip")]([SubResource("Resource_4u3bu"), SubResource("Resource_pbrip")])
+metadata/_custom_type_script = "uid://dvqmvnexrn7rg"

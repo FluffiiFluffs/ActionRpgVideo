@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=6 format=3 uid="uid://fnxk5di1ygx8"]
+
+[ext_resource type="AudioStream" uid="uid://ce3kq6p36c1vq" path="res://ASSETS/SOUNDS/voice_blip.wav" id="1_1f370"]
+[ext_resource type="Texture2D" uid="uid://b3lufpn15eqh7" path="res://ASSETS/OBJECT/lttp_plant_portrait_100_01.png" id="2_y6inp"]
+[ext_resource type="Texture2D" uid="uid://c0ibm18ic71vv" path="res://ASSETS/OBJECT/lttp_plant_portrait_100_03.png" id="3_4uqw4"]
+[ext_resource type="Texture2D" uid="uid://dj6yunadb0ok3" path="res://ASSETS/OBJECT/lttp_plant_portrait_100_02.png" id="4_n67dg"]
+[ext_resource type="Script" uid="uid://7m2ud17vxuhw" path="res://Character/NPC/npc_resource.gd" id="5_76131"]
+
+[resource]
+script = ExtResource("5_76131")
+npc_name = "Grumpy Bush"
+portrait = ExtResource("2_y6inp")
+portrait_talk = ExtResource("4_n67dg")
+portrait_special = ExtResource("3_4uqw4")
+dialog_voice = ExtResource("1_1f370")
+dialog_audio_pitch = 0.5
+metadata/_custom_type_script = "uid://7m2ud17vxuhw"

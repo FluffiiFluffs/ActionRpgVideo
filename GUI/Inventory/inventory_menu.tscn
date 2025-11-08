@@ -1,0 +1,296 @@
+[gd_scene load_steps=23 format=3 uid="uid://w5bdmpwx4ffm"]
+
+[ext_resource type="Script" uid="uid://bc7n27cya51cm" path="res://GUI/Inventory/inventory_menu.gd" id="1_82lyt"]
+[ext_resource type="Theme" uid="uid://v3g7k24h8ox3" path="res://GUI/UITHEME.tres" id="1_ac8ed"]
+[ext_resource type="Resource" uid="uid://bxbw6n6nxox4w" path="res://GUI/Inventory/player_inventory.tres" id="2_dcq6d"]
+[ext_resource type="Shader" uid="uid://oiygmccmcyhm" path="res://ASSETS/SHADERS/blur.gdshader" id="2_glqyj"]
+[ext_resource type="FontFile" uid="uid://bh2qajolgv3oc" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorHB8.ttf" id="4_dcq6d"]
+[ext_resource type="PackedScene" uid="uid://c421cipfkxiy4" path="res://GUI/Inventory/inventory_slot.tscn" id="4_p80m4"]
+[ext_resource type="Script" uid="uid://dcwnbtfu0p8ss" path="res://GUI/Inventory/quests_ui.gd" id="7_fljul"]
+[ext_resource type="StyleBox" uid="uid://dld3x6kbbeh8t" path="res://GUI/goldbox_StyleBoxTexture.tres" id="8_iw1ch"]
+[ext_resource type="PackedScene" uid="uid://b24sdupginlei" path="res://GUI/QuestMenu/quest_item.tscn" id="8_jms68"]
+[ext_resource type="FontFile" uid="uid://b4xnhb2y0po8i" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorSC-Bold.ttf" id="9_4lkdi"]
+[ext_resource type="FontFile" uid="uid://bf2tbhrm0kjmp" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorMono.ttf" id="10_8m4eo"]
+[ext_resource type="PackedScene" uid="uid://dfbwjfqfdqw7e" path="res://GUI/QuestMenu/quest_step_item.tscn" id="11_8m4eo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iw1ch"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p80m4"]
+shader = ExtResource("2_glqyj")
+shader_parameter/blur_amount = 3.0000001425
+shader_parameter/tint = Color(0, 0, 0, 1)
+shader_parameter/tint_strength = 0.50000002375
+shader_parameter/saturation = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcq6d"]
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+anti_aliasing = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iw1ch"]
+load_path = "res://.godot/imported/items.png-b727d202f8d9a2e40932136eb3c3a7af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw1ch"]
+atlas = SubResource("CompressedTexture2D_iw1ch")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xvluo"]
+texture = SubResource("AtlasTexture_iw1ch")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_top = 2.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7hcpy"]
+load_path = "res://.godot/imported/items.png-b727d202f8d9a2e40932136eb3c3a7af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr70f"]
+atlas = SubResource("CompressedTexture2D_7hcpy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lkxbv"]
+texture = SubResource("AtlasTexture_nr70f")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_top = 2.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8m4eo"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+color = Color(0.8745098, 0.44313726, 0.14901961, 1)
+
+[node name="InventoryMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_82lyt")
+data = ExtResource("2_dcq6d")
+
+[node name="InventoryPositioner" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ac8ed")
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPositioner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="TabContainer" type="TabContainer" parent="InventoryPositioner/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/font_selected_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_unselected_color = Color(0.37, 0.37, 0.37, 1)
+theme_override_constants/tab_separation = -1
+theme_override_fonts/font = ExtResource("4_dcq6d")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iw1ch")
+theme_override_styles/tab_unselected = ExtResource("8_iw1ch")
+theme_override_styles/tab_selected = ExtResource("8_iw1ch")
+current_tab = 1
+
+[node name="Inventory" type="Control" parent="InventoryPositioner/MarginContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 225
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 18
+
+[node name="InventoryPanelContainer" type="PanelContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_ac8ed")
+theme_type_variation = &"Inventory_Main"
+
+[node name="Panel" type="Panel" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/InventoryPanelContainer"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_p80m4")
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dcq6d")
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/InventoryPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="InventoryGridContainer" type="GridContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/InventoryPanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+columns = 8
+
+[node name="InventorySlot" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/InventoryPanelContainer/MarginContainer/InventoryGridContainer" instance=ExtResource("4_p80m4")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/InventoryPanelContainer/MarginContainer/InventoryGridContainer" instance=ExtResource("4_p80m4")]
+layout_mode = 2
+
+[node name="DescriptionContainer" type="PanelContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"Inventory_Main"
+
+[node name="Panel" type="Panel" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/DescriptionContainer"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_p80m4")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dcq6d")
+
+[node name="DescriptionLabel" type="Label" parent="InventoryPositioner/MarginContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/DescriptionContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "A description for stuff. This box is used to test some things like how the text will make the box grow."
+autowrap_mode = 2
+
+[node name="Quests" type="Control" parent="InventoryPositioner/MarginContainer/TabContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("7_fljul")
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Quests"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+
+[node name="Panel" type="Panel" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_xvluo")
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+follow_focus = true
+draw_focus_border = true
+horizontal_scroll_mode = 0
+
+[node name="QuestsVBoxContainer" type="VBoxContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="QuestItem" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/QuestsVBoxContainer" instance=ExtResource("8_jms68")]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_lkxbv")
+
+[node name="MarginContainer2" type="MarginContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/Panel2/MarginContainer2"]
+layout_mode = 2
+
+[node name="QDetailsVBoxContainer" type="VBoxContainer" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/Panel2/MarginContainer2/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QTitleLabel" type="Label" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/Panel2/MarginContainer2/ScrollContainer/QDetailsVBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_4lkdi")
+text = "Current Quest Title and It Will Word Wrap Around To Show It All"
+autowrap_mode = 2
+
+[node name="QDHSeparator2" type="HSeparator" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/Panel2/MarginContainer2/ScrollContainer/QDetailsVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_8m4eo")
+
+[node name="QDescriptionLabel" type="Label" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/Panel2/MarginContainer2/ScrollContainer/QDetailsVBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("10_8m4eo")
+text = "This is a description of the quest and is used to describe what to do in the quest. "
+autowrap_mode = 2
+
+[node name="QDHSeparator3" type="HSeparator" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/Panel2/MarginContainer2/ScrollContainer/QDetailsVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_8m4eo")
+
+[node name="QuestStepItem" parent="InventoryPositioner/MarginContainer/TabContainer/Quests/HBoxContainer/Panel2/MarginContainer2/ScrollContainer/QDetailsVBoxContainer" instance=ExtResource("11_8m4eo")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+max_polyphony = 5

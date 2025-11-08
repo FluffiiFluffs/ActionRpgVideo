@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://cy61fm5vegv40"]
+
+[ext_resource type="Script" uid="uid://bc7n27cya51cm" path="res://GUI/Inventory/inventory_menu.gd" id="1_rjbl3"]
+[ext_resource type="Resource" uid="uid://bxbw6n6nxox4w" path="res://GUI/Inventory/player_inventory.tres" id="2_rtbgp"]
+[ext_resource type="Theme" uid="uid://v3g7k24h8ox3" path="res://GUI/UITHEME.tres" id="3_tul1l"]
+[ext_resource type="Shader" uid="uid://oiygmccmcyhm" path="res://ASSETS/SHADERS/blur.gdshader" id="4_a2tv5"]
+[ext_resource type="PackedScene" uid="uid://c421cipfkxiy4" path="res://GUI/Inventory/inventory_slot.tscn" id="5_3c28k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p80m4"]
+shader = ExtResource("4_a2tv5")
+shader_parameter/blur_amount = 3.0000001425
+shader_parameter/tint = Color(0, 0, 0, 1)
+shader_parameter/tint_strength = 0.50000002375
+shader_parameter/saturation = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcq6d"]
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+anti_aliasing = false
+
+[node name="InventoryMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_rjbl3")
+data = ExtResource("2_rtbgp")
+
+[node name="InventoryPositioner" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_tul1l")
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPositioner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 225
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPositioner/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="InventoryPanelContainer" type="PanelContainer" parent="InventoryPositioner/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_tul1l")
+theme_type_variation = &"Inventory_Main"
+
+[node name="Panel" type="Panel" parent="InventoryPositioner/MarginContainer/VBoxContainer/InventoryPanelContainer"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_p80m4")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dcq6d")
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPositioner/MarginContainer/VBoxContainer/InventoryPanelContainer"]
+layout_mode = 2
+
+[node name="InventoryGridContainer" type="GridContainer" parent="InventoryPositioner/MarginContainer/VBoxContainer/InventoryPanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 8
+
+[node name="InventorySlot" parent="InventoryPositioner/MarginContainer/VBoxContainer/InventoryPanelContainer/MarginContainer/InventoryGridContainer" instance=ExtResource("5_3c28k")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="InventoryPositioner/MarginContainer/VBoxContainer/InventoryPanelContainer/MarginContainer/InventoryGridContainer" instance=ExtResource("5_3c28k")]
+layout_mode = 2
+
+[node name="DescriptionContainer" type="PanelContainer" parent="InventoryPositioner/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"Inventory_Main"
+
+[node name="Panel" type="Panel" parent="InventoryPositioner/MarginContainer/VBoxContainer/DescriptionContainer"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_p80m4")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dcq6d")
+
+[node name="DescriptionLabel" type="Label" parent="InventoryPositioner/MarginContainer/VBoxContainer/DescriptionContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "A description for stuff. This box is used to test some things like how the text will make the box grow."
+autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+max_polyphony = 5

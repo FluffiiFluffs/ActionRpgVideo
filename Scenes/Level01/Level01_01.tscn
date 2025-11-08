@@ -1,0 +1,131 @@
+[gd_scene load_steps=18 format=4 uid="uid://de34kxyl1ndmm"]
+
+[ext_resource type="Script" uid="uid://ct24rhqja16li" path="res://Scenes/level.gd" id="1_2x24u"]
+[ext_resource type="PackedScene" uid="uid://lh05kfhc3rg0" path="res://Scenes/TileMaps/GrassTileset.tscn" id="1_l2rh5"]
+[ext_resource type="PackedScene" uid="uid://dv7imctt71hrm" path="res://Scenes/TileMaps/PlantsTileset.tscn" id="2_lr2ed"]
+[ext_resource type="PackedScene" uid="uid://wdg7h0c72blh" path="res://Character/Player/player_spawn.tscn" id="3_hpvfn"]
+[ext_resource type="PackedScene" uid="uid://bi6bn1q2hdswc" path="res://Scenes/level_transition.tscn" id="5_oeee3"]
+[ext_resource type="PackedScene" uid="uid://su2fkrk2pl5m" path="res://Props/Interactables/TreasureChest/treasure_chest.tscn" id="7_rguvm"]
+[ext_resource type="Resource" uid="uid://bm2x77yk6lveo" path="res://GUI/Inventory/_items/apple.tres" id="9_0xs3w"]
+[ext_resource type="PackedScene" uid="uid://dektwyqbnhmx" path="res://Character/NPC/Toriel/npc_toriel.tscn" id="10_al2bb"]
+[ext_resource type="AudioStream" uid="uid://deneyyl85pq3a" path="res://ASSETS/MUSIC/lttp_forest.mp3" id="10_c1mkl"]
+[ext_resource type="PackedScene" uid="uid://docsdibbb82a5" path="res://Props/Plants/tree.tscn" id="10_juf2a"]
+[ext_resource type="PackedScene" uid="uid://5omxdh1iewm3" path="res://Common/DialogInteraction/dialog_interaction.tscn" id="11_5lqkr"]
+[ext_resource type="PackedScene" uid="uid://cvntjx6pno2m8" path="res://Effects/fog_scroll_overlay_dungeon.tscn" id="11_juf2a"]
+[ext_resource type="Script" uid="uid://2xetjgqu041s" path="res://Common/DialogInteraction/dialog_text.gd" id="12_0xs3w"]
+[ext_resource type="Resource" uid="uid://1ij67xypck8j" path="res://Common/DialogInteraction/DialogResources/toriel_npc_resource.tres" id="13_al2bb"]
+[ext_resource type="Resource" uid="uid://fb2uy1u1rsw5" path="res://Common/DialogInteraction/DialogResources/hero_npc_resource.tres" id="14_5lqkr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xc3l"]
+size = Vector2(192, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_juf2a"]
+size = Vector2(20, 160)
+
+[node name="Level0101" type="Node2D"]
+script = ExtResource("1_2x24u")
+music = ExtResource("10_c1mkl")
+
+[node name="FogScrollOverlayDungeon" parent="." instance=ExtResource("11_juf2a")]
+
+[node name="Grass01" parent="." instance=ExtResource("1_l2rh5")]
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAEAAAAAAAEAAAACAAAAAAAAAAIAAAADAAMAAAAAAAMAAAADAAIAAAAAAAQAAAAAAAMAAAAAAAUAAAAAAAMAAAAAAAYAAAABAAEAAAAAAAcAAAADAAMAAAAAAAgAAAABAAEAAAAAAAkAAAABAAAAAAAAAAoAAAANAAQAAAABAAAAAAACAAMAAAABAAEAAAACAAIAAAABAAIAAAADAAAAAAABAAMAAAAMAAAAAAABAAQAAAAMAAEAAAABAAUAAAAMAAMAAAABAAYAAAAAAAMAAAABAAcAAAACAAIAAAABAAgAAAABAAMAAAABAAkAAAAAAAMAAAABAAoAAAANAAQAAAACAAAAAAADAAEAAAACAAEAAAABAAIAAAACAAIAAAADAAIAAAACAAMAAAAOAAAAAAACAAQAAAANAAIAAAACAAUAAAANAAMAAAACAAYAAAAAAAMAAAACAAcAAAADAAAAAAACAAgAAAACAAAAAAACAAkAAAACAAAAAAACAAoAAAANAAQAAAADAAAAAAACAAMAAAADAAEAAAABAAEAAAADAAIAAAADAAAAAAADAAMAAAAPAAAAAAADAAQAAAAPAAEAAAADAAUAAAAPAAMAAAADAAYAAAACAAMAAAADAAcAAAABAAAAAAADAAgAAAABAAAAAAADAAkAAAACAAMAAAADAAoAAAALAAQAAAAEAAAAAAABAAAAAAAEAAEAAAACAAEAAAAEAAIAAAAAAAMAAAAEAAMAAAABAAMAAAAEAAQAAAAGAAMAAAAEAAUAAAACAAIAAAAEAAYAAAACAAIAAAAEAAcAAAACAAMAAAAEAAgAAAACAAMAAAAEAAkAAAADAAEAAAAEAAoAAAAMAAQAAAAFAAAAAAABAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAABAAIAAAAFAAMAAAACAAAAAAAFAAQAAAAGAAMAAAAFAAUAAAADAAMAAAAFAAYAAAABAAEAAAAFAAcAAAABAAIAAAAFAAgAAAABAAAAAAAFAAkAAAAAAAIAAAAFAAoAAAALAAQAAAAGAAAAAAAAAAMAAAAGAAEAAAABAAAAAAAGAAIAAAACAAMAAAAGAAMAAAABAAIAAAAGAAQAAAAGAAMAAAAGAAUAAAADAAAAAAAGAAYAAAADAAEAAAAGAAcAAAADAAIAAAAGAAgAAAADAAEAAAAGAAkAAAAAAAAAAAAGAAoAAAAOAAQAAAAHAAAAAAABAAMAAAAHAAEAAAABAAIAAAAHAAIAAAABAAAAAAAHAAMAAAADAAMAAAAHAAQAAAAHAAAAAAAHAAUAAAAEAAEAAAAHAAYAAAAEAAEAAAAHAAcAAAAFAAIAAAAHAAgAAAABAAMAAAAHAAkAAAADAAMAAAAHAAoAAAADAAEAAAAIAAAAAAAAAAMAAAAIAAEAAAAAAAMAAAAIAAIAAAADAAIAAAAIAAMAAAACAAMAAAAIAAQAAAAAAAAAAAAIAAUAAAABAAEAAAAIAAYAAAADAAIAAAAIAAcAAAAHAAAAAAAIAAgAAAAEAAEAAAAIAAkAAAAEAAEAAAAIAAoAAAAEAAEAAAAJAAAAAAACAAMAAAAJAAEAAAABAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAABAAIAAAAJAAQAAAACAAIAAAAJAAUAAAABAAAAAAAJAAYAAAADAAEAAAAJAAcAAAABAAIAAAAJAAgAAAABAAAAAAAJAAkAAAABAAAAAAAJAAoAAAABAAIAAAAKAAAAAAAAAAMAAAAKAAEAAAACAAAAAAAKAAIAAAACAAEAAAAKAAMAAAACAAAAAAAKAAQAAAAAAAIAAAAKAAUAAAABAAMAAAAKAAYAAAACAAIAAAAKAAcAAAAFAAMAAAAKAAgAAAABAAAAAAAKAAkAAAADAAIAAAAKAAoAAAAAAAIAAAALAAAAAAABAAAAAAALAAEAAAAAAAAAAAALAAIAAAABAAIAAAALAAMAAAABAAIAAAALAAQAAAABAAMAAAALAAUAAAADAAAAAAALAAYAAAACAAEAAAALAAcAAAAGAAMAAAALAAgAAAABAAEAAAALAAkAAAACAAAAAAALAAoAAAAKAAQAAAAMAAAAAAABAAIAAAAMAAEAAAAAAAMAAAAMAAIAAAADAAAAAAAMAAMAAAABAAMAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAIAAAAMAAYAAAAAAAIAAAAMAAcAAAAGAAMAAAAMAAgAAAAAAAMAAAAMAAkAAAACAAEAAAAMAAoAAAALAAQAAAANAAAAAAABAAIAAAANAAEAAAAAAAAAAAANAAIAAAABAAEAAAANAAMAAAACAAMAAAANAAQAAAABAAAAAAANAAUAAAAFAAAAAAANAAYAAAAEAAEAAAANAAcAAAAHAAIAAAANAAgAAAABAAIAAAANAAkAAAACAAIAAAANAAoAAAANAAQAAAAOAAAAAAACAAEAAAAOAAEAAAAAAAMAAAAOAAIAAAABAAAAAAAOAAMAAAADAAMAAAAOAAQAAAABAAEAAAAOAAUAAAAGAAMAAAAOAAYAAAABAAAAAAAOAAcAAAADAAIAAAAOAAgAAAABAAIAAAAOAAkAAAAAAAIAAAAOAAoAAAALAAQAAAAPAAAAAAABAAAAAAAPAAEAAAADAAAAAAAPAAIAAAADAAEAAAAPAAMAAAAAAAIAAAAPAAQAAAABAAMAAAAPAAUAAAAGAAMAAAAPAAYAAAAAAAAAAAAPAAcAAAABAAIAAAAPAAgAAAACAAMAAAAPAAkAAAAAAAEAAAAPAAoAAAALAAQAAAAQAAAAAAAAAAIAAAAQAAEAAAABAAAAAAAQAAIAAAAAAAMAAAAQAAMAAAADAAIAAAAQAAQAAAABAAIAAAAQAAUAAAAGAAMAAAAQAAYAAAADAAAAAAAQAAcAAAADAAAAAAAQAAgAAAAAAAEAAAAQAAkAAAADAAAAAAAQAAoAAAALAAQAAAARAAAAAAAKAAQAAAARAAEAAAAKAAUAAAARAAIAAAAKAAcAAAARAAMAAAABAAMAAAARAAQAAAAAAAEAAAARAAUAAAAGAAMAAAARAAYAAAAAAAIAAAARAAcAAAAKAAQAAAARAAgAAAAKAAUAAAARAAkAAAAKAAcAAAARAAoAAAAOAAQAAAD/////AAAKAAcAAAD//wAAAAAOAAQAAAD//wEAAAAOAAUAAAD//wIAAAAOAAUAAAD//wMAAAAOAAUAAAD//wQAAAAOAAUAAAD//wUAAAAOAAUAAAD//wYAAAAOAAUAAAD//wcAAAAOAAUAAAD//wgAAAAOAAUAAAD//wkAAAAOAAcAAAD//woAAAAKAAQAAAAAAP//AAANAAcAAAABAP//AAAMAAcAAAACAP//AAALAAcAAAADAP//AAAMAAcAAAAEAP//AAAMAAcAAAAFAP//AAAMAAcAAAAGAP//AAAMAAcAAAAHAP//AAAMAAcAAAAIAP//AAAMAAcAAAAJAP//AAAMAAcAAAAKAP//AAAMAAcAAAALAP//AAALAAcAAAAMAP//AAANAAcAAAANAP//AAALAAcAAAAOAP//AAANAAcAAAAPAP//AAAMAAcAAAAQAP//AAAMAAcAAAARAP//AAAOAAcAAAAHAAsAAAABAAEAAAAIAAsAAAAEAAEAAAAJAAsAAAABAAIAAAAKAAsAAAACAAAAAAAGAAsAAAAOAAUAAAALAAsAAAAKAAUAAAAEAAsAAAANAAUAAAAFAAsAAAALAAUAAAADAAsAAAALAAUAAAACAAsAAAAMAAUAAAABAAsAAAALAAUAAAAAAAsAAAANAAUAAAANAAsAAAALAAUAAAAOAAsAAAAMAAUAAAAPAAsAAAAMAAUAAAAQAAsAAAANAAUAAAAMAAsAAAANAAUAAAARAAsAAAAOAAUAAAASAAMAAAAAAAEAAAASAAQAAAAAAAEAAAASAAUAAAAGAAMAAAASAAYAAAAAAAEAAAASAAcAAAALAAQAAAASAAkAAAALAAcAAAASAAgAAAAMAAUAAAASAAEAAAALAAUAAAASAAIAAAAMAAcAAAASAAAAAAALAAQAAAASAP//AAAAAAAAAAD//wsAAAAKAAUAAAASAAoAAAAAAAMAAAASAAsAAAABAAIAAAA=")
+metadata/_edit_lock_ = true
+
+[node name="PlantsTileMapLayer" parent="." instance=ExtResource("2_lr2ed")]
+tile_map_data = PackedByteArray("AAAKAAAAAAAAAAAAAQABAAgAAAAAAAAAAQABAAkAAAAAAAAAAQACAAgAAAAAAAAAAQACAAkAAAAAAAAAAQAOAAgAAAAAAAAAAQAOAAkAAAAAAAAAAQAPAAgAAAAAAAAAAQAPAAkAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAQABAAAAAAAAAAAAAQABAAEAAAAAAAAAAQAPAAAAAAAAAAAAAQALAAEAAAAAAAAAAQAMAAEAAAAAAAAAAQANAAEAAAAAAAAAAQAOAAEAAAAAAAAAAQALAAIAAAAAAAAAAQAOAAIAAAAAAAAAAQALAAAAAAAAAAAAAQAOAAAAAAAAAAAAAQAKAAEAAAAAAAAAAQAPAAEAAAAAAAAAAQAJAAAAAAAAAAAAAQAQAAAAAAAAAAAAAQAEAAcAAAAAAAAAAQAEAAgAAAAAAAAAAQAEAAkAAAAAAAAAAQAFAAcAAAAAAAAAAQAFAAgAAAAAAAAAAQA=")
+metadata/_edit_lock_ = true
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("3_hpvfn")]
+position = Vector2(80, 160)
+
+[node name="LevelTransition" parent="." instance=ExtResource("5_oeee3")]
+position = Vector2(288, 384)
+level = "uid://cc0kb5bjipwxu"
+size = 5
+side = 3
+
+[node name="LevelTransition2" parent="." instance=ExtResource("5_oeee3")]
+position = Vector2(608, 160)
+level = "uid://b52uqvi20qbvh"
+size = 5
+side = 1
+
+[node name="LevelTransition3" parent="." instance=ExtResource("5_oeee3")]
+position = Vector2(80, 144)
+level = ""
+target_transition_area = ""
+side = 2
+delete_on_load = true
+
+[node name="TreasureChest" parent="." instance=ExtResource("7_rguvm")]
+position = Vector2(416, 16)
+item_data = ExtResource("9_0xs3w")
+quantity = 3
+
+[node name="Tree" parent="." instance=ExtResource("10_juf2a")]
+position = Vector2(160, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(288, 400)
+shape = SubResource("RectangleShape2D_4xc3l")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(624, 160)
+shape = SubResource("RectangleShape2D_juf2a")
+
+[node name="NPC_Toriel" parent="." instance=ExtResource("10_al2bb")]
+position = Vector2(256, 64)
+npc_will_patrol = false
+
+[node name="DialogInteraction" parent="NPC_Toriel" instance=ExtResource("11_5lqkr")]
+position = Vector2(0, -4)
+interaction_type = 0
+
+[node name="DialogText" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("12_0xs3w")
+text = "Welcome, my child. You have finally awoken. My name is Toriel."
+npc_info = ExtResource("13_al2bb")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("12_0xs3w")
+text = "WHERE AM I?       [br]
+WHO AM I???       [br] 
+HOW DID I GET HERE?"
+npc_info = ExtResource("14_5lqkr")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText3" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("12_0xs3w")
+text = "That is not important right now. What is important is that you find the dungeon in this forest."
+npc_info = ExtResource("13_al2bb")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText9" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("12_0xs3w")
+text = "Why do I have a sausage in my pocket?"
+npc_info = ExtResource("14_5lqkr")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText10" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("12_0xs3w")
+text = "Try throwing it at enemies."
+npc_info = ExtResource("13_al2bb")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText11" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("12_0xs3w")
+text = "What will that do?"
+npc_info = ExtResource("14_5lqkr")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText12" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("12_0xs3w")
+text = "You will see, my child."
+npc_info = ExtResource("13_al2bb")
+metadata/_custom_type_script = "uid://2xetjgqu041s"

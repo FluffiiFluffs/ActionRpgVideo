@@ -1,0 +1,2 @@
+class_name TeleportMarker2D
+extends Marker2D

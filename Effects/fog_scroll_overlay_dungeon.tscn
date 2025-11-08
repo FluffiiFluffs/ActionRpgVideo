@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvntjx6pno2m8"]
+
+[ext_resource type="Script" uid="uid://quvpnnfk30wn" path="res://Effects/fog_scroll_overlay_dungeon.gd" id="1_ket0b"]
+[ext_resource type="Shader" uid="uid://brkxypqkkstpb" path="res://Effects/dungeon_fog_overlay.gdshader" id="2_nul4s"]
+[ext_resource type="Texture2D" uid="uid://dpc4xxw3n6u41" path="res://ASSETS/EFFECTS/lttp_fog_2x.png" id="3_sectd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jaq2a"]
+shader = ExtResource("2_nul4s")
+shader_parameter/base_blur = 0.150000007125
+shader_parameter/max_blur = 1.0000000475
+shader_parameter/sprite_mix = 0.250000011875
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 0.0
+shader_parameter/saturation = 0.850000040375
+shader_parameter/use_kernel = true
+shader_parameter/kernel_radius_pixels = 3.0000001425
+
+[node name="FogScrollOverlayDungeon" type="Node2D"]
+script = ExtResource("1_ket0b")
+
+[node name="DungeonFogOverlay" type="Parallax2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+scroll_scale = Vector2(1.2, 1.2)
+repeat_size = Vector2(512, 512)
+autoscroll = Vector2(10, 5)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="DungeonFogOverlay"]
+unique_name_in_owner = true
+visible = false
+texture_repeat = 2
+material = SubResource("ShaderMaterial_jaq2a")
+texture = ExtResource("3_sectd")
+offset = Vector2(256, 256)
+region_rect = Rect2(0, 0, 512, 512)
+
+[node name="FogTimer" type="Timer" parent="DungeonFogOverlay"]
+unique_name_in_owner = true
+wait_time = 25.0
+autostart = true

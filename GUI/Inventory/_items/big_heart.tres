@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://32jy28ikil25"]
+
+[ext_resource type="Script" uid="uid://203wldfhfjcg" path="res://GUI/Inventory/_item_effects/item_effect.gd" id="1_ytwos"]
+[ext_resource type="Script" uid="uid://suncor378pkd" path="res://GUI/Inventory/_item_effects/item_effect_life_up.gd" id="2_cvywb"]
+[ext_resource type="Script" uid="uid://v4814yfjnsg6" path="res://GUI/Inventory/item_data.gd" id="2_no7nn"]
+[ext_resource type="Texture2D" uid="uid://dxj8tff113ehs" path="res://ASSETS/OBJECT/lttp_heartcontainerFULL_2x.png" id="3_ytwos"]
+[ext_resource type="AudioStream" uid="uid://c64lljryccy1y" path="res://ASSETS/SOUNDS/heart.wav" id="4_cvywb"]
+
+[sub_resource type="Resource" id="Resource_ta6v1"]
+script = ExtResource("2_cvywb")
+metadata/_custom_type_script = "uid://suncor378pkd"
+
+[resource]
+script = ExtResource("2_no7nn")
+name = "Big Heart"
+description = "Eating this heart will increase your maximum life!"
+shop_description = "I had to go through a lot of trouble to get this. It's still beating. If you eat it, you will become stronger!"
+texture = ExtResource("3_ytwos")
+effects = Array[ExtResource("1_ytwos")]([SubResource("Resource_ta6v1")])
+sound_effect = ExtResource("4_cvywb")
+use_on_pickup = true
+shop_price = 300
+metadata/_custom_type_script = "uid://v4814yfjnsg6"

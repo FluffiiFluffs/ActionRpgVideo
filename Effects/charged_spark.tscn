@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckwyk4nf3ssvj"]
+
+[ext_resource type="Texture2D" uid="uid://dq3oxtgounk3e" path="res://ASSETS/EFFECTS/SpinAttack/charged_spark.png" id="1_ws67x"]
+[ext_resource type="Script" uid="uid://cq42ss6oaajle" path="res://Effects/charged_spark.gd" id="1_y2lt0"]
+
+[sub_resource type="Animation" id="Animation_w22ct"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_1ib1l"]
+resource_name = "spark"
+length = 0.275
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bs8e2"]
+_data = {
+&"RESET": SubResource("Animation_w22ct"),
+&"spark": SubResource("Animation_1ib1l")
+}
+
+[node name="ChargedSpark" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_ws67x")
+hframes = 5
+frame = 1
+script = ExtResource("1_y2lt0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_bs8e2")
+}
+autoplay = "spark"

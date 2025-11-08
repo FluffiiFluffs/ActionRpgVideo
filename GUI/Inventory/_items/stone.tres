@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://caxkn2ntd6kn5"]
+
+[ext_resource type="Script" uid="uid://203wldfhfjcg" path="res://GUI/Inventory/_item_effects/item_effect.gd" id="1_7go1o"]
+[ext_resource type="Texture2D" uid="uid://bcvs2lo77u08p" path="res://ASSETS/HUD/Inventory/items.png" id="2_7go1o"]
+[ext_resource type="Script" uid="uid://v4814yfjnsg6" path="res://GUI/Inventory/item_data.gd" id="2_mmdig"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbgfv"]
+atlas = ExtResource("2_7go1o")
+region = Rect2(72, 8, 17, 16)
+margin = Rect2(3, 3, 5, 5)
+
+[resource]
+script = ExtResource("2_mmdig")
+name = "Stone"
+description = "A small rock."
+shop_description = "I found this rock. You can buy it if you want to. I don't know what you would use it for."
+texture = SubResource("AtlasTexture_cbgfv")
+shop_price = 1
+metadata/_custom_type_script = "uid://v4814yfjnsg6"

@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1mqi2fctyp5f"]
+
+[ext_resource type="Script" uid="uid://qldx1da1vod6" path="res://Character/Enemy/Boss/energy_beam.gd" id="1_4hnq6"]
+[ext_resource type="PackedScene" uid="uid://b4h5lrlympdq" path="res://Common/Hurtbox/hurt_box.tscn" id="1_12l3p"]
+[ext_resource type="Texture2D" uid="uid://7dwn4jmnstf0" path="res://ASSETS/CHARACTER/boss/energy-beam.png" id="2_4hnq6"]
+[ext_resource type="Material" uid="uid://d4do730gucb6g" path="res://ASSETS/SHADERS/light_material.tres" id="3_545af"]
+[ext_resource type="Gradient" uid="uid://bmm456iqe0kp" path="res://Character/Enemy/Boss/energy_ball_blue.tres" id="4_gcwcr"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_545af"]
+b = Vector2(0, 5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bhnhb"]
+gradient = ExtResource("4_gcwcr")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_gcwcr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AudioStreamPlayer2D/../Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AudioStreamPlayer2D/../Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ffaod"]
+resource_name = "charge"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AudioStreamPlayer2D/../Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.40000004, 0.6, 0.7, 0.90000004, 1, 1.2, 1.3000001, 1.5, 1.6, 1.8000001, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 1, 1, 1), Color(0, 1, 1, 1), Color(1, 0.34117648, 0, 1), Color(1, 0.34117648, 0, 1), Color(0, 1, 1, 1), Color(0, 1, 1, 1), Color(1, 0.34117648, 0, 1), Color(1, 0.34117648, 0, 1), Color(0, 1, 1, 1), Color(0, 1, 1, 1), Color(1, 0.34117648, 0, 1), Color(1, 0.34117648, 0, 1), Color(0, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AudioStreamPlayer2D/../Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsosd"]
+_data = {
+&"RESET": SubResource("Animation_gcwcr"),
+&"charge": SubResource("Animation_ffaod")
+}
+
+[node name="EnergyBeam" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_4hnq6")
+
+[node name="HurtBox" parent="." instance=ExtResource("1_12l3p")]
+unique_name_in_owner = true
+visible = false
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+unique_name_in_owner = true
+shape = SubResource("SegmentShape2D_545af")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+material = ExtResource("3_545af")
+texture = SubResource("GradientTexture2D_bhnhb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../AudioStreamPlayer2D")
+libraries = {
+&"": SubResource("AnimationLibrary_jsosd")
+}
+
+[node name="Line2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1.3310087, 1.353256, 0, 1)
+texture_repeat = 2
+material = ExtResource("3_545af")
+points = PackedVector2Array(0, 0, 0, 16)
+width = 5.0
+texture = ExtResource("2_4hnq6")
+texture_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

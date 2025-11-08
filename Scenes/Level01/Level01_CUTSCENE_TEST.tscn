@@ -1,0 +1,749 @@
+[gd_scene load_steps=45 format=4 uid="uid://5wp7t5dq2iqw"]
+
+[ext_resource type="Script" uid="uid://ct24rhqja16li" path="res://Scenes/level.gd" id="1_t22j8"]
+[ext_resource type="AudioStream" uid="uid://cx3g60q4ed3x6" path="res://ASSETS/MUSIC/lttp_kakariko_village.mp3" id="2_s63xa"]
+[ext_resource type="PackedScene" uid="uid://lh05kfhc3rg0" path="res://Scenes/TileMaps/GrassTileset.tscn" id="3_ks4tf"]
+[ext_resource type="PackedScene" uid="uid://dap3qlxnk7wl1" path="res://Scenes/TileMaps/shop_tileset.tscn" id="4_cxl80"]
+[ext_resource type="PackedScene" uid="uid://bi6bn1q2hdswc" path="res://Scenes/level_transition.tscn" id="5_h6wll"]
+[ext_resource type="PackedScene" uid="uid://c8jqkj0bamb62" path="res://Common/InteractionArea/interaction_area.tscn" id="6_ht5yf"]
+[ext_resource type="PackedScene" uid="uid://dv7imctt71hrm" path="res://Scenes/TileMaps/PlantsTileset.tscn" id="7_k1d6w"]
+[ext_resource type="PackedScene" uid="uid://b6y7klrmf8xtn" path="res://Props/Plants/flowey.tscn" id="8_tq7ec"]
+[ext_resource type="PackedScene" uid="uid://wdg7h0c72blh" path="res://Character/Player/player_spawn.tscn" id="9_qbyuv"]
+[ext_resource type="Script" uid="uid://c6fldfyy336li" path="res://Common/DialogInteraction/Cutscene/cutscene_action_animation.gd" id="13_7h1hp"]
+[ext_resource type="Script" uid="uid://7uohgdxwjgjq" path="res://Common/DialogInteraction/dialog_cutscene.gd" id="14_y4skn"]
+[ext_resource type="PackedScene" uid="uid://dektwyqbnhmx" path="res://Character/NPC/Toriel/npc_toriel.tscn" id="15_2no3h"]
+[ext_resource type="Resource" uid="uid://fb2uy1u1rsw5" path="res://Common/DialogInteraction/DialogResources/hero_npc_resource.tres" id="16_a0yh0"]
+[ext_resource type="Script" uid="uid://c34uixeowc8ei" path="res://Common/DialogInteraction/Cutscene/cutscene_action_move.gd" id="17_r25hk"]
+[ext_resource type="Script" uid="uid://bf6e03iwjap4" path="res://Common/DialogInteraction/Cutscene/cutscene_action_camera.gd" id="18_s3f2w"]
+[ext_resource type="PackedScene" uid="uid://5omxdh1iewm3" path="res://Common/DialogInteraction/dialog_interaction.tscn" id="19_xehyn"]
+[ext_resource type="Script" uid="uid://dr5k211u7fv6f" path="res://Common/DialogInteraction/Cutscene/cutscene_action_player.gd" id="19_y2s3v"]
+[ext_resource type="Script" uid="uid://2xetjgqu041s" path="res://Common/DialogInteraction/dialog_text.gd" id="20_tf3mo"]
+[ext_resource type="Resource" uid="uid://1ij67xypck8j" path="res://Common/DialogInteraction/DialogResources/toriel_npc_resource.tres" id="21_doj4f"]
+[ext_resource type="PackedScene" uid="uid://r3n1i5ytb0ej" path="res://Props/Pot/pot.tscn" id="21_oausu"]
+[ext_resource type="Texture2D" uid="uid://gq55pt8poukv" path="res://ASSETS/EFFECTS/Sparkle/lttp_sparkle_03_2x.png" id="22_wknhb"]
+[ext_resource type="Script" uid="uid://bb55h8g3ssnxs" path="res://Common/Hurtbox/hurt_box.gd" id="24_ih66x"]
+[ext_resource type="PackedScene" uid="uid://coy42x0vpntru" path="res://Common/AreaTrigger/area_trigger.tscn" id="26_o3laq"]
+[ext_resource type="PackedScene" uid="uid://ctvwq012tnk1d" path="res://Props/Plants/talking_plant.tscn" id="26_y4oqw"]
+[ext_resource type="Resource" uid="uid://d20pmvpj6mvw7" path="res://Common/DialogInteraction/DialogResources/terra_npc_resource.tres" id="27_qpxsy"]
+[ext_resource type="Resource" uid="uid://0qi6dgdxmhdl" path="res://Common/DialogInteraction/DialogResources/plant_npc_resource.tres" id="28_qpxsy"]
+[ext_resource type="Script" uid="uid://coq48e3tq7s0f" path="res://Common/DialogInteraction/Cutscene/cutscene_wait.gd" id="29_u3aq4"]
+[ext_resource type="PackedScene" uid="uid://bos66g2ff2mc" path="res://Character/NPC/Terra/npc_terra.tscn" id="33_jk0kk"]
+[ext_resource type="Shader" uid="uid://btkrlwieci037" path="res://ASSETS/SHADERS/replace_color2.gdshader" id="35_c1c21"]
+[ext_resource type="Texture2D" uid="uid://bvkddvdagruty" path="res://ASSETS/CHARACTER/player_sprite.png" id="36_pn83f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_semug"]
+size = Vector2(2000, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfyo2"]
+size = Vector2(32, 1250)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eb3i7"]
+size = Vector2(32, 34)
+
+[sub_resource type="Animation" id="Animation_a0yh0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.72513425, 0.5189682, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7h1hp"]
+resource_name = "make_it_evening"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0.38560182, 0.06100855, 1), Color(0.33333334, 0.16470589, 0.48235294, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.65]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0yh0"]
+_data = {
+&"RESET": SubResource("Animation_a0yh0"),
+&"make_it_evening": SubResource("Animation_7h1hp")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcthe"]
+shader = ExtResource("35_c1c21")
+shader_parameter/original_0 = Color(0.4509804, 0.05490196, 0.11372549, 1)
+shader_parameter/original_1 = Color(0.6745098, 0.19607843, 0.19607843, 1)
+shader_parameter/original_2 = Color(0.8509804, 0.34117648, 0.3882353, 1)
+shader_parameter/original_3 = Color(0.23137255, 0.015686275, 0.015686275, 1)
+shader_parameter/original_4 = Color(0.6392157, 0.039215688, 0.039215688, 1)
+shader_parameter/original_5 = Color(0.92156863, 0.5568628, 0.5921569, 1)
+shader_parameter/original_6 = Color(0.21568628, 0.5803922, 0.43137255, 1)
+shader_parameter/original_7 = Color(0.20784314, 0.42352942, 0.3372549, 1)
+shader_parameter/original_8 = Color(0.19607843, 0.23529412, 0.22352941, 1)
+shader_parameter/replace_0 = Color(0.45, 0.45, 0.45, 1)
+shader_parameter/replace_1 = Color(0.67058825, 0.67058825, 0.67058825, 1)
+shader_parameter/replace_2 = Color(0.8509804, 0.8509804, 0.8509804, 1)
+shader_parameter/replace_3 = Color(0.23137255, 0.23137255, 0.23137255, 1)
+shader_parameter/replace_4 = Color(0.6392157, 0.6392157, 0.6392157, 1)
+shader_parameter/replace_5 = Color(0.92156863, 0.92156863, 0.92156863, 1)
+shader_parameter/replace_6 = Color(0.5803922, 0.5803922, 0.5803922, 1)
+shader_parameter/replace_7 = Color(0.41960785, 0.41960785, 0.41960785, 1)
+shader_parameter/replace_8 = Color(0.23921569, 0.23921569, 0.23921569, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5a6p3"]
+radius = 15.033297
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3f2w"]
+atlas = ExtResource("22_wknhb")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="Gradient" id="Gradient_oausu"]
+interpolation_mode = 2
+colors = PackedColorArray(0.34901962, 0.1764706, 0, 1, 0.34901962, 0.1764706, 0, 0.6)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wknhb"]
+gradient = SubResource("Gradient_oausu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oausu"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector3(0, -50, 0)
+color_ramp = SubResource("GradientTexture1D_wknhb")
+turbulence_enabled = true
+turbulence_noise_strength = 2.0
+turbulence_noise_scale = 5.709
+turbulence_influence_max = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ih66x"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c20a"]
+size = Vector2(224, 64)
+
+[node name="TESTLEVEL" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_t22j8")
+music = ExtResource("2_s63xa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-160, -304)
+shape = SubResource("RectangleShape2D_semug")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-184, 400)
+shape = SubResource("RectangleShape2D_semug")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1104, 152)
+shape = SubResource("RectangleShape2D_bfyo2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(624, 96)
+shape = SubResource("RectangleShape2D_bfyo2")
+
+[node name="Grass01" parent="." instance=ExtResource("3_ks4tf")]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAAAAAEAAAABAAMAAAAAAAIAAAACAAIAAAAAAAMAAAAAAAEAAAAAAAQAAAADAAIAAAAAAAUAAAABAAIAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAACAAMAAAAAAAkAAAAAAAIAAAAAAAoAAAABAAAAAAABAAAAAAADAAMAAAABAAEAAAADAAEAAAABAAIAAAACAAEAAAABAAMAAAADAAEAAAABAAQAAAABAAEAAAABAAUAAAADAAIAAAABAAYAAAACAAIAAAABAAcAAAADAAMAAAABAAgAAAACAAEAAAABAAkAAAABAAIAAAABAAoAAAABAAEAAAACAAAAAAABAAMAAAACAAEAAAAAAAEAAAACAAIAAAABAAMAAAACAAMAAAACAAMAAAACAAQAAAACAAMAAAACAAUAAAABAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAIAAAACAAgAAAABAAMAAAACAAkAAAACAAIAAAACAAoAAAADAAAAAAADAAAAAAABAAEAAAADAAEAAAADAAEAAAADAAIAAAAAAAIAAAADAAMAAAAAAAMAAAADAAQAAAACAAEAAAADAAUAAAAAAAAAAAADAAYAAAAAAAMAAAADAAcAAAACAAMAAAADAAgAAAABAAIAAAADAAkAAAAAAAEAAAADAAoAAAAAAAIAAAAEAAAAAAAAAAIAAAAEAAEAAAAAAAMAAAAEAAIAAAADAAEAAAAEAAMAAAADAAMAAAAEAAQAAAADAAMAAAAEAAUAAAACAAIAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAIAAAAEAAgAAAADAAIAAAAEAAkAAAADAAIAAAAEAAoAAAADAAMAAAAFAAAAAAADAAIAAAAFAAEAAAAAAAMAAAAFAAIAAAADAAAAAAAFAAMAAAACAAEAAAAFAAQAAAAAAAEAAAAFAAUAAAABAAIAAAAFAAYAAAABAAMAAAAFAAcAAAADAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAACAAAAAAAFAAoAAAABAAMAAAAGAAAAAAABAAMAAAAGAAEAAAADAAMAAAAGAAIAAAACAAMAAAAGAAMAAAABAAMAAAAGAAQAAAABAAIAAAAGAAUAAAABAAEAAAAGAAYAAAADAAAAAAAGAAcAAAABAAAAAAAGAAgAAAAAAAMAAAAGAAkAAAACAAIAAAAGAAoAAAACAAAAAAAHAAAAAAABAAIAAAAHAAEAAAAAAAMAAAAHAAIAAAABAAMAAAAHAAMAAAADAAEAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAAAAAAHAAYAAAACAAEAAAAHAAcAAAAAAAEAAAAHAAgAAAAAAAEAAAAHAAkAAAADAAIAAAAHAAoAAAACAAAAAAAIAAAAAAADAAIAAAAIAAEAAAABAAAAAAAIAAIAAAADAAEAAAAIAAMAAAADAAIAAAAIAAQAAAAAAAAAAAAIAAUAAAABAAEAAAAIAAYAAAABAAMAAAAIAAcAAAADAAEAAAAIAAgAAAABAAMAAAAIAAkAAAABAAIAAAAIAAoAAAABAAAAAAAJAAAAAAADAAIAAAAJAAEAAAAAAAEAAAAJAAIAAAADAAEAAAAJAAMAAAADAAAAAAAJAAQAAAACAAMAAAAJAAUAAAABAAMAAAAJAAYAAAADAAIAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAMAAAAJAAkAAAABAAAAAAAJAAoAAAADAAEAAAAKAAAAAAAAAAMAAAAKAAEAAAADAAIAAAAKAAIAAAACAAIAAAAKAAMAAAADAAMAAAAKAAQAAAADAAEAAAAKAAUAAAABAAMAAAAKAAYAAAABAAIAAAAKAAcAAAACAAAAAAAKAAgAAAADAAMAAAAKAAkAAAADAAEAAAAKAAoAAAAAAAMAAAALAAAAAAABAAIAAAALAAEAAAAAAAEAAAALAAIAAAADAAEAAAALAAMAAAAAAAEAAAALAAQAAAADAAEAAAALAAUAAAADAAEAAAALAAYAAAADAAMAAAALAAcAAAADAAIAAAALAAgAAAACAAIAAAALAAkAAAABAAIAAAALAAoAAAABAAAAAAAMAAAAAAAAAAEAAAAMAAEAAAABAAMAAAAMAAIAAAABAAEAAAAMAAMAAAADAAEAAAAMAAQAAAACAAIAAAAMAAUAAAADAAEAAAAMAAYAAAADAAAAAAAMAAcAAAACAAIAAAAMAAgAAAABAAAAAAAMAAkAAAADAAIAAAAMAAoAAAAAAAMAAAANAAAAAAADAAEAAAANAAEAAAACAAIAAAANAAIAAAAAAAEAAAANAAMAAAADAAAAAAANAAQAAAABAAAAAAANAAUAAAABAAEAAAANAAYAAAADAAMAAAANAAcAAAABAAMAAAANAAgAAAADAAIAAAANAAkAAAADAAAAAAANAAoAAAACAAEAAAAOAAAAAAAAAAMAAAAOAAEAAAABAAEAAAAOAAIAAAAAAAIAAAAOAAMAAAACAAEAAAAOAAQAAAACAAMAAAAOAAUAAAACAAAAAAAOAAYAAAACAAAAAAAOAAcAAAACAAMAAAAOAAgAAAACAAEAAAAOAAkAAAACAAIAAAAOAAoAAAADAAAAAAAPAAAAAAACAAEAAAAPAAEAAAAAAAIAAAAPAAIAAAAAAAEAAAAPAAMAAAACAAIAAAAPAAQAAAABAAMAAAAPAAUAAAADAAIAAAAPAAYAAAABAAEAAAAPAAcAAAAAAAEAAAAPAAgAAAACAAMAAAAPAAkAAAABAAEAAAAPAAoAAAAAAAEAAAAQAAAAAAAAAAEAAAAQAAEAAAABAAAAAAAQAAIAAAACAAAAAAAQAAMAAAACAAEAAAAQAAQAAAACAAAAAAAQAAUAAAABAAMAAAAQAAYAAAABAAEAAAAQAAcAAAACAAIAAAAQAAgAAAAAAAEAAAAQAAkAAAACAAEAAAAQAAoAAAABAAAAAAARAAAAAAADAAMAAAARAAEAAAADAAAAAAARAAIAAAABAAMAAAARAAMAAAAAAAMAAAARAAQAAAADAAEAAAARAAUAAAADAAEAAAARAAYAAAAAAAIAAAARAAcAAAACAAAAAAARAAgAAAABAAAAAAARAAkAAAACAAIAAAARAAoAAAADAAEAAAD/////AAAAAAIAAAD//wAAAAABAAMAAAD//wEAAAAAAAMAAAD//wIAAAADAAIAAAD//wMAAAAAAAMAAAD//wQAAAAAAAIAAAD//wUAAAADAAIAAAD//wYAAAACAAAAAAD//wcAAAAAAAEAAAD//wgAAAABAAMAAAD//wkAAAACAAIAAAD//woAAAACAAIAAAAAAP//AAADAAAAAAABAP//AAAAAAMAAAACAP//AAABAAEAAAADAP//AAADAAMAAAAEAP//AAAAAAIAAAAFAP//AAACAAAAAAAGAP//AAAAAAIAAAAHAP//AAABAAIAAAAIAP//AAADAAAAAAAJAP//AAACAAAAAAAKAP//AAABAAEAAAALAP//AAACAAMAAAAMAP//AAADAAAAAAANAP//AAACAAAAAAAOAP//AAACAAIAAAAPAP//AAACAAAAAAAQAP//AAAAAAIAAAARAP//AAACAAMAAAAHAAsAAAABAAAAAAAIAAsAAAADAAEAAAAJAAsAAAAAAAAAAAAKAAsAAAABAAMAAAAGAAsAAAADAAIAAAALAAsAAAADAAEAAAAEAAsAAAAAAAAAAAAFAAsAAAABAAIAAAADAAsAAAABAAMAAAACAAsAAAACAAMAAAABAAsAAAAAAAAAAAAAAAsAAAAAAAIAAAANAAsAAAACAAIAAAAOAAsAAAABAAAAAAAPAAsAAAABAAIAAAAQAAsAAAADAAMAAAAMAAsAAAAAAAEAAAARAAsAAAADAAIAAAASAAMAAAADAAIAAAASAAQAAAABAAAAAAASAAUAAAAAAAMAAAASAAYAAAACAAEAAAASAAcAAAABAAIAAAASAAkAAAABAAIAAAASAAgAAAABAAIAAAASAAEAAAACAAEAAAASAAIAAAAAAAEAAAASAAAAAAACAAIAAAASAP//AAAAAAEAAAD//wsAAAAAAAMAAAASAAoAAAADAAIAAAASAAsAAAAAAAEAAADy//j/AAACAAMAAADy//n/AAADAAAAAADy//r/AAADAAEAAADy//v/AAABAAIAAADy//z/AAANAAIAAADy//3/AAABAAAAAADy//7/AAANAAIAAADy////AAABAAEAAADy/wAAAAANAAIAAADy/wEAAAACAAMAAADy/wIAAAANAAIAAADy/wMAAAACAAAAAADy/wQAAAADAAMAAADy/wUAAAABAAMAAADy/wYAAAAAAAEAAADy/wcAAAABAAIAAADy/wgAAAADAAAAAADy/wkAAAACAAAAAADy/woAAAACAAEAAADy/wsAAAACAAIAAADz//j/AAABAAAAAADz//n/AAACAAIAAADz//r/AAADAAEAAADz//v/AAABAAIAAADz//z/AAADAAAAAADz//3/AAANAAIAAADz//7/AAABAAMAAADz////AAANAAIAAADz/wAAAAADAAEAAADz/wEAAAANAAIAAADz/wIAAAADAAEAAADz/wMAAAACAAEAAADz/wQAAAADAAEAAADz/wUAAAADAAMAAADz/wYAAAACAAEAAADz/wcAAAABAAAAAADz/wgAAAABAAAAAADz/wkAAAABAAIAAADz/woAAAAAAAEAAADz/wsAAAACAAEAAAD0//j/AAACAAMAAAD0//n/AAABAAMAAAD0//r/AAACAAIAAAD0//v/AAABAAMAAAD0//z/AAANAAIAAAD0//3/AAADAAIAAAD0//7/AAANAAIAAAD0////AAABAAMAAAD0/wAAAAANAAIAAAD0/wEAAAADAAMAAAD0/wIAAAANAAIAAAD0/wMAAAACAAIAAAD0/wQAAAABAAEAAAD0/wUAAAABAAIAAAD0/wYAAAACAAMAAAD0/wcAAAACAAMAAAD0/wgAAAADAAEAAAD0/wkAAAADAAAAAAD0/woAAAAAAAMAAAD0/wsAAAABAAAAAAD1//j/AAABAAIAAAD1//n/AAABAAAAAAD1//r/AAACAAAAAAD1//v/AAABAAAAAAD1//z/AAACAAMAAAD1//3/AAAAAAAAAAD1//7/AAABAAIAAAD1////AAABAAMAAAD1/wAAAAADAAMAAAD1/wEAAAACAAEAAAD1/wIAAAAAAAIAAAD1/wMAAAACAAEAAAD1/wQAAAADAAIAAAD1/wUAAAACAAEAAAD1/wYAAAABAAAAAAD1/wcAAAADAAAAAAD1/wgAAAABAAAAAAD1/wkAAAACAAEAAAD1/woAAAACAAIAAAD1/wsAAAABAAIAAAD2//j/AAABAAMAAAD2//n/AAAAAAEAAAD2//r/AAACAAMAAAD2//v/AAAAAAMAAAD2//z/AAAAAAEAAAD2//3/AAAAAAAAAAD2//7/AAACAAIAAAD2////AAABAAAAAAD2/wAAAAABAAMAAAD2/wEAAAACAAAAAAD2/wIAAAABAAMAAAD2/wMAAAACAAMAAAD2/wQAAAACAAAAAAD2/wUAAAAAAAAAAAD2/wYAAAAAAAEAAAD2/wcAAAAAAAIAAAD2/wgAAAAAAAEAAAD2/wkAAAAAAAIAAAD2/woAAAABAAAAAAD2/wsAAAADAAMAAAD3//j/AAADAAAAAAD3//n/AAADAAIAAAD3//r/AAABAAAAAAD3//v/AAAAAAAAAAD3//z/AAABAAIAAAD3//3/AAAAAAAAAAD3//7/AAAAAAMAAAD3////AAACAAIAAAD3/wAAAAACAAEAAAD3/wEAAAACAAIAAAD3/wIAAAABAAMAAAD3/wMAAAADAAEAAAD3/wQAAAADAAEAAAD3/wUAAAAAAAMAAAD3/wYAAAACAAIAAAD3/wcAAAACAAMAAAD3/wgAAAACAAAAAAD3/wkAAAABAAEAAAD3/woAAAAAAAEAAAD3/wsAAAAAAAMAAAD4//j/AAACAAIAAAD4//n/AAADAAAAAAD4//r/AAAAAAEAAAD4//v/AAABAAIAAAD4//z/AAAAAAIAAAD4//3/AAAAAAEAAAD4//7/AAAAAAAAAAD4////AAABAAAAAAD4/wAAAAACAAMAAAD4/wEAAAABAAIAAAD4/wIAAAADAAAAAAD4/wMAAAAAAAIAAAD4/wQAAAAAAAAAAAD4/wUAAAAAAAAAAAD4/wYAAAADAAIAAAD4/wcAAAADAAMAAAD4/wgAAAACAAMAAAD4/wkAAAAAAAAAAAD4/woAAAABAAAAAAD4/wsAAAAAAAAAAAD5//j/AAABAAIAAAD5//n/AAAAAAAAAAD5//r/AAACAAEAAAD5//v/AAAAAAAAAAD5//z/AAACAAMAAAD5//3/AAACAAIAAAD5//7/AAADAAMAAAD5////AAAAAAIAAAD5/wAAAAACAAEAAAD5/wEAAAAAAAEAAAD5/wIAAAABAAMAAAD5/wMAAAABAAEAAAD5/wQAAAAAAAIAAAD5/wUAAAAAAAMAAAD5/wYAAAAAAAEAAAD5/wcAAAADAAEAAAD5/wgAAAACAAEAAAD5/wkAAAADAAMAAAD5/woAAAAAAAMAAAD5/wsAAAADAAAAAAD6//j/AAABAAEAAAD6//n/AAAAAAMAAAD6//r/AAABAAMAAAD6//v/AAADAAAAAAD6//z/AAABAAMAAAD6//3/AAACAAIAAAD6//7/AAAAAAMAAAD6////AAACAAIAAAD6/wAAAAAAAAEAAAD6/wEAAAAAAAMAAAD6/wIAAAADAAEAAAD6/wMAAAADAAAAAAD6/wQAAAAAAAAAAAD6/wUAAAAAAAAAAAD6/wYAAAADAAMAAAD6/wcAAAACAAAAAAD6/wgAAAABAAEAAAD6/wkAAAABAAIAAAD6/woAAAACAAEAAAD6/wsAAAADAAAAAAD7//j/AAACAAEAAAD7//n/AAABAAIAAAD7//r/AAADAAEAAAD7//v/AAABAAIAAAD7//z/AAACAAMAAAD7//3/AAABAAAAAAD7//7/AAADAAIAAAD7////AAABAAEAAAD7/wAAAAAAAAAAAAD7/wEAAAAAAAEAAAD7/wIAAAADAAMAAAD7/wMAAAADAAIAAAD7/wQAAAAAAAIAAAD7/wUAAAADAAAAAAD7/wYAAAABAAIAAAD7/wcAAAABAAMAAAD7/wgAAAACAAMAAAD7/wkAAAABAAIAAAD7/woAAAACAAIAAAD7/wsAAAACAAEAAAD8//j/AAAAAAMAAAD8//n/AAACAAIAAAD8//r/AAABAAIAAAD8//v/AAACAAIAAAD8//z/AAADAAIAAAD8//3/AAACAAMAAAD8//7/AAABAAEAAAD8////AAAAAAIAAAD8/wAAAAAAAAAAAAD8/wEAAAACAAIAAAD8/wIAAAABAAMAAAD8/wMAAAADAAMAAAD8/wQAAAABAAEAAAD8/wUAAAACAAIAAAD8/wYAAAABAAIAAAD8/wcAAAADAAAAAAD8/wgAAAADAAMAAAD8/wkAAAADAAAAAAD8/woAAAACAAAAAAD8/wsAAAACAAIAAAD9//j/AAACAAAAAAD9//n/AAADAAAAAAD9//r/AAAAAAAAAAD9//v/AAADAAEAAAD9//z/AAAAAAMAAAD9//3/AAACAAIAAAD9//7/AAAAAAMAAAD9////AAABAAMAAAD9/wAAAAAAAAEAAAD9/wEAAAABAAMAAAD9/wIAAAADAAEAAAD9/wMAAAADAAEAAAD9/wQAAAABAAEAAAD9/wUAAAABAAMAAAD9/wYAAAABAAEAAAD9/wcAAAAAAAIAAAD9/wgAAAACAAEAAAD9/wkAAAADAAAAAAD9/woAAAABAAAAAAD9/wsAAAACAAMAAAD+//j/AAACAAAAAAD+//n/AAACAAIAAAD+//r/AAACAAEAAAD+//v/AAADAAMAAAD+//z/AAADAAIAAAD+//3/AAAAAAAAAAD+//7/AAADAAEAAAD+////AAACAAMAAAD+/wAAAAABAAIAAAD+/wEAAAABAAMAAAD+/wIAAAADAAAAAAD+/wMAAAACAAMAAAD+/wQAAAACAAAAAAD+/wUAAAACAAAAAAD+/wYAAAACAAMAAAD+/wcAAAAAAAEAAAD+/wgAAAACAAMAAAD+/wkAAAAAAAMAAAD+/woAAAADAAAAAAD+/wsAAAADAAMAAAD///j/AAADAAAAAAD///n/AAABAAMAAAD///r/AAACAAIAAAD///v/AAADAAEAAAD///z/AAABAAEAAAD///3/AAADAAAAAAD///7/AAAAAAAAAAAAAPj/AAACAAMAAAAAAPn/AAACAAMAAAAAAPr/AAABAAAAAAAAAPv/AAABAAEAAAAAAPz/AAACAAMAAAAAAP3/AAADAAIAAAAAAP7/AAAAAAAAAAABAPj/AAADAAAAAAABAPn/AAAAAAIAAAABAPr/AAADAAAAAAABAPv/AAAAAAMAAAABAPz/AAABAAIAAAABAP3/AAABAAEAAAABAP7/AAADAAMAAAACAPj/AAACAAEAAAACAPn/AAABAAMAAAACAPr/AAADAAMAAAACAPv/AAACAAMAAAACAPz/AAADAAIAAAACAP3/AAAAAAIAAAACAP7/AAADAAAAAAADAPj/AAACAAAAAAADAPn/AAACAAEAAAADAPr/AAACAAEAAAADAPv/AAABAAEAAAADAPz/AAACAAEAAAADAP3/AAABAAIAAAADAP7/AAAAAAMAAAAEAPj/AAACAAIAAAAEAPn/AAAAAAMAAAAEAPr/AAABAAIAAAAEAPv/AAAAAAMAAAAEAPz/AAABAAMAAAAEAP3/AAACAAIAAAAEAP7/AAAAAAIAAAAFAPj/AAAAAAIAAAAFAPn/AAAAAAEAAAAFAPr/AAAAAAIAAAAFAPv/AAABAAIAAAAFAPz/AAABAAAAAAAFAP3/AAACAAAAAAAFAP7/AAADAAAAAAAGAPj/AAADAAAAAAAGAPn/AAACAAMAAAAGAPr/AAACAAMAAAAGAPv/AAAAAAEAAAAGAPz/AAADAAIAAAAGAP3/AAACAAAAAAAGAP7/AAACAAMAAAAHAPj/AAACAAMAAAAHAPn/AAAAAAAAAAAHAPr/AAACAAIAAAAHAPv/AAABAAIAAAAHAPz/AAACAAAAAAAHAP3/AAABAAEAAAAHAP7/AAABAAIAAAAEAPf/AAABAAMAAAAFAPf/AAADAAMAAAAGAPf/AAACAAAAAAAHAPf/AAABAAIAAAAIAPf/AAAAAAEAAAAIAPj/AAADAAAAAAAIAPn/AAACAAAAAAAIAPr/AAAAAAMAAAAIAPv/AAABAAMAAAAIAPz/AAACAAIAAAAIAP3/AAAAAAMAAAAIAP7/AAACAAMAAAAJAPf/AAADAAEAAAAJAPj/AAABAAIAAAAJAPn/AAACAAEAAAAJAPr/AAABAAMAAAAJAPv/AAACAAAAAAAJAPz/AAABAAAAAAAJAP3/AAABAAMAAAAJAP7/AAABAAAAAAAKAPf/AAAAAAIAAAAKAPj/AAADAAMAAAAKAPn/AAADAAIAAAAKAPr/AAACAAIAAAAKAPv/AAACAAEAAAAKAPz/AAADAAMAAAAKAP3/AAADAAEAAAAKAP7/AAADAAAAAAALAPf/AAADAAEAAAALAPj/AAABAAMAAAALAPn/AAAAAAIAAAALAPr/AAACAAMAAAALAPv/AAADAAMAAAALAPz/AAAAAAMAAAALAP3/AAAAAAIAAAALAP7/AAAAAAMAAAAMAPf/AAADAAMAAAAMAPj/AAADAAEAAAAMAPn/AAABAAAAAAAMAPr/AAABAAEAAAAMAPv/AAABAAEAAAAMAPz/AAABAAAAAAAMAP3/AAAAAAEAAAAMAP7/AAAAAAAAAAANAPf/AAACAAIAAAANAPj/AAABAAIAAAANAPn/AAABAAAAAAANAPr/AAABAAAAAAANAPv/AAADAAAAAAANAPz/AAAAAAEAAAANAP3/AAAAAAMAAAANAP7/AAABAAEAAAAOAPf/AAADAAAAAAAOAPj/AAACAAEAAAAOAPn/AAADAAAAAAAOAPr/AAABAAAAAAAOAPv/AAABAAIAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAIAAAAOAP7/AAADAAAAAAAPAPf/AAACAAMAAAAPAPj/AAADAAEAAAAPAPn/AAABAAAAAAAPAPr/AAABAAMAAAAPAPv/AAABAAEAAAAPAPz/AAADAAAAAAAPAP3/AAACAAEAAAAPAP7/AAABAAAAAAAQAPf/AAAAAAAAAAAQAPj/AAABAAMAAAAQAPn/AAACAAMAAAAQAPr/AAACAAEAAAAQAPv/AAACAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAADAAMAAAARAPf/AAADAAEAAAARAPj/AAAAAAIAAAARAPn/AAACAAMAAAARAPr/AAAAAAIAAAARAPv/AAABAAIAAAARAPz/AAACAAAAAAARAP3/AAAAAAIAAAARAP7/AAACAAEAAAASAPf/AAABAAMAAAASAPj/AAABAAAAAAASAPn/AAADAAAAAAASAPr/AAAAAAEAAAASAPv/AAADAAIAAAASAPz/AAAAAAIAAAASAP3/AAACAAAAAAASAP7/AAADAAEAAAADAPf/AAACAAEAAAACAPf/AAABAAEAAAABAPf/AAAAAAMAAAAAAPf/AAADAAMAAAD///f/AAACAAEAAAD+//f/AAAAAAEAAAD9//f/AAACAAEAAAD8//f/AAACAAIAAAD7//f/AAACAAIAAAD6//f/AAABAAIAAAD5//f/AAAAAAIAAAD4//f/AAABAAIAAAD3//f/AAABAAEAAAD2//f/AAABAAEAAAD1//f/AAAAAAEAAAD0//f/AAABAAEAAADz//f/AAABAAAAAADy//f/AAACAAMAAADe//f/AAACAAEAAADe//j/AAADAAEAAADe//n/AAACAAMAAADe//r/AAADAAEAAADe//v/AAACAAIAAADe//z/AAABAAEAAADe//3/AAADAAAAAADe//7/AAAAAAIAAADe////AAADAAEAAADe/wAAAAABAAIAAADe/wEAAAACAAMAAADe/wIAAAAAAAAAAADe/wMAAAADAAMAAADe/wQAAAABAAAAAADe/wUAAAADAAMAAADe/wYAAAACAAMAAADe/wcAAAADAAMAAADe/wgAAAADAAMAAADe/wkAAAABAAAAAADe/woAAAABAAAAAADe/wsAAAABAAIAAADf//f/AAACAAEAAADf//j/AAAAAAIAAADf//n/AAABAAMAAADf//r/AAABAAEAAADf//v/AAAAAAEAAADf//z/AAADAAEAAADf//3/AAADAAEAAADf//7/AAADAAAAAADf////AAADAAEAAADf/wAAAAABAAMAAADf/wEAAAADAAIAAADf/wIAAAADAAAAAADf/wMAAAAAAAEAAADf/wQAAAAAAAEAAADf/wUAAAADAAIAAADf/wYAAAADAAAAAADf/wcAAAADAAAAAADf/wgAAAACAAIAAADf/wkAAAADAAMAAADf/woAAAACAAEAAADf/wsAAAABAAMAAADg//f/AAADAAMAAADg//j/AAAAAAEAAADg//n/AAABAAEAAADg//r/AAADAAEAAADg//v/AAACAAEAAADg//z/AAACAAIAAADg//3/AAACAAEAAADg//7/AAADAAMAAADg////AAABAAAAAADg/wAAAAADAAMAAADg/wEAAAAAAAEAAADg/wIAAAAAAAEAAADg/wMAAAACAAEAAADg/wQAAAADAAIAAADg/wUAAAACAAIAAADg/wYAAAACAAMAAADg/wcAAAAAAAEAAADg/wgAAAAAAAAAAADg/wkAAAABAAEAAADg/woAAAABAAEAAADg/wsAAAACAAAAAADh//f/AAAAAAIAAADh//j/AAABAAAAAADh//n/AAABAAIAAADh//r/AAAAAAEAAADh//v/AAADAAEAAADh//z/AAABAAAAAADh//3/AAACAAAAAADh//7/AAAAAAMAAADh////AAADAAIAAADh/wAAAAADAAEAAADh/wEAAAADAAIAAADh/wIAAAABAAAAAADh/wMAAAACAAMAAADh/wQAAAADAAEAAADh/wUAAAACAAEAAADh/wYAAAAAAAIAAADh/wcAAAAAAAMAAADh/wgAAAADAAIAAADh/wkAAAABAAEAAADh/woAAAADAAIAAADh/wsAAAABAAAAAADi//f/AAADAAEAAADi//j/AAADAAIAAADi//n/AAACAAEAAADi//r/AAAAAAMAAADi//v/AAABAAIAAADi//z/AAADAAMAAADi//3/AAAAAAAAAADi//7/AAABAAEAAADi////AAAAAAMAAADi/wAAAAACAAMAAADi/wEAAAADAAEAAADi/wIAAAACAAEAAADi/wMAAAACAAEAAADi/wQAAAACAAIAAADi/wUAAAACAAMAAADi/wYAAAABAAIAAADi/wcAAAACAAIAAADi/wgAAAAAAAIAAADi/wkAAAAAAAEAAADi/woAAAADAAMAAADi/wsAAAAAAAAAAADj//f/AAACAAIAAADj//j/AAABAAAAAADj//n/AAACAAAAAADj//r/AAAAAAEAAADj//v/AAADAAAAAADj//z/AAADAAIAAADj//3/AAAAAAIAAADj//7/AAADAAEAAADj////AAADAAAAAADj/wAAAAACAAAAAADj/wEAAAABAAIAAADj/wIAAAAAAAMAAADj/wMAAAABAAEAAADj/wQAAAAAAAIAAADj/wUAAAABAAIAAADj/wYAAAAAAAIAAADj/wcAAAABAAIAAADj/wgAAAABAAEAAADj/wkAAAADAAMAAADj/woAAAACAAAAAADj/wsAAAACAAMAAADk//f/AAAAAAIAAADk//j/AAACAAEAAADk//n/AAABAAMAAADk//r/AAACAAAAAADk//v/AAABAAIAAADk//z/AAABAAEAAADk//3/AAACAAIAAADk//7/AAADAAAAAADk////AAABAAIAAADk/wAAAAABAAEAAADk/wEAAAACAAAAAADk/wIAAAAAAAEAAADk/wMAAAABAAEAAADk/wQAAAABAAMAAADk/wUAAAAAAAEAAADk/wYAAAACAAEAAADk/wcAAAABAAEAAADk/wgAAAABAAIAAADk/wkAAAABAAMAAADk/woAAAADAAAAAADk/wsAAAADAAIAAADl//f/AAABAAAAAADl//j/AAABAAEAAADl//n/AAAAAAIAAADl//r/AAABAAAAAADl//v/AAABAAEAAADl//z/AAAAAAIAAADl//3/AAADAAEAAADl//7/AAABAAEAAADl////AAACAAMAAADl/wAAAAACAAEAAADl/wEAAAACAAMAAADl/wIAAAAAAAAAAADl/wMAAAAAAAIAAADl/wQAAAABAAAAAADl/wUAAAACAAIAAADl/wYAAAABAAAAAADl/wcAAAAAAAAAAADl/wgAAAADAAAAAADl/wkAAAADAAEAAADl/woAAAAAAAMAAADl/wsAAAADAAAAAADm//f/AAADAAAAAADm//j/AAABAAIAAADm//n/AAAAAAAAAADm//r/AAADAAIAAADm//v/AAADAAMAAADm//z/AAABAAEAAADm//3/AAABAAAAAADm//7/AAADAAMAAADm////AAABAAMAAADm/wAAAAABAAEAAADm/wEAAAADAAMAAADm/wIAAAADAAIAAADm/wMAAAABAAEAAADm/wQAAAADAAAAAADm/wUAAAADAAMAAADm/wYAAAABAAAAAADm/wcAAAACAAAAAADm/wgAAAABAAMAAADm/wkAAAAAAAMAAADm/woAAAADAAEAAADm/wsAAAAAAAIAAADn//f/AAACAAEAAADn//j/AAABAAAAAADn//n/AAACAAIAAADn//r/AAABAAMAAADn//v/AAADAAEAAADn//z/AAADAAMAAADn//3/AAADAAAAAADn//7/AAABAAMAAADn////AAACAAIAAADn/wAAAAADAAMAAADn/wEAAAADAAMAAADn/wIAAAAAAAIAAADn/wMAAAADAAAAAADn/wQAAAAAAAEAAADn/wUAAAADAAMAAADn/wYAAAACAAEAAADn/wcAAAADAAIAAADn/wgAAAABAAEAAADn/wkAAAABAAEAAADn/woAAAABAAMAAADn/wsAAAADAAEAAADo//f/AAACAAIAAADo//j/AAADAAMAAADo//n/AAACAAIAAADo//r/AAABAAMAAADo//v/AAACAAAAAADo//z/AAABAAAAAADo//3/AAACAAAAAADo//7/AAAAAAIAAADo////AAACAAAAAADo/wAAAAACAAAAAADo/wEAAAAAAAMAAADo/wIAAAACAAAAAADo/wMAAAAAAAAAAADo/wQAAAAAAAMAAADo/wUAAAAAAAEAAADo/wYAAAADAAEAAADo/wcAAAACAAIAAADo/wgAAAACAAEAAADo/wkAAAAAAAEAAADo/woAAAADAAEAAADo/wsAAAAAAAAAAADp//f/AAAAAAEAAADp//j/AAACAAEAAADp//n/AAADAAIAAADp//r/AAACAAEAAADp//v/AAADAAMAAADp//z/AAAAAAEAAADp//3/AAADAAIAAADp//7/AAAAAAMAAADp////AAABAAMAAADp/wAAAAABAAAAAADp/wEAAAACAAEAAADp/wIAAAAAAAMAAADp/wMAAAACAAIAAADp/wQAAAABAAAAAADp/wUAAAADAAIAAADp/wYAAAACAAMAAADp/wcAAAADAAMAAADp/wgAAAABAAAAAADp/wkAAAACAAIAAADp/woAAAABAAAAAADp/wsAAAACAAIAAADq//f/AAADAAAAAADq//j/AAABAAIAAADq//n/AAAAAAAAAADq//r/AAADAAIAAADq//v/AAAAAAEAAADq//z/AAADAAIAAADq//3/AAADAAEAAADq//7/AAADAAMAAADq////AAADAAEAAADq/wAAAAADAAMAAADq/wEAAAADAAIAAADq/wIAAAADAAMAAADq/wMAAAAAAAEAAADq/wQAAAACAAEAAADq/wUAAAADAAIAAADq/wYAAAADAAMAAADq/wcAAAADAAMAAADq/wgAAAAAAAAAAADq/wkAAAAAAAIAAADq/woAAAACAAEAAADq/wsAAAACAAIAAADr//f/AAACAAMAAADr//j/AAAAAAEAAADr//n/AAADAAMAAADr//r/AAABAAIAAADr//v/AAADAAAAAADr//z/AAAAAAEAAADr//3/AAACAAIAAADr//7/AAABAAMAAADr////AAAAAAAAAADr/wAAAAAAAAEAAADr/wEAAAADAAMAAADr/wIAAAACAAMAAADr/wMAAAACAAAAAADr/wQAAAADAAMAAADr/wUAAAABAAIAAADr/wYAAAAAAAAAAADr/wcAAAADAAEAAADr/wgAAAADAAAAAADr/wkAAAADAAMAAADr/woAAAABAAMAAADr/wsAAAADAAEAAADs//f/AAABAAMAAADs//j/AAACAAIAAADs//n/AAADAAEAAADs//r/AAABAAEAAADs//v/AAAAAAMAAADs//z/AAABAAAAAADs//3/AAACAAMAAADs//7/AAAAAAAAAADs////AAADAAAAAADs/wAAAAABAAEAAADs/wEAAAADAAMAAADs/wIAAAADAAMAAADs/wMAAAADAAMAAADs/wQAAAACAAMAAADs/wUAAAABAAIAAADs/wYAAAADAAMAAADs/wcAAAABAAAAAADs/wgAAAAAAAAAAADs/wkAAAABAAAAAADs/woAAAADAAEAAADs/wsAAAABAAAAAADt//f/AAABAAEAAADt//j/AAADAAAAAADt//n/AAAAAAAAAADt//r/AAACAAMAAADt//v/AAAAAAAAAADt//z/AAABAAIAAADt//3/AAACAAMAAADt//7/AAAAAAEAAADt////AAACAAEAAADt/wAAAAABAAMAAADt/wEAAAABAAEAAADt/wIAAAABAAIAAADt/wMAAAABAAIAAADt/wQAAAABAAEAAADt/wUAAAACAAIAAADt/wYAAAACAAMAAADt/wcAAAACAAIAAADt/wgAAAACAAIAAADt/wkAAAABAAEAAADt/woAAAABAAAAAADt/wsAAAAAAAMAAADu//f/AAADAAMAAADu//j/AAACAAMAAADu//n/AAACAAEAAADu//r/AAABAAAAAADu//v/AAAAAAMAAADu//z/AAANAAIAAADu//3/AAADAAEAAADu//7/AAANAAIAAADu////AAABAAMAAADu/wAAAAANAAIAAADu/wEAAAADAAAAAADu/wIAAAANAAIAAADu/wMAAAADAAAAAADu/wQAAAABAAMAAADu/wUAAAACAAMAAADu/wYAAAADAAIAAADu/wcAAAACAAIAAADu/wgAAAACAAMAAADu/wkAAAADAAAAAADu/woAAAABAAIAAADu/wsAAAAAAAIAAADv//f/AAACAAMAAADv//j/AAAAAAEAAADv//n/AAACAAMAAADv//r/AAADAAEAAADv//v/AAADAAMAAADv//z/AAABAAIAAADv//3/AAANAAIAAADv//7/AAADAAIAAADv////AAANAAIAAADv/wAAAAAAAAMAAADv/wEAAAANAAIAAADv/wIAAAABAAAAAADv/wMAAAACAAIAAADv/wQAAAACAAEAAADv/wUAAAADAAIAAADv/wYAAAABAAAAAADv/wcAAAADAAAAAADv/wgAAAACAAIAAADv/wkAAAACAAEAAADv/woAAAACAAEAAADv/wsAAAABAAIAAADw//f/AAAAAAIAAADw//j/AAAAAAIAAADw//n/AAAAAAIAAADw//r/AAADAAAAAADw//v/AAADAAIAAADw//z/AAANAAIAAADw//3/AAABAAEAAADw//7/AAANAAIAAADw////AAADAAAAAADw/wAAAAANAAIAAADw/wEAAAAAAAAAAADw/wIAAAANAAIAAADw/wMAAAACAAAAAADw/wQAAAADAAEAAADw/wUAAAAAAAAAAADw/wYAAAACAAEAAADw/wcAAAADAAEAAADw/wgAAAAAAAMAAADw/wkAAAABAAIAAADw/woAAAABAAIAAADw/wsAAAACAAAAAADx//f/AAAAAAAAAADx//j/AAAAAAIAAADx//n/AAABAAIAAADx//r/AAACAAMAAADx//v/AAAAAAEAAADx//z/AAACAAIAAADx//3/AAANAAIAAADx//7/AAADAAEAAADx////AAANAAIAAADx/wAAAAAAAAAAAADx/wEAAAANAAIAAADx/wIAAAABAAMAAADx/wMAAAACAAMAAADx/wQAAAAAAAAAAADx/wUAAAACAAEAAADx/wYAAAABAAIAAADx/wcAAAABAAMAAADx/wgAAAADAAEAAADx/wkAAAADAAEAAADx/woAAAABAAEAAADx/wsAAAADAAIAAAA=")
+metadata/_edit_lock_ = true
+
+[node name="Shop" parent="." instance=ExtResource("4_cxl80")]
+tile_map_data = PackedByteArray("AADm//n/AQAKAAgAAADm//r/AQAKAAkAAADm//v/AQAKAAoAAADm//z/AQAKAAsAAADn//j/AQALAAcAAADn//n/AQALAAgAAADn//r/AQALAAkAAADn//v/AQALAAoAAADn//z/AQALAAsAAADn//3/AQAKAAwAAADo//j/AQALAAgAAADo//n/AQALAAkAAADo//r/AQALAAoAAADo//v/AQALAAsAAADo//z/AQAMAAwAAADo//3/AQAKAA4AAADp//n/AQAMAAkAAADp//r/AQAMAAoAAADp//v/AQAMAAsAAADp//z/AQAMAAwAAADo//f/AQALAAcAAADp//f/AQAMAAcAAADp//j/AQAMAAgAAADp//3/AQALAA4AAADq//f/AQANAAcAAADq//j/AQANAAgAAADq//n/AQANAAkAAADq//r/AQANAAoAAADq//v/AQANAAsAAADq//z/AQAMAAwAAADq//3/AQAMAA4AAADr//f/AQAOAAcAAADr//j/AQAOAAgAAADr//n/AQALAAkAAADr//r/AQAOAAoAAADr//v/AQAOAAsAAADr//z/AQAMAAwAAADr//3/AQANAA4AAADs//j/AQAOAAcAAADs//n/AQAOAAgAAADs//r/AQALAAkAAADs//v/AQAOAAoAAADs//z/AQAOAAsAAADs//3/AQAOAAwAAADt//n/AQAPAAgAAADt//r/AQAPAAkAAADt//v/AQAPAAoAAADt//z/AQAPAAsAAADn//7/AQAKAA0AAADo//7/AQAKAA8AAADp//7/AQALAA8AAADq//7/AQAMAA8AAADr//7/AQANAA8AAADs//7/AQAOAA0AAAA=")
+metadata/_edit_lock_ = true
+
+[node name="LevelTransition3" parent="Shop" instance=ExtResource("5_h6wll")]
+z_index = 1
+position = Vector2(-672, -48)
+level = "uid://irxs5l32gb6f"
+side = 2
+
+[node name="InteractionArea" parent="Shop/LevelTransition3" instance=ExtResource("6_ht5yf")]
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/LevelTransition3/InteractionArea"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_eb3i7")
+
+[node name="PlantsTileMapLayer" parent="." instance=ExtResource("7_k1d6w")]
+
+[node name="Flowey" parent="." instance=ExtResource("8_tq7ec")]
+position = Vector2(-704, -200)
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("9_qbyuv")]
+position = Vector2(-104, 288)
+
+[node name="NPC_Toriel" parent="." instance=ExtResource("15_2no3h")]
+position = Vector2(-464, -24)
+npc_can_wander = true
+npc_will_patrol = false
+
+[node name="DialogInteraction" parent="NPC_Toriel" instance=ExtResource("19_xehyn")]
+
+[node name="DialogText" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "Hello, my child."
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "I can make it dark!"
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogCutscene" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionAnimation2" type="Node2D" parent="NPC_Toriel/DialogInteraction/DialogCutscene" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("13_7h1hp")
+animation_player = NodePath("../../../../CutsceneAnimationPlayer")
+animation_name = "make_it_evening"
+metadata/_custom_type_script = "uid://c6fldfyy336li"
+
+[node name="DialogText3" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "It's dark!"
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText4" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "WOW!"
+npc_info = ExtResource("16_a0yh0")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText5" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "I'm gonna move this stuff around and walk around too."
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogCutscene2" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("14_y4skn")
+playback_mode = 0
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionMove" type="Node2D" parent="NPC_Toriel/DialogInteraction/DialogCutscene2" node_paths=PackedStringArray("object_to_move")]
+position = Vector2(-560, -48)
+script = ExtResource("17_r25hk")
+object_to_move = NodePath("../../../../Pot")
+transition_type = 1
+move_duration = 2.0
+move_speed = 50.0
+metadata/_custom_type_script = "uid://c34uixeowc8ei"
+
+[node name="FHCutsceneActionMove4" type="Node2D" parent="NPC_Toriel/DialogInteraction/DialogCutscene2" node_paths=PackedStringArray("object_to_move")]
+position = Vector2(-408, -56)
+script = ExtResource("17_r25hk")
+object_to_move = NodePath("../../../../FallenHero")
+transition_type = 1
+move_duration = 2.0
+move_speed = 50.0
+metadata/_custom_type_script = "uid://c34uixeowc8ei"
+
+[node name="CutsceneActionMove7" type="Node2D" parent="NPC_Toriel/DialogInteraction/DialogCutscene2" node_paths=PackedStringArray("object_to_move")]
+position = Vector2(-528, 16)
+script = ExtResource("17_r25hk")
+object_to_move = NodePath("../../..")
+transition_type = 1
+move_duration = 2.0
+move_speed = 50.0
+metadata/_custom_type_script = "uid://c34uixeowc8ei"
+
+[node name="DialogCutscene3" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("14_y4skn")
+playback_mode = 0
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionMove2" type="Node2D" parent="NPC_Toriel/DialogInteraction/DialogCutscene3" node_paths=PackedStringArray("object_to_move")]
+position = Vector2(-520, -128)
+script = ExtResource("17_r25hk")
+object_to_move = NodePath("../../../../Pot")
+transition_type = 1
+move_duration = 2.0
+move_speed = 50.0
+metadata/_custom_type_script = "uid://c34uixeowc8ei"
+
+[node name="FHCutsceneActionMove5" type="Node2D" parent="NPC_Toriel/DialogInteraction/DialogCutscene3" node_paths=PackedStringArray("object_to_move")]
+position = Vector2(-376, 32)
+script = ExtResource("17_r25hk")
+object_to_move = NodePath("../../../../FallenHero")
+transition_type = 1
+move_duration = 2.0
+move_speed = 50.0
+metadata/_custom_type_script = "uid://c34uixeowc8ei"
+
+[node name="CutsceneActionMove8" type="Node2D" parent="NPC_Toriel/DialogInteraction/DialogCutscene3" node_paths=PackedStringArray("object_to_move")]
+position = Vector2(-400, 16)
+script = ExtResource("17_r25hk")
+object_to_move = NodePath("../../..")
+transition_type = 1
+move_duration = 2.0
+move_speed = 50.0
+metadata/_custom_type_script = "uid://c34uixeowc8ei"
+
+[node name="DialogCutscene4" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("14_y4skn")
+playback_mode = 0
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionMove3" type="Node2D" parent="NPC_Toriel/DialogInteraction/DialogCutscene4" node_paths=PackedStringArray("object_to_move")]
+position = Vector2(-368, -56)
+script = ExtResource("17_r25hk")
+object_to_move = NodePath("../../../../Pot")
+transition_type = 1
+move_duration = 2.0
+move_speed = 50.0
+metadata/_custom_type_script = "uid://c34uixeowc8ei"
+
+[node name="CutsceneActionMove6" type="Node2D" parent="NPC_Toriel/DialogInteraction/DialogCutscene4" node_paths=PackedStringArray("object_to_move")]
+position = Vector2(-368, -112)
+script = ExtResource("17_r25hk")
+object_to_move = NodePath("../../../../FallenHero")
+transition_type = 1
+move_duration = 2.0
+move_speed = 150.0
+metadata/_custom_type_script = "uid://c34uixeowc8ei"
+
+[node name="DialogText6" type="Node" parent="NPC_Toriel/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "[wave]WOW![/wave]"
+npc_info = ExtResource("16_a0yh0")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="NPC_Toriel2" parent="." instance=ExtResource("15_2no3h")]
+position = Vector2(-480, 248)
+npc_will_patrol = false
+
+[node name="DialogInteraction" parent="NPC_Toriel2" instance=ExtResource("19_xehyn")]
+
+[node name="DialogText" type="Node" parent="NPC_Toriel2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "Hello, my child."
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="NPC_Toriel2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "Look over here, this hero statue seems to have pooped itself."
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogCutscene" type="Node" parent="NPC_Toriel2/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionCamera" type="Node2D" parent="NPC_Toriel2/DialogInteraction/DialogCutscene"]
+position = Vector2(296, 48)
+script = ExtResource("18_s3f2w")
+timing_method = 1
+transition_type = 1
+move_speed = 1000.0
+metadata/_custom_type_script = "uid://bf6e03iwjap4"
+
+[node name="DialogText3" type="Node" parent="NPC_Toriel2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "!!!"
+npc_info = ExtResource("16_a0yh0")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText4" type="Node" parent="NPC_Toriel2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "Yes. He is very messy. Very stinky. Do not touch him."
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText5" type="Node" parent="NPC_Toriel2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "This WILL BE YOU if you run out of hearts."
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText6" type="Node" parent="NPC_Toriel2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "[wave]I've just pooped myself.[/wave]"
+npc_info = ExtResource("16_a0yh0")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText7" type="Node" parent="NPC_Toriel2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "oh..."
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogCutscene2" type="Node" parent="NPC_Toriel2/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionCamera" type="Node2D" parent="NPC_Toriel2/DialogInteraction/DialogCutscene2"]
+script = ExtResource("18_s3f2w")
+reparent_to_player = true
+metadata/_custom_type_script = "uid://bf6e03iwjap4"
+
+[node name="NPC_Toriel3" parent="." instance=ExtResource("15_2no3h")]
+position = Vector2(64, -96)
+npc_will_patrol = false
+
+[node name="DialogInteraction" parent="NPC_Toriel3" instance=ExtResource("19_xehyn")]
+
+[node name="DialogText" type="Node" parent="NPC_Toriel3/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "Hello, my child."
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="NPC_Toriel3/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "I am going to make you die."
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText3" type="Node" parent="NPC_Toriel3/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "Wait, what?"
+npc_info = ExtResource("16_a0yh0")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText4" type="Node" parent="NPC_Toriel3/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "BYE! :)"
+npc_info = ExtResource("21_doj4f")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogCutscene2" type="Node" parent="NPC_Toriel3/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionCamera" type="Node2D" parent="NPC_Toriel3/DialogInteraction/DialogCutscene2"]
+position = Vector2(296, 24)
+script = ExtResource("18_s3f2w")
+metadata/_custom_type_script = "uid://bf6e03iwjap4"
+
+[node name="CutsceneActionCamera2" type="Node2D" parent="NPC_Toriel3/DialogInteraction/DialogCutscene2"]
+position = Vector2(296, 24)
+script = ExtResource("18_s3f2w")
+timing_method = 1
+move_speed = 1000.0
+reparent_to_player = true
+metadata/_custom_type_script = "uid://bf6e03iwjap4"
+
+[node name="DialogCutscene" type="Node" parent="NPC_Toriel3/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionPlayer" type="Node2D" parent="NPC_Toriel3/DialogInteraction/DialogCutscene"]
+position = Vector2(176, -104)
+script = ExtResource("19_y2s3v")
+forced_finish_direction = "left"
+timing_method = 1
+animation_speed_factor = 40.0
+metadata/_custom_type_script = "uid://dr5k211u7fv6f"
+
+[node name="CutsceneActionMove9" type="Node2D" parent="NPC_Toriel3" node_paths=PackedStringArray("object_to_move")]
+position = Vector2(-576, 24)
+script = ExtResource("17_r25hk")
+object_to_move = NodePath("../../NPC_Toriel")
+transition_type = 1
+move_duration = 2.0
+move_speed = 50.0
+metadata/_custom_type_script = "uid://c34uixeowc8ei"
+
+[node name="LevelTransition" parent="." instance=ExtResource("5_h6wll")]
+position = Vector2(-472, 96)
+level = ""
+target_transition_area = "w"
+side = 3
+delete_on_load = true
+
+[node name="NPCTerra" parent="." instance=ExtResource("33_jk0kk")]
+position = Vector2(-712, -40)
+
+[node name="CutsceneAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a0yh0")
+}
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.72513425, 0.5189682, 1, 1)
+energy = 0.0
+blend_mode = 2
+
+[node name="Pot" parent="." instance=ExtResource("21_oausu")]
+position = Vector2(-496, -112)
+
+[node name="Sprite2D" parent="Pot" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="DestroySprite2D" parent="Pot" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" parent="Pot" index="3"]
+visible = false
+collision_layer = 32
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer2D" parent="Pot" index="4"]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Throwable" parent="Pot" index="5"]
+visible = false
+monitoring = false
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="Pot/Throwable" index="1"]
+visible = false
+
+[node name="HurtBox" parent="Pot/Throwable" index="2"]
+visible = false
+
+[node name="CollisionShape2D" parent="Pot/Throwable/HurtBox" index="0"]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="FallenHero" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fcthe")
+position = Vector2(-424, -104)
+texture = ExtResource("36_pn83f")
+offset = Vector2(0, -17)
+hframes = 16
+vframes = 8
+frame = 76
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FallenHero"]
+collision_layer = 16
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallenHero/StaticBody2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_5a6p3")
+
+[node name="FallenHeroPoop" type="Sprite2D" parent="."]
+process_mode = 3
+material = SubResource("ShaderMaterial_fcthe")
+position = Vector2(296, 32)
+texture = ExtResource("36_pn83f")
+offset = Vector2(0, -17)
+hframes = 16
+vframes = 8
+frame = 76
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FallenHeroPoop"]
+collision_layer = 16
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallenHeroPoop/StaticBody2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_5a6p3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="FallenHeroPoop"]
+process_mode = 3
+physics_interpolation_mode = 1
+position = Vector2(0, 8)
+amount = 25
+texture = SubResource("AtlasTexture_s3f2w")
+lifetime = 7.0
+speed_scale = 3.0
+randomness = 0.5
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_oausu")
+
+[node name="HurtBox" type="Area2D" parent="FallenHeroPoop"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("24_ih66x")
+damage = 10
+metadata/_custom_type_script = "uid://bb55h8g3ssnxs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallenHeroPoop/HurtBox"]
+shape = SubResource("CircleShape2D_ih66x")
+debug_color = Color(0.7019608, 0.06666667, 0, 0)
+
+[node name="AreaTrigger2" parent="." instance=ExtResource("26_o3laq")]
+position = Vector2(-40, 264)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTrigger2"]
+position = Vector2(96, 16)
+shape = SubResource("RectangleShape2D_5c20a")
+debug_color = Color(0.7019608, 0.1254902, 0.62352943, 0.41960785)
+
+[node name="DialogInteraction" parent="AreaTrigger2" instance=ExtResource("19_xehyn")]
+position = Vector2(88, 0)
+
+[node name="CollisionShape2D" parent="AreaTrigger2/DialogInteraction" index="0"]
+shape = null
+
+[node name="DialogCutscene5" type="Node" parent="AreaTrigger2/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionPlayer" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene5"]
+position = Vector2(48, 264)
+script = ExtResource("19_y2s3v")
+forced_finish_direction = "up"
+timing_method = 1
+move_speed = 100.0
+metadata/_custom_type_script = "uid://dr5k211u7fv6f"
+
+[node name="CutsceneWait" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene5"]
+script = ExtResource("29_u3aq4")
+metadata/_custom_type_script = "uid://coq48e3tq7s0f"
+
+[node name="DialogText" type="Node" parent="AreaTrigger2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "Hey. Go talk to that bush over there."
+npc_info = ExtResource("27_qpxsy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogCutscene" type="Node" parent="AreaTrigger2/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneWait" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene"]
+position = Vector2(336, 240)
+script = ExtResource("29_u3aq4")
+metadata/_custom_type_script = "uid://coq48e3tq7s0f"
+
+[node name="CutsceneActionCamera" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene"]
+position = Vector2(336, 240)
+script = ExtResource("18_s3f2w")
+timing_method = 1
+move_speed = 1000.0
+metadata/_custom_type_script = "uid://bf6e03iwjap4"
+
+[node name="DialogText2" type="Node" parent="AreaTrigger2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "OK!"
+npc_info = ExtResource("16_a0yh0")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogCutscene2" type="Node" parent="AreaTrigger2/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionCamera2" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene2"]
+position = Vector2(336, 240)
+script = ExtResource("18_s3f2w")
+timing_method = 1
+move_speed = 1000.0
+reparent_to_player = true
+metadata/_custom_type_script = "uid://bf6e03iwjap4"
+
+[node name="CutsceneWait2" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene2"]
+position = Vector2(336, 240)
+script = ExtResource("29_u3aq4")
+metadata/_custom_type_script = "uid://coq48e3tq7s0f"
+
+[node name="CutsceneActionPlayer" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene2"]
+position = Vector2(304, 248)
+script = ExtResource("19_y2s3v")
+forced_finish_direction = "right"
+timing_method = 1
+move_speed = 100.0
+metadata/_custom_type_script = "uid://dr5k211u7fv6f"
+
+[node name="DialogText3" type="Node" parent="AreaTrigger2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "Hey Kid. Go touch that statue."
+npc_info = ExtResource("28_qpxsy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogCutscene3" type="Node" parent="AreaTrigger2/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneActionCamera" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene3"]
+position = Vector2(296, 24)
+script = ExtResource("18_s3f2w")
+timing_method = 1
+easing_method = 1
+move_speed = 1000.0
+metadata/_custom_type_script = "uid://bf6e03iwjap4"
+
+[node name="DialogText4" type="Node" parent="AreaTrigger2/DialogInteraction"]
+script = ExtResource("20_tf3mo")
+text = "OK!"
+npc_info = ExtResource("16_a0yh0")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogCutscene4" type="Node" parent="AreaTrigger2/DialogInteraction"]
+script = ExtResource("14_y4skn")
+metadata/_custom_type_script = "uid://7uohgdxwjgjq"
+
+[node name="CutsceneWait" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene4"]
+script = ExtResource("29_u3aq4")
+wait_time = 0.5
+metadata/_custom_type_script = "uid://coq48e3tq7s0f"
+
+[node name="CutsceneActionCamera2" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene4"]
+position = Vector2(56, 56)
+script = ExtResource("18_s3f2w")
+timing_method = 1
+easing_method = 1
+move_speed = 1000.0
+reparent_to_player = true
+metadata/_custom_type_script = "uid://bf6e03iwjap4"
+
+[node name="CutsceneWait2" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene4"]
+script = ExtResource("29_u3aq4")
+metadata/_custom_type_script = "uid://coq48e3tq7s0f"
+
+[node name="CutsceneActionPlayer" type="Node2D" parent="AreaTrigger2/DialogInteraction/DialogCutscene4"]
+position = Vector2(296, 56)
+script = ExtResource("19_y2s3v")
+forced_finish_direction = null
+timing_method = 1
+move_speed = 150.0
+metadata/_custom_type_script = "uid://dr5k211u7fv6f"
+
+[node name="NPCTerra2" parent="." instance=ExtResource("33_jk0kk")]
+position = Vector2(48, 240)
+
+[node name="TalkingPlant" parent="." instance=ExtResource("26_y4oqw")]
+position = Vector2(336, 240)
+
+[connection signal="player_interacted" from="Shop/LevelTransition3/InteractionArea" to="Shop/LevelTransition3" method="_change_level"]
+
+[editable path="Pot"]
+[editable path="AreaTrigger2/DialogInteraction"]

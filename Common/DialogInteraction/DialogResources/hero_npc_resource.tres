@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=6 format=3 uid="uid://fb2uy1u1rsw5"]
+
+[ext_resource type="Script" uid="uid://7m2ud17vxuhw" path="res://Character/NPC/npc_resource.gd" id="1_ptr0q"]
+[ext_resource type="AudioStream" uid="uid://ce3kq6p36c1vq" path="res://ASSETS/SOUNDS/voice_blip.wav" id="1_w7n0g"]
+[ext_resource type="Texture2D" uid="uid://cx7sye7mlabf3" path="res://ASSETS/CHARACTER/hero_portrait_01.png" id="2_sorqk"]
+[ext_resource type="Texture2D" uid="uid://eijj0bwxgfeh" path="res://ASSETS/CHARACTER/hero_portrait_03.png" id="3_d1t32"]
+[ext_resource type="Texture2D" uid="uid://cygn66no6724u" path="res://ASSETS/CHARACTER/hero_portrait_02.png" id="3_p50kj"]
+
+[resource]
+script = ExtResource("1_ptr0q")
+portrait = ExtResource("2_sorqk")
+portrait_talk = ExtResource("3_d1t32")
+portrait_special = ExtResource("3_p50kj")
+dialog_voice = ExtResource("1_w7n0g")
+metadata/_custom_type_script = "uid://7m2ud17vxuhw"

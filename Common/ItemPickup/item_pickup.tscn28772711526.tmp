@@ -1,0 +1,141 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbpnajsqw23v8"]
+
+[ext_resource type="Script" uid="uid://gncqj6ledgwp" path="res://GUI/ItemPickup/item_pickup.gd" id="1_tobsm"]
+[ext_resource type="Texture2D" uid="uid://bu3fub213momw" path="res://ASSETS/EFFECTS/Shadow.png" id="3_e4oc8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0nxu6"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tobsm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1e6n3"]
+radius = 15.0
+
+[sub_resource type="Animation" id="Animation_5oyg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShadowSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.735)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_pri7c"]
+resource_name = "bounce"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShadowSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.735), Color(0, 0, 0, 0.735)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.55, 0.7, 0.85, 1),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0), Vector2(0, -3), Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.55, 0.7, 0.85, 1),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.3, 0.3), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(0.5, 0.5), Vector2(0.45, 0.45), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uclv8"]
+_data = {
+&"RESET": SubResource("Animation_5oyg6"),
+&"bounce": SubResource("Animation_pri7c")
+}
+
+[node name="ItemPickup" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 16
+motion_mode = 1
+script = ExtResource("1_tobsm")
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.735)
+position = Vector2(0, 7)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_e4oc8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PlayerDetectArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectArea2D"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_0nxu6")
+debug_color = Color(0, 0.60038817, 0.7021107, 0.15)
+
+[node name="Area2D" type="Area2D" parent="PlayerDetectArea2D"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectArea2D/Area2D"]
+shape = SubResource("CircleShape2D_tobsm")
+
+[node name="BounceCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1e6n3")
+debug_color = Color(0.70196074, 0.6542717, 0.38061118, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uclv8")
+}

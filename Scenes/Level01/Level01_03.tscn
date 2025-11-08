@@ -1,0 +1,204 @@
+[gd_scene load_steps=22 format=4 uid="uid://61p4ywvodsqf"]
+
+[ext_resource type="PackedScene" uid="uid://lh05kfhc3rg0" path="res://Scenes/TileMaps/GrassTileset.tscn" id="1_030ip"]
+[ext_resource type="Script" uid="uid://ct24rhqja16li" path="res://Scenes/level.gd" id="1_83d21"]
+[ext_resource type="AudioStream" uid="uid://deneyyl85pq3a" path="res://ASSETS/MUSIC/lttp_forest.mp3" id="2_8u6q1"]
+[ext_resource type="PackedScene" uid="uid://dv7imctt71hrm" path="res://Scenes/TileMaps/PlantsTileset.tscn" id="2_bnuam"]
+[ext_resource type="PackedScene" uid="uid://cvntjx6pno2m8" path="res://Effects/fog_scroll_overlay_dungeon.tscn" id="2_ww386"]
+[ext_resource type="PackedScene" uid="uid://hoapuxatrjjn" path="res://Character/Enemy/Slime/enemy_slime.tscn" id="3_83d21"]
+[ext_resource type="PackedScene" uid="uid://bi6bn1q2hdswc" path="res://Scenes/level_transition.tscn" id="5_grkto"]
+[ext_resource type="PackedScene" uid="uid://docsdibbb82a5" path="res://Props/Plants/tree.tscn" id="7_eqbyt"]
+[ext_resource type="Shader" uid="uid://btkrlwieci037" path="res://ASSETS/SHADERS/replace_color2.gdshader" id="9_1qh11"]
+[ext_resource type="PackedScene" uid="uid://wdg7h0c72blh" path="res://Character/Player/player_spawn.tscn" id="10_h7gvr"]
+[ext_resource type="Texture2D" uid="uid://bvkddvdagruty" path="res://ASSETS/CHARACTER/player_sprite.png" id="10_irqlr"]
+[ext_resource type="PackedScene" uid="uid://5omxdh1iewm3" path="res://Common/DialogInteraction/dialog_interaction.tscn" id="11_ltocx"]
+[ext_resource type="Script" uid="uid://2xetjgqu041s" path="res://Common/DialogInteraction/dialog_text.gd" id="12_7hpks"]
+[ext_resource type="Script" uid="uid://cc6p7tnfd70ts" path="res://Common/DialogInteraction/dialog_choice.gd" id="13_wt0nh"]
+[ext_resource type="Script" uid="uid://dbswhyu86v88g" path="res://Common/DialogInteraction/dialog_branch.gd" id="14_1layf"]
+[ext_resource type="Resource" uid="uid://fb2uy1u1rsw5" path="res://Common/DialogInteraction/DialogResources/hero_npc_resource.tres" id="15_5wk1y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_101u3"]
+shader = ExtResource("9_1qh11")
+shader_parameter/original_0 = Color(0.4509804, 0.05490196, 0.11372549, 1)
+shader_parameter/original_1 = Color(0.6745098, 0.19607843, 0.19607843, 1)
+shader_parameter/original_2 = Color(0.8509804, 0.34117648, 0.3882353, 1)
+shader_parameter/original_3 = Color(0.23137255, 0.015686275, 0.015686275, 1)
+shader_parameter/original_4 = Color(0.6392157, 0.039215688, 0.039215688, 1)
+shader_parameter/original_5 = Color(0.92156863, 0.5568628, 0.5921569, 1)
+shader_parameter/original_6 = Color(0.21568628, 0.5803922, 0.43137255, 1)
+shader_parameter/original_7 = Color(0.20784314, 0.42352942, 0.3372549, 1)
+shader_parameter/original_8 = Color(0.19607843, 0.23529412, 0.22352941, 1)
+shader_parameter/replace_0 = Color(0.45, 0.45, 0.45, 1)
+shader_parameter/replace_1 = Color(0.67058825, 0.67058825, 0.67058825, 1)
+shader_parameter/replace_2 = Color(0.8509804, 0.8509804, 0.8509804, 1)
+shader_parameter/replace_3 = Color(0.23137255, 0.23137255, 0.23137255, 1)
+shader_parameter/replace_4 = Color(0.6392157, 0.6392157, 0.6392157, 1)
+shader_parameter/replace_5 = Color(0.92156863, 0.92156863, 0.92156863, 1)
+shader_parameter/replace_6 = Color(0.5803922, 0.5803922, 0.5803922, 1)
+shader_parameter/replace_7 = Color(0.41960785, 0.41960785, 0.41960785, 1)
+shader_parameter/replace_8 = Color(0.23921569, 0.23921569, 0.23921569, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kbteo"]
+radius = 15.033297
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqbyt"]
+size = Vector2(384, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ww386"]
+size = Vector2(20, 226)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u6q1"]
+size = Vector2(352, 20)
+
+[node name="Level0103" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_83d21")
+music = ExtResource("2_8u6q1")
+
+[node name="FogScrollOverlayDungeon" parent="." instance=ExtResource("2_ww386")]
+
+[node name="Grass01" parent="." instance=ExtResource("1_030ip")]
+tile_map_data = PackedByteArray("AAD/////AAACAAEAAAD//wAAAAAMAAYAAAD//wEAAAAMAAcAAAD//wIAAAACAAAAAAD//wMAAAABAAAAAAD//wQAAAAGAAMAAAD//wUAAAACAAAAAAD//wYAAAACAAAAAAD//wcAAAADAAEAAAD//wgAAAANAAQAAAD//wkAAAACAAIAAAD//woAAAAAAAMAAAAAAP//AAAAAAAAAAAAAAAAAAAMAAYAAAAAAAEAAAAMAAcAAAAAAAIAAAADAAMAAAAAAAMAAAACAAEAAAAAAAQAAAAGAAMAAAAAAAUAAAABAAIAAAAAAAYAAAADAAIAAAAAAAcAAAACAAIAAAAAAAgAAAANAAQAAAAAAAkAAAADAAMAAAAAAAoAAAAAAAMAAAABAP//AAACAAEAAAABAAAAAAAMAAYAAAABAAEAAAAMAAcAAAABAAIAAAABAAMAAAABAAMAAAADAAEAAAABAAQAAAAGAAMAAAABAAUAAAAAAAAAAAABAAYAAAABAAIAAAABAAcAAAAAAAAAAAABAAgAAAANAAQAAAABAAkAAAACAAAAAAABAAoAAAABAAEAAAACAP//AAACAAMAAAACAAAAAAANAAYAAAACAAEAAAANAAcAAAACAAIAAAAAAAIAAAACAAMAAAABAAAAAAACAAQAAAAGAAMAAAACAAUAAAACAAMAAAACAAYAAAABAAIAAAACAAcAAAAAAAAAAAACAAgAAAANAAQAAAACAAkAAAACAAEAAAACAAoAAAADAAMAAAADAP//AAAOAAUAAAADAAAAAAAOAAYAAAADAAEAAAAOAAcAAAADAAIAAAABAAAAAAADAAMAAAADAAAAAAADAAQAAAAGAAMAAAADAAUAAAADAAMAAAADAAYAAAACAAEAAAADAAcAAAABAAMAAAADAAgAAAAOAAQAAAADAAkAAAAOAAUAAAADAAoAAAAOAAUAAAAEAP//AAACAAIAAAAEAAAAAAABAAMAAAAEAAEAAAACAAIAAAAEAAIAAAAAAAAAAAAEAAMAAAABAAIAAAAEAAQAAAAGAAMAAAAEAAUAAAACAAEAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAIAAAAEAAgAAAABAAMAAAAEAAkAAAACAAEAAAAEAAoAAAAAAAIAAAAFAP//AAADAAAAAAAFAAAAAAAAAAIAAAAFAAEAAAADAAAAAAAFAAIAAAAAAAMAAAAFAAMAAAACAAEAAAAFAAQAAAAGAAMAAAAFAAUAAAAAAAMAAAAFAAYAAAABAAIAAAAFAAcAAAADAAIAAAAFAAgAAAADAAAAAAAFAAkAAAAAAAMAAAAFAAoAAAACAAMAAAAGAP//AAADAAMAAAAGAAAAAAACAAIAAAAGAAEAAAADAAIAAAAGAAIAAAAAAAEAAAAGAAMAAAABAAEAAAAGAAQAAAAGAAMAAAAGAAUAAAACAAEAAAAGAAYAAAACAAMAAAAGAAcAAAABAAIAAAAGAAgAAAABAAMAAAAGAAkAAAADAAAAAAAGAAoAAAAAAAMAAAAHAP//AAADAAAAAAAHAAAAAAAAAAIAAAAHAAEAAAADAAMAAAAHAAIAAAABAAAAAAAHAAMAAAAFAAAAAAAHAAQAAAAHAAEAAAAHAAUAAAAFAAIAAAAHAAYAAAACAAIAAAAHAAcAAAAAAAIAAAAHAAgAAAADAAMAAAAHAAkAAAABAAIAAAAHAAoAAAABAAAAAAAIAP//AAAEAAEAAAAIAAAAAAAFAAIAAAAIAAEAAAABAAAAAAAIAAIAAAABAAMAAAAIAAMAAAAGAAMAAAAIAAQAAAACAAIAAAAIAAUAAAAGAAMAAAAIAAYAAAAAAAIAAAAIAAcAAAACAAAAAAAIAAgAAAADAAAAAAAIAAkAAAACAAEAAAAIAAoAAAACAAAAAAAJAP//AAADAAAAAAAJAAAAAAAHAAAAAAAJAAEAAAAEAAEAAAAJAAIAAAAEAAEAAAAJAAMAAAAGAAIAAAAJAAQAAAAAAAUAAAAJAAUAAAAGAAMAAAAJAAYAAAADAAEAAAAJAAcAAAADAAMAAAAJAAgAAAABAAEAAAAJAAkAAAAFAAAAAAAJAAoAAAAEAAEAAAAKAP//AAACAAIAAAAKAAAAAAACAAAAAAAKAAEAAAADAAEAAAAKAAIAAAABAAEAAAAKAAMAAAAGAAMAAAAKAAQAAAAAAAMAAAAKAAUAAAAGAAAAAAAKAAYAAAAEAAEAAAAKAAcAAAAEAAEAAAAKAAgAAAAEAAEAAAAKAAkAAAAHAAIAAAAKAAoAAAADAAEAAAALAP//AAACAAEAAAALAAAAAAACAAMAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAHAAAAAAALAAQAAAAFAAEAAAALAAUAAAAHAAIAAAALAAYAAAACAAAAAAALAAcAAAADAAAAAAALAAgAAAADAAEAAAALAAkAAAADAAIAAAALAAoAAAABAAIAAAAMAP//AAAAAAIAAAAMAAAAAAAAAAMAAAAMAAEAAAAAAAIAAAAMAAIAAAABAAEAAAAMAAMAAAABAAMAAAAMAAQAAAACAAIAAAAMAAUAAAAAAAAAAAAMAAYAAAACAAMAAAAMAAcAAAABAAIAAAAMAAgAAAADAAIAAAAMAAkAAAABAAIAAAAMAAoAAAADAAEAAAANAP//AAABAAMAAAANAAAAAAAAAAEAAAANAAEAAAABAAIAAAANAAIAAAACAAIAAAANAAMAAAACAAIAAAANAAQAAAACAAIAAAANAAUAAAACAAIAAAANAAYAAAACAAIAAAANAAcAAAAAAAAAAAANAAgAAAADAAIAAAANAAkAAAACAAAAAAANAAoAAAACAAMAAAAOAP//AAAKAAUAAAAOAAAAAAAKAAYAAAAOAAEAAAAKAAUAAAAOAAIAAAAKAAUAAAAOAAMAAAAKAAUAAAAOAAQAAAAKAAUAAAAOAAUAAAAKAAUAAAAOAAYAAAAKAAUAAAAOAAcAAAAKAAUAAAAOAAgAAAAKAAUAAAAOAAkAAAAKAAUAAAAOAAoAAAAKAAUAAAAPAP//AAAKAAUAAAAPAAAAAAAKAAYAAAAPAAEAAAAKAAcAAAAPAAIAAAADAAAAAAAPAAMAAAAAAAIAAAAPAAQAAAACAAIAAAAPAAUAAAABAAAAAAAPAAYAAAABAAEAAAAPAAcAAAACAAMAAAAPAAgAAAAKAAQAAAAPAAkAAAAKAAUAAAAPAAoAAAAKAAUAAAAQAP//AAABAAIAAAAQAAAAAAAMAAYAAAAQAAEAAAALAAcAAAAQAAIAAAACAAAAAAAQAAMAAAADAAEAAAAQAAQAAAACAAIAAAAQAAUAAAAAAAEAAAAQAAYAAAADAAEAAAAQAAcAAAAAAAIAAAAQAAgAAAALAAQAAAAQAAkAAAABAAIAAAAQAAoAAAADAAAAAAARAP//AAABAAAAAAARAAAAAAAMAAYAAAARAAEAAAANAAcAAAARAAIAAAACAAMAAAARAAMAAAAAAAMAAAARAAQAAAACAAIAAAARAAUAAAACAAIAAAARAAYAAAAAAAIAAAARAAcAAAADAAIAAAARAAgAAAALAAQAAAARAAkAAAABAAIAAAARAAoAAAABAAIAAAASAP//AAACAAMAAAASAAAAAAAMAAYAAAASAAEAAAANAAcAAAASAAIAAAADAAMAAAASAAMAAAADAAEAAAASAAQAAAACAAIAAAASAAUAAAACAAAAAAASAAYAAAADAAEAAAASAAcAAAACAAEAAAASAAgAAAALAAQAAAASAAkAAAACAAIAAAASAAoAAAADAAIAAAA=")
+
+[node name="PlantsTileMapLayer" parent="." instance=ExtResource("2_bnuam")]
+tile_map_data = PackedByteArray("AAABAP//AAAAAAAAAQAAAP//AAAAAAAAAQD/////AAAAAAAAAQACAP//AAAAAAAAAQAPAP//AAAAAAAAAQAQAP//AAAAAAAAAQARAP//AAAAAAAAAQASAP//AAAAAAAAAQAPAAAAAAAAAAAAAQAQAAAAAAAAAAAAAQARAAAAAAAAAAAAAQASAAAAAAAAAAAAAQD//wAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQD//wkAAAAAAAAAAQAAAAkAAAAAAAAAAQABAAkAAAAAAAAAAQACAAkAAAAAAAAAAQACAAoAAAAAAAAAAQABAAoAAAAAAAAAAQAAAAoAAAAAAAAAAQD//woAAAAAAAAAAQAPAAkAAAAAAAAAAQAQAAkAAAAAAAAAAQARAAkAAAAAAAAAAQASAAkAAAAAAAAAAQASAAoAAAAAAAAAAQARAAoAAAAAAAAAAQAQAAoAAAAAAAAAAQAPAAoAAAAAAAAAAQAGAAAAAAAAAAAAAQAMAAQAAAAAAAAAAQAEAAYAAAAAAAAAAQAMAAAAAAAAAAAAAQAFAAkAAAAAAAAAAQALAAkAAAAAAAAAAQABAAMAAAAAAAAAAQACAAcAAAAAAAAAAQAIAAQAAAAAAAAAAQAJAAMAAAAAAAAAAQAKAAQAAAAAAAAAAQAJAAUAAAAAAAAAAQA=")
+
+[node name="trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tree" parent="trees" instance=ExtResource("7_eqbyt")]
+position = Vector2(544, 80)
+
+[node name="Tree2" parent="trees" instance=ExtResource("7_eqbyt")]
+position = Vector2(552, 168)
+
+[node name="Slime" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(232, 200)
+
+[node name="Slime2" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(272, 264)
+
+[node name="Slime3" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(408, 264)
+
+[node name="Slime4" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(192, 168)
+
+[node name="Slime5" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(112, 96)
+
+[node name="Slime6" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(272, 32)
+
+[node name="Slime7" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(352, 216)
+
+[node name="Slime8" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(160, 48)
+
+[node name="Slime9" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(176, 256)
+
+[node name="Slime10" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(392, 48)
+
+[node name="Slime11" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(352, 96)
+
+[node name="Slime12" parent="." instance=ExtResource("3_83d21")]
+position = Vector2(240, 88)
+
+[node name="LevelTransition" parent="." instance=ExtResource("5_grkto")]
+position = Vector2(-32, 168)
+level = "uid://b52uqvi20qbvh"
+target_transition_area = "LevelTransition2"
+size = 7
+
+[node name="LevelTransition3" parent="." instance=ExtResource("5_grkto")]
+position = Vector2(288, -32)
+level = "uid://t7pqyday1d2c"
+target_transition_area = "LevelTransition2"
+size = 11
+side = 2
+
+[node name="LevelTransition2" parent="." instance=ExtResource("5_grkto")]
+position = Vector2(280, 352)
+level = "uid://cgg1bnkrugtj1"
+target_transition_area = "LevelTransition2"
+size = 12
+side = 3
+
+[node name="FallenHero" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_101u3")
+position = Vector2(304, 152)
+texture = ExtResource("10_irqlr")
+offset = Vector2(0, -17)
+hframes = 16
+vframes = 8
+frame = 76
+
+[node name="DialogInteraction" parent="FallenHero" instance=ExtResource("11_ltocx")]
+visible = false
+
+[node name="DialogText" type="Node" parent="FallenHero/DialogInteraction"]
+script = ExtResource("12_7hpks")
+text = "A statue of a fallen hero."
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogChoice" type="Node" parent="FallenHero/DialogInteraction"]
+script = ExtResource("13_wt0nh")
+metadata/_custom_type_script = "uid://cc6p7tnfd70ts"
+
+[node name="DialogBranch" type="Node" parent="FallenHero/DialogInteraction/DialogChoice"]
+script = ExtResource("14_1layf")
+text = "Look closer."
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="DialogText" type="Node" parent="FallenHero/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("12_7hpks")
+text = "The statue seems to have soiled itself in confusion."
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="FallenHero/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("12_7hpks")
+text = "I sure hope I don't end up like this."
+npc_info = ExtResource("15_5wk1y")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogBranch2" type="Node" parent="FallenHero/DialogInteraction/DialogChoice"]
+script = ExtResource("14_1layf")
+text = "Ignore it."
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="DialogText" type="Node" parent="FallenHero/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("12_7hpks")
+text = "Probably best to walk away."
+npc_info = ExtResource("15_5wk1y")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FallenHero"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallenHero/StaticBody2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_kbteo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(280, 368)
+shape = SubResource("RectangleShape2D_eqbyt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-48, 167)
+shape = SubResource("RectangleShape2D_ww386")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(288, -48)
+shape = SubResource("RectangleShape2D_8u6q1")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("10_h7gvr")]
+position = Vector2(104, 160)

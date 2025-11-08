@@ -1,0 +1,264 @@
+[gd_scene load_steps=26 format=4 uid="uid://t7pqyday1d2c"]
+
+[ext_resource type="Script" uid="uid://ct24rhqja16li" path="res://Scenes/level.gd" id="1_wev16"]
+[ext_resource type="PackedScene" uid="uid://lh05kfhc3rg0" path="res://Scenes/TileMaps/GrassTileset.tscn" id="2_2e4ri"]
+[ext_resource type="PackedScene" uid="uid://cvntjx6pno2m8" path="res://Effects/fog_scroll_overlay_dungeon.tscn" id="2_b7u4b"]
+[ext_resource type="AudioStream" uid="uid://deneyyl85pq3a" path="res://ASSETS/MUSIC/lttp_forest.mp3" id="2_mnakd"]
+[ext_resource type="PackedScene" uid="uid://dv7imctt71hrm" path="res://Scenes/TileMaps/PlantsTileset.tscn" id="3_p0qb7"]
+[ext_resource type="PackedScene" uid="uid://bi6bn1q2hdswc" path="res://Scenes/level_transition.tscn" id="4_v8i8e"]
+[ext_resource type="PackedScene" uid="uid://su2fkrk2pl5m" path="res://Props/Interactables/TreasureChest/treasure_chest.tscn" id="5_b7u4b"]
+[ext_resource type="PackedScene" uid="uid://docsdibbb82a5" path="res://Props/Plants/tree.tscn" id="6_mnakd"]
+[ext_resource type="PackedScene" uid="uid://wdg7h0c72blh" path="res://Character/Player/player_spawn.tscn" id="7_2e4ri"]
+[ext_resource type="Resource" uid="uid://dd8qr7jyotrkq" path="res://GUI/Inventory/_items/gem.tres" id="8_cyp04"]
+[ext_resource type="PackedScene" uid="uid://dpx0a0kjregih" path="res://Character/Enemy/Goblin/enemy_goblin.tscn" id="8_v8i8e"]
+[ext_resource type="PackedScene" uid="uid://hoapuxatrjjn" path="res://Character/Enemy/Slime/enemy_slime.tscn" id="9_b7u4b"]
+[ext_resource type="PackedScene" uid="uid://ctvwq012tnk1d" path="res://Props/Plants/talking_plant.tscn" id="12_k5iqg"]
+[ext_resource type="PackedScene" uid="uid://bbr6hnjfoj2ws" path="res://Quests/utility_nodes/quest_activated_switch.tscn" id="13_cyp04"]
+[ext_resource type="Resource" uid="uid://c40l3rrko24vr" path="res://Quests/quest_data/sausage_quest.tres" id="14_h7dik"]
+[ext_resource type="PackedScene" uid="uid://5omxdh1iewm3" path="res://Common/DialogInteraction/dialog_interaction.tscn" id="15_np4k3"]
+[ext_resource type="Script" uid="uid://2xetjgqu041s" path="res://Common/DialogInteraction/dialog_text.gd" id="16_kgvpq"]
+[ext_resource type="Resource" uid="uid://0qi6dgdxmhdl" path="res://Common/DialogInteraction/DialogResources/plant_npc_resource.tres" id="17_lg2hy"]
+[ext_resource type="Resource" uid="uid://fb2uy1u1rsw5" path="res://Common/DialogInteraction/DialogResources/hero_npc_resource.tres" id="18_34c7g"]
+[ext_resource type="Script" uid="uid://cc6p7tnfd70ts" path="res://Common/DialogInteraction/dialog_choice.gd" id="19_2ej0y"]
+[ext_resource type="Resource" uid="uid://1ij67xypck8j" path="res://Common/DialogInteraction/DialogResources/toriel_npc_resource.tres" id="20_2d0sm"]
+[ext_resource type="Script" uid="uid://dbswhyu86v88g" path="res://Common/DialogInteraction/dialog_branch.gd" id="21_mubuj"]
+[ext_resource type="PackedScene" uid="uid://cl103matlg0qb" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="22_ciwp5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bgxt"]
+size = Vector2(384, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7rni"]
+size = Vector2(20, 256)
+
+[node name="Level0106" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_wev16")
+music = ExtResource("2_mnakd")
+
+[node name="FogScrollOverlayDungeon" parent="." instance=ExtResource("2_b7u4b")]
+
+[node name="Grass01" parent="." instance=ExtResource("2_2e4ri")]
+tile_map_data = PackedByteArray("AAD/////AAAAAAIAAAD//wAAAAAAAAIAAAD//wEAAAABAAIAAAD//wIAAAABAAIAAAD//wMAAAADAAEAAAD//wQAAAABAAMAAAD//wUAAAABAAEAAAD//wYAAAABAAIAAAD//wcAAAAMAAQAAAD//wgAAAABAAAAAAD//wkAAAACAAIAAAAAAP//AAABAAIAAAAAAAAAAAAAAAEAAAAAAAEAAAADAAEAAAAAAAIAAAABAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAADAAIAAAAAAAUAAAACAAMAAAAAAAYAAAABAAAAAAAAAAcAAAAMAAQAAAAAAAkAAAADAAMAAAABAP//AAAAAAMAAAABAAAAAAABAAEAAAABAAEAAAACAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAIAAAABAAQAAAADAAMAAAABAAUAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAANAAQAAAABAAkAAAABAAEAAAACAP//AAADAAIAAAACAAAAAAADAAIAAAACAAEAAAADAAIAAAACAAIAAAABAAMAAAACAAMAAAABAAIAAAACAAQAAAADAAAAAAACAAUAAAABAAIAAAACAAYAAAADAAMAAAACAAcAAAAOAAQAAAACAAoAAAAOAAUAAAADAP//AAADAAMAAAADAAAAAAACAAMAAAADAAEAAAABAAAAAAADAAIAAAAAAAMAAAADAAMAAAAAAAAAAAADAAQAAAAAAAMAAAADAAUAAAABAAMAAAADAAYAAAACAAEAAAADAAcAAAACAAAAAAADAAgAAAABAAMAAAADAAkAAAAAAAMAAAADAAoAAAABAAAAAAAEAP//AAACAAIAAAAEAAAAAAABAAMAAAAEAAEAAAABAAIAAAAEAAIAAAAAAAAAAAAEAAMAAAABAAAAAAAEAAQAAAABAAEAAAAEAAUAAAABAAMAAAAEAAYAAAAAAAAAAAAEAAcAAAADAAMAAAAEAAgAAAABAAAAAAAEAAkAAAADAAMAAAAEAAoAAAABAAIAAAAFAP//AAADAAAAAAAFAAAAAAAAAAIAAAAFAAEAAAABAAIAAAAFAAIAAAAAAAMAAAAFAAMAAAACAAEAAAAFAAQAAAABAAAAAAAFAAUAAAACAAAAAAAFAAYAAAABAAIAAAAFAAcAAAABAAEAAAAFAAgAAAAAAAMAAAAFAAkAAAABAAEAAAAFAAoAAAADAAIAAAAGAP//AAADAAMAAAAGAAAAAAACAAIAAAAGAAEAAAACAAAAAAAGAAIAAAADAAIAAAAGAAMAAAACAAEAAAAGAAQAAAACAAIAAAAGAAUAAAAAAAMAAAAGAAYAAAABAAIAAAAGAAcAAAADAAIAAAAGAAgAAAABAAEAAAAGAAkAAAAAAAEAAAAGAAoAAAABAAEAAAAHAP//AAADAAAAAAAHAAAAAAAAAAIAAAAHAAEAAAACAAMAAAAHAAIAAAABAAEAAAAHAAMAAAADAAMAAAAHAAQAAAABAAIAAAAHAAUAAAAAAAIAAAAHAAYAAAABAAEAAAAHAAcAAAABAAIAAAAHAAgAAAABAAAAAAAHAAkAAAAAAAIAAAAHAAoAAAACAAMAAAAIAP//AAAAAAAAAAAIAAAAAAACAAAAAAAIAAEAAAABAAMAAAAIAAIAAAAAAAEAAAAIAAMAAAABAAIAAAAIAAQAAAACAAMAAAAIAAUAAAACAAIAAAAIAAYAAAABAAIAAAAIAAcAAAADAAIAAAAIAAgAAAABAAMAAAAIAAkAAAACAAAAAAAIAAoAAAAEAAAAAAAJAP//AAADAAAAAAAJAAAAAAABAAMAAAAJAAEAAAAAAAIAAAAJAAIAAAACAAIAAAAJAAMAAAADAAIAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAMAAAAJAAYAAAABAAEAAAAJAAcAAAABAAEAAAAJAAgAAAADAAAAAAAJAAkAAAAAAAMAAAAJAAoAAAAAAAAAAAAKAP//AAACAAIAAAAKAAAAAAACAAAAAAAKAAEAAAACAAMAAAAKAAIAAAAAAAMAAAAKAAMAAAAAAAEAAAAKAAQAAAADAAEAAAAKAAUAAAADAAIAAAAKAAYAAAABAAAAAAAKAAcAAAADAAAAAAAKAAgAAAACAAIAAAAKAAkAAAABAAIAAAAKAAoAAAABAAEAAAALAP//AAACAAEAAAALAAAAAAACAAMAAAALAAEAAAAAAAAAAAALAAIAAAADAAMAAAALAAMAAAACAAIAAAALAAQAAAABAAEAAAALAAUAAAABAAIAAAALAAYAAAACAAIAAAALAAcAAAACAAEAAAALAAgAAAAAAAAAAAALAAkAAAACAAMAAAALAAoAAAABAAIAAAAMAP//AAAAAAIAAAAMAAAAAAAAAAMAAAAMAAEAAAACAAMAAAAMAAIAAAADAAMAAAAMAAMAAAADAAAAAAAMAAQAAAACAAMAAAAMAAUAAAACAAEAAAAMAAYAAAACAAEAAAAMAAcAAAAAAAEAAAAMAAgAAAABAAEAAAAMAAkAAAAAAAIAAAAMAAoAAAAAAAIAAAANAP//AAABAAMAAAANAAAAAAAAAAEAAAANAAEAAAAAAAMAAAANAAIAAAADAAMAAAANAAMAAAAAAAAAAAANAAQAAAAAAAEAAAANAAUAAAAAAAEAAAANAAYAAAADAAMAAAANAAcAAAADAAEAAAANAAkAAAADAAEAAAANAAoAAAABAAEAAAAOAP//AAABAAAAAAAOAAAAAAABAAAAAAAOAAEAAAADAAMAAAAOAAIAAAADAAAAAAAOAAMAAAABAAEAAAAOAAQAAAACAAMAAAAOAAUAAAADAAIAAAAOAAYAAAACAAIAAAAOAAcAAAABAAAAAAAOAAgAAAAKAAQAAAAOAAkAAAAKAAUAAAAOAAoAAAAKAAUAAAAPAP//AAAAAAEAAAAPAAAAAAABAAEAAAAPAAEAAAAAAAMAAAAPAAIAAAACAAMAAAAPAAMAAAABAAEAAAAPAAQAAAACAAEAAAAPAAUAAAABAAIAAAAPAAYAAAADAAMAAAAPAAcAAAABAAAAAAAPAAgAAAALAAQAAAAPAAkAAAABAAAAAAAPAAoAAAACAAIAAAAQAP//AAAAAAEAAAAQAAAAAAACAAAAAAAQAAEAAAAAAAEAAAAQAAIAAAABAAMAAAAQAAMAAAAAAAMAAAAQAAQAAAACAAMAAAAQAAUAAAACAAMAAAAQAAYAAAAAAAMAAAAQAAcAAAAAAAIAAAAQAAgAAAAMAAQAAAAQAAkAAAABAAIAAAAQAAoAAAABAAAAAAARAP//AAADAAMAAAARAAAAAAADAAAAAAARAAEAAAADAAIAAAARAAIAAAABAAIAAAARAAMAAAACAAIAAAARAAQAAAAFAAMAAAARAAUAAAADAAMAAAARAAYAAAADAAAAAAARAAcAAAABAAIAAAARAAgAAAANAAQAAAARAAkAAAANAAUAAAARAAoAAAADAAEAAAASAP//AAACAAAAAAASAAAAAAABAAAAAAASAAEAAAABAAAAAAASAAIAAAABAAMAAAASAAMAAAABAAMAAAASAAQAAAAGAAMAAAASAAUAAAABAAMAAAASAAYAAAABAAEAAAASAAcAAAACAAEAAAASAAgAAAAMAAQAAAASAAkAAAACAAIAAAASAAoAAAADAAAAAAAAAAgAAAAAAAIAAAACAAkAAAAOAAUAAAACAAgAAAAOAAUAAAABAAgAAAADAAIAAAANAAgAAAABAAMAAAABAAoAAAABAAEAAAAAAAoAAAAAAAIAAAD//woAAAAAAAIAAAA=")
+
+[node name="PlantsTileMapLayer" parent="." instance=ExtResource("3_p0qb7")]
+tile_map_data = PackedByteArray("AAANAAEAAAAAAAAAAQAOAAEAAAAAAAAAAQAQAAMAAAAAAAAAAQAOAAMAAAAAAAAAAQAPAAMAAAAAAAAAAQANAAIAAAAAAAAAAQAQAAIAAAAAAAAAAQARAAEAAAAAAAAAAQAQAAEAAAAAAAAAAQAQAAQAAAAAAAAAAQAPAAUAAAAAAAAAAQAPAAcAAAAAAAAAAQAQAAYAAAAAAAAAAQARAAUAAAAAAAAAAQARAAYAAAAAAAAAAQAMAAUAAAAAAAAAAQAIAAYAAAAAAAAAAQALAAcAAAAAAAAAAQAJAAMAAAAAAAAAAQAGAAUAAAAAAAAAAQADAAcAAAAAAAAAAQAIAAgAAAAAAAAAAQAJAAUAAAAAAAAAAQAHAAQAAAAAAAAAAQD//wgAAAAAAAAAAQAAAAgAAAAAAAAAAQABAAgAAAAAAAAAAQABAAkAAAAAAAAAAQAAAAkAAAAAAAAAAQAAAAoAAAAAAAAAAQD//wkAAAAAAAAAAQD//woAAAAAAAAAAQABAAoAAAAAAAAAAQAPAAkAAAAAAAAAAQAPAAoAAAAAAAAAAQAQAAoAAAAAAAAAAQARAAoAAAAAAAAAAQASAAoAAAAAAAAAAQASAAkAAAAAAAAAAQARAAkAAAAAAAAAAQAQAAkAAAAAAAAAAQA=")
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_v8i8e")]
+position = Vector2(608, 160)
+level = "uid://6qw6k88nlfjd"
+size = 11
+side = 1
+
+[node name="LevelTransition2" parent="." instance=ExtResource("4_v8i8e")]
+position = Vector2(272, 352)
+level = "uid://61p4ywvodsqf"
+target_transition_area = "LevelTransition3"
+size = 13
+side = 3
+
+[node name="LevelTransition3" parent="." instance=ExtResource("4_v8i8e")]
+position = Vector2(-32, 97)
+level = "uid://dlkgrufxismeo"
+size = 8
+
+[node name="TreasureChest" parent="." instance=ExtResource("5_b7u4b")]
+position = Vector2(480, 80)
+item_data = ExtResource("8_cyp04")
+quantity = 25
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(272, 368)
+shape = SubResource("RectangleShape2D_0bgxt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(624, 160)
+shape = SubResource("RectangleShape2D_q7rni")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-47, 134)
+shape = SubResource("RectangleShape2D_q7rni")
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tree2" parent="Trees" instance=ExtResource("6_mnakd")]
+position = Vector2(22, 136)
+
+[node name="Tree3" parent="Trees" instance=ExtResource("6_mnakd")]
+position = Vector2(16, -32)
+
+[node name="Tree4" parent="Trees" instance=ExtResource("6_mnakd")]
+position = Vector2(112, 0)
+
+[node name="Tree5" parent="Trees" instance=ExtResource("6_mnakd")]
+position = Vector2(192, -32)
+
+[node name="Tree6" parent="Trees" instance=ExtResource("6_mnakd")]
+position = Vector2(272, 0)
+
+[node name="Tree7" parent="Trees" instance=ExtResource("6_mnakd")]
+position = Vector2(352, -16)
+
+[node name="Tree8" parent="Trees" instance=ExtResource("6_mnakd")]
+position = Vector2(448, -48)
+
+[node name="Tree9" parent="Trees" instance=ExtResource("6_mnakd")]
+position = Vector2(544, -16)
+
+[node name="Tree10" parent="Trees" instance=ExtResource("6_mnakd")]
+position = Vector2(624, -32)
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("7_2e4ri")]
+position = Vector2(320, 304)
+
+[node name="Enemies" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Goblin" parent="Enemies" instance=ExtResource("8_v8i8e")]
+position = Vector2(480, 160)
+
+[node name="Slime" parent="Enemies" instance=ExtResource("9_b7u4b")]
+position = Vector2(208, 240)
+
+[node name="TalkingPlant2" parent="." instance=ExtResource("12_k5iqg")]
+position = Vector2(352, 176)
+
+[node name="QuestActivatedSwitch2" parent="TalkingPlant2" instance=ExtResource("13_cyp04")]
+position = Vector2(464, 24)
+remove_when_activated = true
+free_on_remove = true
+react_to_global_signal = true
+linked_quest = ExtResource("14_h7dik")
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if player has quest"
+
+[node name="DialogInteraction" parent="TalkingPlant2/QuestActivatedSwitch2" instance=ExtResource("15_np4k3")]
+position = Vector2(-464, -28)
+interaction_type = 0
+
+[node name="CollisionShape2D" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction" index="0"]
+position = Vector2(0, 4)
+
+[node name="DialogText" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("16_kgvpq")
+text = "Hey kid, there's a tree to the east. He is [wave]VERY[/wave] interested in your sausage."
+npc_info = ExtResource("17_lg2hy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("16_kgvpq")
+text = "uhhhh..."
+npc_info = ExtResource("18_34c7g")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText3" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("16_kgvpq")
+text = "You know, that thing you keep throwing around."
+npc_info = ExtResource("17_lg2hy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText4" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("16_kgvpq")
+text = "Oh..."
+npc_info = ExtResource("18_34c7g")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText5" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("16_kgvpq")
+text = "If you show him your sausage I'm sure something [wave]nice[/wave] will happen."
+npc_info = ExtResource("17_lg2hy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogChoice" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("19_2ej0y")
+npc_info = ExtResource("20_2d0sm")
+metadata/_custom_type_script = "uid://cc6p7tnfd70ts"
+
+[node name="DialogBranch" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction/DialogChoice"]
+script = ExtResource("21_mubuj")
+text = "I'll show him my sausage."
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="QuestAdvanceTrigger" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction/DialogChoice/DialogBranch" instance=ExtResource("22_ciwp5")]
+position = Vector2(-472, -48)
+linked_quest = ExtResource("14_h7dik")
+settings_summary = "UPDATE QUEST: 
+Quest: Show Him Your Sausage
+Step: 0 - N/A
+Complete: false"
+
+[node name="DialogText" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("16_kgvpq")
+text = "He will be [wave]THRILLED[/wave]."
+npc_info = ExtResource("17_lg2hy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogBranch2" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction/DialogChoice"]
+script = ExtResource("21_mubuj")
+text = "My sausage. My business."
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="DialogText" type="Node" parent="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("16_kgvpq")
+text = "Your loss, kid."
+npc_info = ExtResource("17_lg2hy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="QuestActivatedSwitch3" parent="TalkingPlant2" instance=ExtResource("13_cyp04")]
+check_type = 3
+remove_when_activated = true
+free_on_remove = true
+react_to_global_signal = true
+linked_quest = ExtResource("14_h7dik")
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if quest is complete"
+
+[node name="QuestActivatedSwitch" parent="TalkingPlant2/QuestActivatedSwitch3" instance=ExtResource("13_cyp04")]
+react_to_global_signal = true
+linked_quest = ExtResource("14_h7dik")
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if player has quest"
+
+[node name="DialogInteraction" parent="TalkingPlant2/QuestActivatedSwitch3/QuestActivatedSwitch" instance=ExtResource("15_np4k3")]
+
+[node name="DialogText" type="Node" parent="TalkingPlant2/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("16_kgvpq")
+text = "Don't be shy, kid. Show him that sausage."
+npc_info = ExtResource("17_lg2hy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="QuestActivatedSwitch" parent="TalkingPlant2" instance=ExtResource("13_cyp04")]
+check_type = 3
+react_to_global_signal = true
+linked_quest = ExtResource("14_h7dik")
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if quest is complete"
+
+[node name="DialogInteraction" parent="TalkingPlant2/QuestActivatedSwitch" instance=ExtResource("15_np4k3")]
+
+[node name="DialogText" type="Node" parent="TalkingPlant2/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("16_kgvpq")
+text = "He was very impressed with your sausage, Kid. It's a nice one."
+npc_info = ExtResource("17_lg2hy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="TalkingPlant2/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("16_kgvpq")
+text = "Thanks. I think."
+npc_info = ExtResource("18_34c7g")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[connection signal="dialogtextfinished" from="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction/DialogChoice/DialogBranch/DialogText" to="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction/DialogChoice/DialogBranch/QuestAdvanceTrigger" method="advance_quest"]
+
+[editable path="TalkingPlant2/QuestActivatedSwitch2/DialogInteraction"]

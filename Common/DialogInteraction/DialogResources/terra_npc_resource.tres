@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=5 format=3 uid="uid://d20pmvpj6mvw7"]
+
+[ext_resource type="AudioStream" uid="uid://cqf4b6xe7y853" path="res://ASSETS/SOUNDS/snd_txtq.wav" id="1_tfpb8"]
+[ext_resource type="Script" uid="uid://7m2ud17vxuhw" path="res://Character/NPC/npc_resource.gd" id="1_wbo3h"]
+[ext_resource type="Texture2D" uid="uid://cmarjbkq0bsuc" path="res://ASSETS/CHARACTER/terra_portrait_01.png" id="2_cery3"]
+[ext_resource type="Texture2D" uid="uid://bpthsbmsjatqr" path="res://ASSETS/CHARACTER/terra_portrait_02.png" id="3_oc26y"]
+
+[resource]
+script = ExtResource("1_wbo3h")
+npc_name = "Terra"
+portrait = ExtResource("2_cery3")
+portrait_talk = ExtResource("3_oc26y")
+dialog_voice = ExtResource("1_tfpb8")
+metadata/_custom_type_script = "uid://7m2ud17vxuhw"

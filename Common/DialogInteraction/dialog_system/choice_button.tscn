@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt6ln8hvaals3"]
+
+[ext_resource type="Theme" uid="uid://v3g7k24h8ox3" path="res://GUI/UITHEME.tres" id="1_qjc11"]
+
+[node name="ChoiceButton" type="Button"]
+theme = ExtResource("1_qjc11")
+theme_type_variation = &"ChoiceButton"
+text = "Yeah That sounds great"

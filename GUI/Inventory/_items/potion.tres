@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://cw0iwxhur2eog"]
+
+[ext_resource type="Script" uid="uid://203wldfhfjcg" path="res://GUI/Inventory/_item_effects/item_effect.gd" id="1_3n0yr"]
+[ext_resource type="Script" uid="uid://v4814yfjnsg6" path="res://GUI/Inventory/item_data.gd" id="1_8r3s2"]
+[ext_resource type="Script" uid="uid://bemjh3ceb32hu" path="res://GUI/Inventory/_item_effects/item_effect_heal.gd" id="2_dgm5h"]
+[ext_resource type="Texture2D" uid="uid://bcvs2lo77u08p" path="res://ASSETS/HUD/Inventory/items.png" id="2_ggtxr"]
+
+[sub_resource type="Resource" id="Resource_4kupa"]
+script = ExtResource("2_dgm5h")
+heal_amount = 10
+metadata/_custom_type_script = "uid://bemjh3ceb32hu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycsdf"]
+atlas = ExtResource("2_ggtxr")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_8r3s2")
+name = "Potion"
+description = "Tastes like candy and restores 10 hearts!"
+shop_description = "I made this potion myself. It's Halloween flavor. It will restore a lot of your health."
+texture = SubResource("AtlasTexture_ycsdf")
+effects = Array[ExtResource("1_3n0yr")]([SubResource("Resource_4kupa")])
+shop_price = 100
+metadata/_custom_type_script = "uid://v4814yfjnsg6"

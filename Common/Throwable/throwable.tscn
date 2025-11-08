@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddkuyjgq65m75"]
+
+[ext_resource type="Script" uid="uid://ddkrartthhhui" path="res://Common/Throwable/throwable.gd" id="1_2egvb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2egvb"]
+radius = 3.0
+
+[node name="Throwable" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_2egvb")
+
+[node name="WallDetectCharacterBody2D" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 16
+motion_mode = 1
+
+[node name="WallDetectCollisionShape2D" type="CollisionShape2D" parent="WallDetectCharacterBody2D"]
+unique_name_in_owner = true
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_2egvb")
+debug_color = Color(0, 0.004326101, 0.70196074, 0.41960785)

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=6 format=3 uid="uid://0qi6dgdxmhdl"]
+
+[ext_resource type="AudioStream" uid="uid://ce3kq6p36c1vq" path="res://ASSETS/SOUNDS/voice_blip.wav" id="1_21duj"]
+[ext_resource type="Texture2D" uid="uid://b3lufpn15eqh7" path="res://ASSETS/OBJECT/lttp_plant_portrait_100_01.png" id="2_ph2w2"]
+[ext_resource type="Texture2D" uid="uid://c0ibm18ic71vv" path="res://ASSETS/OBJECT/lttp_plant_portrait_100_03.png" id="3_h5bd1"]
+[ext_resource type="Script" uid="uid://7m2ud17vxuhw" path="res://Character/NPC/npc_resource.gd" id="3_ph2w2"]
+[ext_resource type="Texture2D" uid="uid://dj6yunadb0ok3" path="res://ASSETS/OBJECT/lttp_plant_portrait_100_02.png" id="4_y381m"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("3_ph2w2")
+npc_name = "Bush"
+portrait = ExtResource("2_ph2w2")
+portrait_talk = ExtResource("4_y381m")
+portrait_special = ExtResource("3_h5bd1")
+dialog_voice = ExtResource("1_21duj")
+dialog_audio_pitch = 0.5
+metadata/_custom_type_script = "uid://7m2ud17vxuhw"

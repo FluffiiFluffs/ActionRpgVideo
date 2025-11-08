@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://lh05kfhc3rg0"]
+
+[ext_resource type="TileSet" uid="uid://ic017wrredmb" path="res://Scenes/TileMaps/grass_tileset.tres" id="1_6fd5k"]
+[ext_resource type="Script" uid="uid://chwdof4aq51y0" path="res://Scenes/TileMaps/level_tilemap.gd" id="2_6fd5k"]
+
+[node name="Grass01" type="TileMapLayer"]
+z_index = -1
+tile_set = ExtResource("1_6fd5k")
+rendering_quadrant_size = 32
+script = ExtResource("2_6fd5k")

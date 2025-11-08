@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv7imctt71hrm"]
+
+[ext_resource type="PackedScene" uid="uid://ryq5yem67c83" path="res://Props/Plants/plant.tscn" id="1_numnb"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nhhrv"]
+resource_name = "Plants"
+scenes/1/scene = ExtResource("1_numnb")
+
+[sub_resource type="TileSet" id="TileSet_80nnn"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_nhhrv")
+
+[node name="PlantsTileMapLayer" type="TileMapLayer"]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_80nnn")
+physics_quadrant_size = 32

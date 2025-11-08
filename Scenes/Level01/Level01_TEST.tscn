@@ -1,0 +1,834 @@
+[gd_scene load_steps=50 format=4 uid="uid://irxs5l32gb6f"]
+
+[ext_resource type="Script" uid="uid://ct24rhqja16li" path="res://Scenes/level.gd" id="1_bfyo2"]
+[ext_resource type="AudioStream" uid="uid://cx3g60q4ed3x6" path="res://ASSETS/MUSIC/lttp_kakariko_village.mp3" id="2_1xptk"]
+[ext_resource type="PackedScene" uid="uid://lh05kfhc3rg0" path="res://Scenes/TileMaps/GrassTileset.tscn" id="2_jqefb"]
+[ext_resource type="PackedScene" uid="uid://dv7imctt71hrm" path="res://Scenes/TileMaps/PlantsTileset.tscn" id="3_1xptk"]
+[ext_resource type="PackedScene" uid="uid://wdg7h0c72blh" path="res://Character/Player/player_spawn.tscn" id="4_a4e00"]
+[ext_resource type="PackedScene" uid="uid://b6y7klrmf8xtn" path="res://Props/Plants/flowey.tscn" id="5_1xptk"]
+[ext_resource type="PackedScene" uid="uid://hoapuxatrjjn" path="res://Character/Enemy/Slime/enemy_slime.tscn" id="6_7xp6x"]
+[ext_resource type="PackedScene" uid="uid://su2fkrk2pl5m" path="res://Props/Interactables/TreasureChest/treasure_chest.tscn" id="7_aiwg5"]
+[ext_resource type="PackedScene" uid="uid://dpx0a0kjregih" path="res://Character/Enemy/Goblin/enemy_goblin.tscn" id="8_r5lpj"]
+[ext_resource type="PackedScene" uid="uid://dektwyqbnhmx" path="res://Character/NPC/Toriel/npc_toriel.tscn" id="9_bfyo2"]
+[ext_resource type="PackedScene" uid="uid://e6q0dqvp7qqp" path="res://Character/NPC/NPCBehavior/patrol_location.tscn" id="10_jqefb"]
+[ext_resource type="PackedScene" uid="uid://5omxdh1iewm3" path="res://Common/DialogInteraction/dialog_interaction.tscn" id="12_a4e00"]
+[ext_resource type="Script" uid="uid://2xetjgqu041s" path="res://Common/DialogInteraction/dialog_text.gd" id="13_7xp6x"]
+[ext_resource type="Resource" uid="uid://32jy28ikil25" path="res://GUI/Inventory/_items/big_heart.tres" id="13_qpian"]
+[ext_resource type="Resource" uid="uid://1ij67xypck8j" path="res://Common/DialogInteraction/DialogResources/toriel_npc_resource.tres" id="14_7xp6x"]
+[ext_resource type="Resource" uid="uid://fb2uy1u1rsw5" path="res://Common/DialogInteraction/DialogResources/hero_npc_resource.tres" id="15_aiwg5"]
+[ext_resource type="PackedScene" uid="uid://docsdibbb82a5" path="res://Props/Plants/tree.tscn" id="16_alciv"]
+[ext_resource type="PackedScene" uid="uid://cvrxp5lfvqm5b" path="res://Scenes/Test/newplayertest.tscn" id="16_r5lpj"]
+[ext_resource type="PackedScene" uid="uid://ctvwq012tnk1d" path="res://Props/Plants/talking_plant.tscn" id="17_actbh"]
+[ext_resource type="Resource" uid="uid://0qi6dgdxmhdl" path="res://Common/DialogInteraction/DialogResources/plant_npc_resource.tres" id="18_actbh"]
+[ext_resource type="Resource" uid="uid://c40l3rrko24vr" path="res://Quests/quest_data/sausage_quest.tres" id="19_ae78s"]
+[ext_resource type="Resource" uid="uid://bgbmkquiiryy4" path="res://ASSETS/OBJECT/tree_npc_resource.tres" id="20_ttusy"]
+[ext_resource type="Script" uid="uid://cc6p7tnfd70ts" path="res://Common/DialogInteraction/dialog_choice.gd" id="21_fqeud"]
+[ext_resource type="Script" uid="uid://dbswhyu86v88g" path="res://Common/DialogInteraction/dialog_branch.gd" id="22_2o2ms"]
+[ext_resource type="PackedScene" uid="uid://bi6bn1q2hdswc" path="res://Scenes/level_transition.tscn" id="23_2o2ms"]
+[ext_resource type="Shader" uid="uid://btkrlwieci037" path="res://ASSETS/SHADERS/replace_color2.gdshader" id="24_5a6p3"]
+[ext_resource type="Texture2D" uid="uid://bvkddvdagruty" path="res://ASSETS/CHARACTER/player_sprite.png" id="24_t5roo"]
+[ext_resource type="PackedScene" uid="uid://cbpnajsqw23v8" path="res://Common/ItemPickup/item_pickup.tscn" id="26_fy2uq"]
+[ext_resource type="Resource" uid="uid://bm2x77yk6lveo" path="res://GUI/Inventory/_items/apple.tres" id="27_cavkb"]
+[ext_resource type="PackedScene" uid="uid://c8jqkj0bamb62" path="res://Common/InteractionArea/interaction_area.tscn" id="28_pgjdq"]
+[ext_resource type="PackedScene" uid="uid://r3n1i5ytb0ej" path="res://Props/Pot/pot.tscn" id="30_m0o5y"]
+[ext_resource type="Resource" uid="uid://dd8qr7jyotrkq" path="res://GUI/Inventory/_items/gem.tres" id="30_o7lp1"]
+[ext_resource type="PackedScene" uid="uid://cmeqnsulvkdlg" path="res://Props/Torch/torch.tscn" id="31_cavkb"]
+[ext_resource type="AudioStream" uid="uid://biirrjkp8qf8a" path="res://ASSETS/SOUNDS/rupee.wav" id="31_eb3i7"]
+[ext_resource type="PackedScene" uid="uid://bos66g2ff2mc" path="res://Character/NPC/Terra/npc_terra.tscn" id="31_pgjdq"]
+[ext_resource type="PackedScene" uid="uid://bhu5sfyvq6qfo" path="res://Character/Enemy/Boss/orb_emitter.tscn" id="32_u0vv8"]
+[ext_resource type="PackedScene" uid="uid://bkhatgl81agrg" path="res://Character/Enemy/Boss/beam_emitter.tscn" id="33_lkrsv"]
+[ext_resource type="PackedScene" uid="uid://ckeg6flcae771" path="res://Props/Interactables/PressurePlate/pressure_plate.tscn" id="34_a3nys"]
+[ext_resource type="PackedScene" uid="uid://cl103matlg0qb" path="res://Quests/utility_nodes/quest_advance_trigger.tscn" id="35_g4v7i"]
+[ext_resource type="Resource" uid="uid://x0uh23s60f3g" path="res://Quests/quest_data/long_quest.tres" id="36_0bsnb"]
+[ext_resource type="PackedScene" uid="uid://bbr6hnjfoj2ws" path="res://Quests/utility_nodes/quest_activated_switch.tscn" id="38_k3k78"]
+[ext_resource type="PackedScene" uid="uid://dap3qlxnk7wl1" path="res://Scenes/TileMaps/shop_tileset.tscn" id="39_o7lp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_semug"]
+size = Vector2(2000, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfyo2"]
+size = Vector2(32, 1250)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eb3i7"]
+size = Vector2(32, 34)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_alciv"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3k78"]
+radius = 40.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcthe"]
+shader = ExtResource("24_5a6p3")
+shader_parameter/original_0 = Color(0.4509804, 0.05490196, 0.11372549, 1)
+shader_parameter/original_1 = Color(0.6745098, 0.19607843, 0.19607843, 1)
+shader_parameter/original_2 = Color(0.8509804, 0.34117648, 0.3882353, 1)
+shader_parameter/original_3 = Color(0.23137255, 0.015686275, 0.015686275, 1)
+shader_parameter/original_4 = Color(0.6392157, 0.039215688, 0.039215688, 1)
+shader_parameter/original_5 = Color(0.92156863, 0.5568628, 0.5921569, 1)
+shader_parameter/original_6 = Color(0.21568628, 0.5803922, 0.43137255, 1)
+shader_parameter/original_7 = Color(0.20784314, 0.42352942, 0.3372549, 1)
+shader_parameter/original_8 = Color(0.19607843, 0.23529412, 0.22352941, 1)
+shader_parameter/replace_0 = Color(0.45, 0.45, 0.45, 1)
+shader_parameter/replace_1 = Color(0.67058825, 0.67058825, 0.67058825, 1)
+shader_parameter/replace_2 = Color(0.8509804, 0.8509804, 0.8509804, 1)
+shader_parameter/replace_3 = Color(0.23137255, 0.23137255, 0.23137255, 1)
+shader_parameter/replace_4 = Color(0.6392157, 0.6392157, 0.6392157, 1)
+shader_parameter/replace_5 = Color(0.92156863, 0.92156863, 0.92156863, 1)
+shader_parameter/replace_6 = Color(0.5803922, 0.5803922, 0.5803922, 1)
+shader_parameter/replace_7 = Color(0.41960785, 0.41960785, 0.41960785, 1)
+shader_parameter/replace_8 = Color(0.23921569, 0.23921569, 0.23921569, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5a6p3"]
+radius = 15.033297
+
+[node name="TESTLEVEL" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_bfyo2")
+music = ExtResource("2_1xptk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-160, -304)
+shape = SubResource("RectangleShape2D_semug")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-184, 400)
+shape = SubResource("RectangleShape2D_semug")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1104, 152)
+shape = SubResource("RectangleShape2D_bfyo2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(624, 96)
+shape = SubResource("RectangleShape2D_bfyo2")
+
+[node name="Grass01" parent="." instance=ExtResource("2_jqefb")]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAAAAAEAAAABAAMAAAAAAAIAAAACAAIAAAAAAAMAAAAAAAEAAAAAAAQAAAADAAIAAAAAAAUAAAABAAIAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAACAAMAAAAAAAkAAAAAAAIAAAAAAAoAAAABAAAAAAABAAAAAAADAAMAAAABAAEAAAADAAEAAAABAAIAAAACAAEAAAABAAMAAAADAAEAAAABAAQAAAABAAEAAAABAAUAAAADAAIAAAABAAYAAAACAAIAAAABAAcAAAADAAMAAAABAAgAAAACAAEAAAABAAkAAAABAAIAAAABAAoAAAABAAEAAAACAAAAAAABAAMAAAACAAEAAAAAAAEAAAACAAIAAAABAAMAAAACAAMAAAACAAMAAAACAAQAAAACAAMAAAACAAUAAAABAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAIAAAACAAgAAAABAAMAAAACAAkAAAACAAIAAAACAAoAAAADAAAAAAADAAAAAAABAAEAAAADAAEAAAADAAEAAAADAAIAAAAAAAIAAAADAAMAAAAAAAMAAAADAAQAAAACAAEAAAADAAUAAAAAAAAAAAADAAYAAAAAAAMAAAADAAcAAAACAAMAAAADAAgAAAABAAIAAAADAAkAAAAAAAEAAAADAAoAAAAAAAIAAAAEAAAAAAAAAAIAAAAEAAEAAAAAAAMAAAAEAAIAAAADAAEAAAAEAAMAAAADAAMAAAAEAAQAAAADAAMAAAAEAAUAAAACAAIAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAIAAAAEAAgAAAADAAIAAAAEAAkAAAADAAIAAAAEAAoAAAADAAMAAAAFAAAAAAADAAIAAAAFAAEAAAAAAAMAAAAFAAIAAAADAAAAAAAFAAMAAAACAAEAAAAFAAQAAAAAAAEAAAAFAAUAAAABAAIAAAAFAAYAAAABAAMAAAAFAAcAAAADAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAACAAAAAAAFAAoAAAABAAMAAAAGAAAAAAABAAMAAAAGAAEAAAADAAMAAAAGAAIAAAACAAMAAAAGAAMAAAABAAMAAAAGAAQAAAABAAIAAAAGAAUAAAABAAEAAAAGAAYAAAADAAAAAAAGAAcAAAABAAAAAAAGAAgAAAAAAAMAAAAGAAkAAAACAAIAAAAGAAoAAAACAAAAAAAHAAAAAAABAAIAAAAHAAEAAAAAAAMAAAAHAAIAAAABAAMAAAAHAAMAAAADAAEAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAAAAAAHAAYAAAACAAEAAAAHAAcAAAAAAAEAAAAHAAgAAAAAAAEAAAAHAAkAAAADAAIAAAAHAAoAAAACAAAAAAAIAAAAAAADAAIAAAAIAAEAAAABAAAAAAAIAAIAAAADAAEAAAAIAAMAAAADAAIAAAAIAAQAAAAAAAAAAAAIAAUAAAABAAEAAAAIAAYAAAABAAMAAAAIAAcAAAADAAEAAAAIAAgAAAABAAMAAAAIAAkAAAABAAIAAAAIAAoAAAABAAAAAAAJAAAAAAADAAIAAAAJAAEAAAAAAAEAAAAJAAIAAAADAAEAAAAJAAMAAAADAAAAAAAJAAQAAAACAAMAAAAJAAUAAAABAAMAAAAJAAYAAAADAAIAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAMAAAAJAAkAAAABAAAAAAAJAAoAAAADAAEAAAAKAAAAAAAAAAMAAAAKAAEAAAADAAIAAAAKAAIAAAACAAIAAAAKAAMAAAADAAMAAAAKAAQAAAADAAEAAAAKAAUAAAABAAMAAAAKAAYAAAABAAIAAAAKAAcAAAACAAAAAAAKAAgAAAADAAMAAAAKAAkAAAADAAEAAAAKAAoAAAAAAAMAAAALAAAAAAABAAIAAAALAAEAAAAAAAEAAAALAAIAAAADAAEAAAALAAMAAAAAAAEAAAALAAQAAAADAAEAAAALAAUAAAADAAEAAAALAAYAAAADAAMAAAALAAcAAAADAAIAAAALAAgAAAACAAIAAAALAAkAAAABAAIAAAALAAoAAAABAAAAAAAMAAAAAAAAAAEAAAAMAAEAAAABAAMAAAAMAAIAAAABAAEAAAAMAAMAAAADAAEAAAAMAAQAAAACAAIAAAAMAAUAAAADAAEAAAAMAAYAAAADAAAAAAAMAAcAAAACAAIAAAAMAAgAAAABAAAAAAAMAAkAAAADAAIAAAAMAAoAAAAAAAMAAAANAAAAAAADAAEAAAANAAEAAAACAAIAAAANAAIAAAAAAAEAAAANAAMAAAADAAAAAAANAAQAAAABAAAAAAANAAUAAAABAAEAAAANAAYAAAADAAMAAAANAAcAAAABAAMAAAANAAgAAAADAAIAAAANAAkAAAADAAAAAAANAAoAAAACAAEAAAAOAAAAAAAAAAMAAAAOAAEAAAABAAEAAAAOAAIAAAAAAAIAAAAOAAMAAAACAAEAAAAOAAQAAAACAAMAAAAOAAUAAAACAAAAAAAOAAYAAAACAAAAAAAOAAcAAAACAAMAAAAOAAgAAAACAAEAAAAOAAkAAAACAAIAAAAOAAoAAAADAAAAAAAPAAAAAAACAAEAAAAPAAEAAAAAAAIAAAAPAAIAAAAAAAEAAAAPAAMAAAACAAIAAAAPAAQAAAABAAMAAAAPAAUAAAADAAIAAAAPAAYAAAABAAEAAAAPAAcAAAAAAAEAAAAPAAgAAAACAAMAAAAPAAkAAAABAAEAAAAPAAoAAAAAAAEAAAAQAAAAAAAAAAEAAAAQAAEAAAABAAAAAAAQAAIAAAACAAAAAAAQAAMAAAACAAEAAAAQAAQAAAACAAAAAAAQAAUAAAABAAMAAAAQAAYAAAABAAEAAAAQAAcAAAACAAIAAAAQAAgAAAAAAAEAAAAQAAkAAAACAAEAAAAQAAoAAAABAAAAAAARAAAAAAADAAMAAAARAAEAAAADAAAAAAARAAIAAAABAAMAAAARAAMAAAAAAAMAAAARAAQAAAADAAEAAAARAAUAAAADAAEAAAARAAYAAAAAAAIAAAARAAcAAAACAAAAAAARAAgAAAABAAAAAAARAAkAAAACAAIAAAARAAoAAAADAAEAAAD/////AAAAAAIAAAD//wAAAAABAAMAAAD//wEAAAAAAAMAAAD//wIAAAADAAIAAAD//wMAAAAAAAMAAAD//wQAAAAAAAIAAAD//wUAAAADAAIAAAD//wYAAAACAAAAAAD//wcAAAAAAAEAAAD//wgAAAABAAMAAAD//wkAAAACAAIAAAD//woAAAACAAIAAAAAAP//AAADAAAAAAABAP//AAAAAAMAAAACAP//AAABAAEAAAADAP//AAADAAMAAAAEAP//AAAAAAIAAAAFAP//AAACAAAAAAAGAP//AAAAAAIAAAAHAP//AAABAAIAAAAIAP//AAADAAAAAAAJAP//AAACAAAAAAAKAP//AAABAAEAAAALAP//AAACAAMAAAAMAP//AAADAAAAAAANAP//AAACAAAAAAAOAP//AAACAAIAAAAPAP//AAACAAAAAAAQAP//AAAAAAIAAAARAP//AAACAAMAAAAHAAsAAAABAAAAAAAIAAsAAAADAAEAAAAJAAsAAAAAAAAAAAAKAAsAAAABAAMAAAAGAAsAAAADAAIAAAALAAsAAAADAAEAAAAEAAsAAAAAAAAAAAAFAAsAAAABAAIAAAADAAsAAAABAAMAAAACAAsAAAACAAMAAAABAAsAAAAAAAAAAAAAAAsAAAAAAAIAAAANAAsAAAACAAIAAAAOAAsAAAABAAAAAAAPAAsAAAABAAIAAAAQAAsAAAADAAMAAAAMAAsAAAAAAAEAAAARAAsAAAADAAIAAAASAAMAAAADAAIAAAASAAQAAAABAAAAAAASAAUAAAAAAAMAAAASAAYAAAACAAEAAAASAAcAAAABAAIAAAASAAkAAAABAAIAAAASAAgAAAABAAIAAAASAAEAAAACAAEAAAASAAIAAAAAAAEAAAASAAAAAAACAAIAAAASAP//AAAAAAEAAAD//wsAAAAAAAMAAAASAAoAAAADAAIAAAASAAsAAAAAAAEAAADy//j/AAACAAMAAADy//n/AAADAAAAAADy//r/AAADAAEAAADy//v/AAABAAIAAADy//z/AAANAAIAAADy//3/AAABAAAAAADy//7/AAANAAIAAADy////AAABAAEAAADy/wAAAAANAAIAAADy/wEAAAACAAMAAADy/wIAAAANAAIAAADy/wMAAAACAAAAAADy/wQAAAADAAMAAADy/wUAAAABAAMAAADy/wYAAAAAAAEAAADy/wcAAAABAAIAAADy/wgAAAADAAAAAADy/wkAAAACAAAAAADy/woAAAACAAEAAADy/wsAAAACAAIAAADz//j/AAABAAAAAADz//n/AAACAAIAAADz//r/AAADAAEAAADz//v/AAABAAIAAADz//z/AAADAAAAAADz//3/AAANAAIAAADz//7/AAABAAMAAADz////AAANAAIAAADz/wAAAAADAAEAAADz/wEAAAANAAIAAADz/wIAAAADAAEAAADz/wMAAAACAAEAAADz/wQAAAADAAEAAADz/wUAAAADAAMAAADz/wYAAAACAAEAAADz/wcAAAABAAAAAADz/wgAAAABAAAAAADz/wkAAAABAAIAAADz/woAAAAAAAEAAADz/wsAAAACAAEAAAD0//j/AAACAAMAAAD0//n/AAABAAMAAAD0//r/AAACAAIAAAD0//v/AAABAAMAAAD0//z/AAANAAIAAAD0//3/AAADAAIAAAD0//7/AAANAAIAAAD0////AAABAAMAAAD0/wAAAAANAAIAAAD0/wEAAAADAAMAAAD0/wIAAAANAAIAAAD0/wMAAAACAAIAAAD0/wQAAAABAAEAAAD0/wUAAAABAAIAAAD0/wYAAAACAAMAAAD0/wcAAAACAAMAAAD0/wgAAAADAAEAAAD0/wkAAAADAAAAAAD0/woAAAAAAAMAAAD0/wsAAAABAAAAAAD1//j/AAABAAIAAAD1//n/AAABAAAAAAD1//r/AAACAAAAAAD1//v/AAABAAAAAAD1//z/AAACAAMAAAD1//3/AAAAAAAAAAD1//7/AAABAAIAAAD1////AAABAAMAAAD1/wAAAAADAAMAAAD1/wEAAAACAAEAAAD1/wIAAAAAAAIAAAD1/wMAAAACAAEAAAD1/wQAAAADAAIAAAD1/wUAAAACAAEAAAD1/wYAAAABAAAAAAD1/wcAAAADAAAAAAD1/wgAAAABAAAAAAD1/wkAAAACAAEAAAD1/woAAAACAAIAAAD1/wsAAAABAAIAAAD2//j/AAABAAMAAAD2//n/AAAAAAEAAAD2//r/AAACAAMAAAD2//v/AAAAAAMAAAD2//z/AAAAAAEAAAD2//3/AAAAAAAAAAD2//7/AAACAAIAAAD2////AAABAAAAAAD2/wAAAAABAAMAAAD2/wEAAAACAAAAAAD2/wIAAAABAAMAAAD2/wMAAAACAAMAAAD2/wQAAAACAAAAAAD2/wUAAAAAAAAAAAD2/wYAAAAAAAEAAAD2/wcAAAAAAAIAAAD2/wgAAAAAAAEAAAD2/wkAAAAAAAIAAAD2/woAAAABAAAAAAD2/wsAAAADAAMAAAD3//j/AAADAAAAAAD3//n/AAADAAIAAAD3//r/AAABAAAAAAD3//v/AAAAAAAAAAD3//z/AAABAAIAAAD3//3/AAAAAAAAAAD3//7/AAAAAAMAAAD3////AAACAAIAAAD3/wAAAAACAAEAAAD3/wEAAAACAAIAAAD3/wIAAAABAAMAAAD3/wMAAAADAAEAAAD3/wQAAAADAAEAAAD3/wUAAAAAAAMAAAD3/wYAAAACAAIAAAD3/wcAAAACAAMAAAD3/wgAAAACAAAAAAD3/wkAAAABAAEAAAD3/woAAAAAAAEAAAD3/wsAAAAAAAMAAAD4//j/AAACAAIAAAD4//n/AAADAAAAAAD4//r/AAAAAAEAAAD4//v/AAABAAIAAAD4//z/AAAAAAIAAAD4//3/AAAAAAEAAAD4//7/AAAAAAAAAAD4////AAABAAAAAAD4/wAAAAACAAMAAAD4/wEAAAABAAIAAAD4/wIAAAADAAAAAAD4/wMAAAAAAAIAAAD4/wQAAAAAAAAAAAD4/wUAAAAAAAAAAAD4/wYAAAADAAIAAAD4/wcAAAADAAMAAAD4/wgAAAACAAMAAAD4/wkAAAAAAAAAAAD4/woAAAABAAAAAAD4/wsAAAAAAAAAAAD5//j/AAABAAIAAAD5//n/AAAAAAAAAAD5//r/AAABAAIAAAD5//v/AAABAAEAAAD5//z/AAACAAMAAAD5//3/AAACAAIAAAD5//7/AAADAAMAAAD5////AAAAAAIAAAD5/wAAAAACAAEAAAD5/wEAAAAAAAEAAAD5/wIAAAABAAMAAAD5/wMAAAABAAEAAAD5/wQAAAAAAAIAAAD5/wUAAAAAAAMAAAD5/wYAAAAAAAEAAAD5/wcAAAADAAEAAAD5/wgAAAACAAEAAAD5/wkAAAADAAMAAAD5/woAAAAAAAMAAAD5/wsAAAADAAAAAAD6//j/AAABAAEAAAD6//n/AAAAAAMAAAD6//r/AAALAAYAAAD6//v/AAALAAcAAAD6//z/AAABAAMAAAD6//3/AAACAAIAAAD6//7/AAAAAAMAAAD6////AAACAAIAAAD6/wAAAAAAAAEAAAD6/wEAAAAAAAMAAAD6/wIAAAADAAEAAAD6/wMAAAADAAAAAAD6/wQAAAAAAAAAAAD6/wUAAAAAAAAAAAD6/wYAAAADAAMAAAD6/wcAAAACAAAAAAD6/wgAAAABAAEAAAD6/wkAAAABAAIAAAD6/woAAAACAAEAAAD6/wsAAAADAAAAAAD7//j/AAACAAEAAAD7//n/AAABAAIAAAD7//r/AAAMAAYAAAD7//v/AAALAAcAAAD7//z/AAACAAIAAAD7//3/AAABAAAAAAD7//7/AAADAAIAAAD7////AAABAAEAAAD7/wAAAAAAAAAAAAD7/wEAAAAAAAEAAAD7/wIAAAADAAMAAAD7/wMAAAADAAIAAAD7/wQAAAAAAAIAAAD7/wUAAAADAAAAAAD7/wYAAAABAAIAAAD7/wcAAAABAAMAAAD7/wgAAAACAAMAAAD7/wkAAAABAAIAAAD7/woAAAACAAIAAAD7/wsAAAACAAEAAAD8//j/AAAAAAMAAAD8//n/AAACAAIAAAD8//r/AAAMAAYAAAD8//v/AAALAAcAAAD8//z/AAADAAIAAAD8//3/AAACAAMAAAD8//7/AAABAAEAAAD8////AAAAAAIAAAD8/wAAAAAAAAAAAAD8/wEAAAACAAIAAAD8/wIAAAABAAMAAAD8/wMAAAADAAMAAAD8/wQAAAABAAEAAAD8/wUAAAACAAIAAAD8/wYAAAABAAIAAAD8/wcAAAADAAAAAAD8/wgAAAADAAMAAAD8/wkAAAADAAAAAAD8/woAAAACAAAAAAD8/wsAAAACAAIAAAD9//j/AAACAAAAAAD9//n/AAADAAAAAAD9//r/AAANAAYAAAD9//v/AAALAAcAAAD9//z/AAADAAMAAAD9//3/AAACAAIAAAD9//7/AAAAAAMAAAD9////AAABAAMAAAD9/wAAAAAAAAEAAAD9/wEAAAABAAMAAAD9/wIAAAADAAEAAAD9/wMAAAADAAEAAAD9/wQAAAABAAEAAAD9/wUAAAABAAMAAAD9/wYAAAABAAEAAAD9/wcAAAAAAAIAAAD9/wgAAAACAAEAAAD9/wkAAAADAAAAAAD9/woAAAABAAAAAAD9/wsAAAACAAMAAAD+//j/AAACAAAAAAD+//n/AAACAAIAAAD+//r/AAAAAAIAAAD+//v/AAACAAAAAAD+//z/AAADAAIAAAD+//3/AAAAAAAAAAD+//7/AAADAAEAAAD+////AAACAAMAAAD+/wAAAAABAAIAAAD+/wEAAAABAAMAAAD+/wIAAAADAAAAAAD+/wMAAAACAAMAAAD+/wQAAAACAAAAAAD+/wUAAAACAAAAAAD+/wYAAAACAAMAAAD+/wcAAAAAAAEAAAD+/wgAAAACAAMAAAD+/wkAAAAAAAMAAAD+/woAAAADAAAAAAD+/wsAAAADAAMAAAD///j/AAADAAAAAAD///n/AAABAAMAAAD///r/AAACAAIAAAD///v/AAADAAEAAAD///z/AAABAAEAAAD///3/AAADAAAAAAD///7/AAAAAAAAAAAAAPj/AAACAAMAAAAAAPn/AAACAAMAAAAAAPr/AAABAAAAAAAAAPv/AAABAAEAAAAAAPz/AAACAAMAAAAAAP3/AAADAAIAAAAAAP7/AAAAAAAAAAABAPj/AAADAAAAAAABAPn/AAAAAAIAAAABAPr/AAADAAAAAAABAPv/AAAAAAMAAAABAPz/AAABAAIAAAABAP3/AAABAAEAAAABAP7/AAADAAMAAAACAPj/AAACAAEAAAACAPn/AAABAAMAAAACAPr/AAADAAMAAAACAPv/AAACAAMAAAACAPz/AAADAAIAAAACAP3/AAAAAAIAAAACAP7/AAADAAAAAAADAPj/AAACAAAAAAADAPn/AAACAAEAAAADAPr/AAACAAEAAAADAPv/AAABAAEAAAADAPz/AAACAAEAAAADAP3/AAABAAIAAAADAP7/AAAAAAMAAAAEAPj/AAACAAIAAAAEAPn/AAAAAAMAAAAEAPr/AAABAAIAAAAEAPv/AAAAAAMAAAAEAPz/AAABAAMAAAAEAP3/AAACAAIAAAAEAP7/AAAAAAIAAAAFAPj/AAAAAAIAAAAFAPn/AAAAAAEAAAAFAPr/AAAAAAIAAAAFAPv/AAABAAIAAAAFAPz/AAABAAAAAAAFAP3/AAACAAAAAAAFAP7/AAADAAAAAAAGAPj/AAADAAAAAAAGAPn/AAACAAMAAAAGAPr/AAACAAMAAAAGAPv/AAAAAAEAAAAGAPz/AAADAAIAAAAGAP3/AAACAAAAAAAGAP7/AAACAAMAAAAHAPj/AAACAAMAAAAHAPn/AAAAAAAAAAAHAPr/AAACAAIAAAAHAPv/AAABAAIAAAAHAPz/AAACAAAAAAAHAP3/AAABAAEAAAAHAP7/AAABAAIAAAAEAPf/AAABAAMAAAAFAPf/AAADAAMAAAAGAPf/AAACAAAAAAAHAPf/AAABAAIAAAAIAPf/AAAAAAEAAAAIAPj/AAADAAAAAAAIAPn/AAACAAAAAAAIAPr/AAAAAAMAAAAIAPv/AAABAAMAAAAIAPz/AAACAAIAAAAIAP3/AAAAAAMAAAAIAP7/AAACAAMAAAAJAPf/AAADAAEAAAAJAPj/AAABAAIAAAAJAPn/AAACAAEAAAAJAPr/AAABAAMAAAAJAPv/AAACAAAAAAAJAPz/AAABAAAAAAAJAP3/AAABAAMAAAAJAP7/AAABAAAAAAAKAPf/AAAAAAIAAAAKAPj/AAADAAMAAAAKAPn/AAADAAIAAAAKAPr/AAACAAIAAAAKAPv/AAACAAEAAAAKAPz/AAADAAMAAAAKAP3/AAADAAEAAAAKAP7/AAADAAAAAAALAPf/AAADAAEAAAALAPj/AAABAAMAAAALAPn/AAAAAAIAAAALAPr/AAACAAMAAAALAPv/AAADAAMAAAALAPz/AAAAAAMAAAALAP3/AAAAAAIAAAALAP7/AAAAAAMAAAAMAPf/AAADAAMAAAAMAPj/AAADAAEAAAAMAPn/AAABAAAAAAAMAPr/AAABAAEAAAAMAPv/AAABAAEAAAAMAPz/AAABAAAAAAAMAP3/AAAAAAEAAAAMAP7/AAAAAAAAAAANAPf/AAACAAIAAAANAPj/AAABAAIAAAANAPn/AAABAAAAAAANAPr/AAABAAAAAAANAPv/AAADAAAAAAANAPz/AAAAAAEAAAANAP3/AAAAAAMAAAANAP7/AAABAAEAAAAOAPf/AAADAAAAAAAOAPj/AAACAAEAAAAOAPn/AAADAAAAAAAOAPr/AAABAAAAAAAOAPv/AAABAAIAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAIAAAAOAP7/AAADAAAAAAAPAPf/AAACAAMAAAAPAPj/AAADAAEAAAAPAPn/AAABAAAAAAAPAPr/AAABAAMAAAAPAPv/AAABAAEAAAAPAPz/AAADAAAAAAAPAP3/AAACAAEAAAAPAP7/AAABAAAAAAAQAPf/AAAAAAAAAAAQAPj/AAABAAMAAAAQAPn/AAACAAMAAAAQAPr/AAACAAEAAAAQAPv/AAACAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAADAAMAAAARAPf/AAADAAEAAAARAPj/AAAAAAIAAAARAPn/AAACAAMAAAARAPr/AAAAAAIAAAARAPv/AAABAAIAAAARAPz/AAACAAAAAAARAP3/AAAAAAIAAAARAP7/AAACAAEAAAASAPf/AAABAAMAAAASAPj/AAABAAAAAAASAPn/AAADAAAAAAASAPr/AAAAAAEAAAASAPv/AAADAAIAAAASAPz/AAAAAAIAAAASAP3/AAACAAAAAAASAP7/AAADAAEAAAADAPf/AAACAAEAAAACAPf/AAABAAEAAAABAPf/AAAAAAMAAAAAAPf/AAADAAMAAAD///f/AAACAAEAAAD+//f/AAAAAAEAAAD9//f/AAACAAEAAAD8//f/AAACAAIAAAD7//f/AAACAAIAAAD6//f/AAABAAIAAAD5//f/AAAAAAIAAAD4//f/AAABAAIAAAD3//f/AAABAAEAAAD2//f/AAABAAEAAAD1//f/AAAAAAEAAAD0//f/AAABAAEAAADz//f/AAABAAAAAADy//f/AAACAAMAAADe//f/AAACAAEAAADe//j/AAADAAEAAADe//n/AAACAAMAAADe//r/AAADAAEAAADe//v/AAACAAIAAADe//z/AAABAAEAAADe//3/AAADAAAAAADe//7/AAAAAAIAAADe////AAADAAEAAADe/wAAAAABAAIAAADe/wEAAAACAAMAAADe/wIAAAAAAAAAAADe/wMAAAADAAMAAADe/wQAAAABAAAAAADe/wUAAAADAAMAAADe/wYAAAACAAMAAADe/wcAAAADAAMAAADe/wgAAAADAAMAAADe/wkAAAABAAAAAADe/woAAAABAAAAAADe/wsAAAABAAIAAADf//f/AAACAAEAAADf//j/AAAAAAIAAADf//n/AAABAAMAAADf//r/AAABAAEAAADf//v/AAAAAAEAAADf//z/AAADAAEAAADf//3/AAADAAEAAADf//7/AAADAAAAAADf////AAADAAEAAADf/wAAAAABAAMAAADf/wEAAAADAAIAAADf/wIAAAADAAAAAADf/wMAAAAAAAEAAADf/wQAAAAAAAEAAADf/wUAAAADAAIAAADf/wYAAAADAAAAAADf/wcAAAADAAAAAADf/wgAAAACAAIAAADf/wkAAAADAAMAAADf/woAAAACAAEAAADf/wsAAAABAAMAAADg//f/AAADAAMAAADg//j/AAAAAAEAAADg//n/AAABAAEAAADg//r/AAADAAEAAADg//v/AAACAAEAAADg//z/AAACAAIAAADg//3/AAACAAEAAADg//7/AAADAAMAAADg////AAABAAAAAADg/wAAAAADAAMAAADg/wEAAAAAAAEAAADg/wIAAAAAAAEAAADg/wMAAAACAAEAAADg/wQAAAADAAIAAADg/wUAAAACAAIAAADg/wYAAAACAAMAAADg/wcAAAAAAAEAAADg/wgAAAAAAAAAAADg/wkAAAABAAEAAADg/woAAAABAAEAAADg/wsAAAACAAAAAADh//f/AAAAAAIAAADh//j/AAABAAAAAADh//n/AAABAAIAAADh//r/AAAAAAEAAADh//v/AAADAAEAAADh//z/AAABAAAAAADh//3/AAACAAAAAADh//7/AAAAAAMAAADh////AAADAAIAAADh/wAAAAADAAEAAADh/wEAAAADAAIAAADh/wIAAAABAAAAAADh/wMAAAACAAMAAADh/wQAAAADAAEAAADh/wUAAAACAAEAAADh/wYAAAAAAAIAAADh/wcAAAAAAAMAAADh/wgAAAADAAIAAADh/wkAAAABAAEAAADh/woAAAADAAIAAADh/wsAAAABAAAAAADi//f/AAADAAEAAADi//j/AAADAAIAAADi//n/AAACAAEAAADi//r/AAAAAAMAAADi//v/AAABAAIAAADi//z/AAADAAMAAADi//3/AAAAAAAAAADi//7/AAABAAEAAADi////AAAAAAMAAADi/wAAAAACAAMAAADi/wEAAAADAAEAAADi/wIAAAACAAEAAADi/wMAAAACAAEAAADi/wQAAAACAAIAAADi/wUAAAACAAMAAADi/wYAAAABAAIAAADi/wcAAAACAAIAAADi/wgAAAAAAAIAAADi/wkAAAAAAAEAAADi/woAAAADAAMAAADi/wsAAAAAAAAAAADj//f/AAACAAIAAADj//j/AAABAAAAAADj//n/AAACAAAAAADj//r/AAAAAAEAAADj//v/AAADAAAAAADj//z/AAADAAIAAADj//3/AAAAAAIAAADj//7/AAADAAEAAADj////AAADAAAAAADj/wAAAAACAAAAAADj/wEAAAABAAIAAADj/wIAAAAAAAMAAADj/wMAAAABAAEAAADj/wQAAAAAAAIAAADj/wUAAAABAAIAAADj/wYAAAAAAAIAAADj/wcAAAABAAIAAADj/wgAAAABAAEAAADj/wkAAAADAAMAAADj/woAAAACAAAAAADj/wsAAAACAAMAAADk//f/AAAAAAIAAADk//j/AAACAAEAAADk//n/AAABAAMAAADk//r/AAACAAAAAADk//v/AAABAAIAAADk//z/AAABAAEAAADk//3/AAACAAIAAADk//7/AAADAAAAAADk////AAABAAIAAADk/wAAAAABAAEAAADk/wEAAAACAAAAAADk/wIAAAAAAAEAAADk/wMAAAABAAEAAADk/wQAAAABAAMAAADk/wUAAAAAAAEAAADk/wYAAAACAAEAAADk/wcAAAABAAEAAADk/wgAAAABAAIAAADk/wkAAAABAAMAAADk/woAAAADAAAAAADk/wsAAAADAAIAAADl//f/AAABAAAAAADl//j/AAABAAEAAADl//n/AAAAAAIAAADl//r/AAABAAAAAADl//v/AAABAAEAAADl//z/AAAAAAIAAADl//3/AAADAAEAAADl//7/AAABAAEAAADl////AAACAAMAAADl/wAAAAACAAEAAADl/wEAAAACAAMAAADl/wIAAAAAAAAAAADl/wMAAAAAAAIAAADl/wQAAAABAAAAAADl/wUAAAACAAIAAADl/wYAAAABAAAAAADl/wcAAAAAAAAAAADl/wgAAAADAAAAAADl/wkAAAADAAEAAADl/woAAAAAAAMAAADl/wsAAAADAAAAAADm//f/AAADAAAAAADm//j/AAABAAIAAADm//n/AAAAAAAAAADm//r/AAADAAIAAADm//v/AAADAAMAAADm//z/AAABAAEAAADm//3/AAABAAAAAADm//7/AAADAAMAAADm////AAABAAMAAADm/wAAAAABAAEAAADm/wEAAAADAAMAAADm/wIAAAADAAIAAADm/wMAAAABAAEAAADm/wQAAAADAAAAAADm/wUAAAADAAMAAADm/wYAAAABAAAAAADm/wcAAAACAAAAAADm/wgAAAABAAMAAADm/wkAAAAAAAMAAADm/woAAAADAAEAAADm/wsAAAAAAAIAAADn//f/AAACAAEAAADn//j/AAABAAAAAADn//n/AAACAAIAAADn//r/AAABAAMAAADn//v/AAADAAEAAADn//z/AAADAAMAAADn//3/AAADAAAAAADn//7/AAABAAMAAADn////AAACAAIAAADn/wAAAAADAAMAAADn/wEAAAADAAMAAADn/wIAAAAAAAIAAADn/wMAAAADAAAAAADn/wQAAAAAAAEAAADn/wUAAAADAAMAAADn/wYAAAACAAEAAADn/wcAAAADAAIAAADn/wgAAAABAAEAAADn/wkAAAABAAEAAADn/woAAAABAAMAAADn/wsAAAADAAEAAADo//f/AAACAAIAAADo//j/AAADAAMAAADo//n/AAACAAIAAADo//r/AAABAAMAAADo//v/AAACAAAAAADo//z/AAABAAAAAADo//3/AAACAAAAAADo//7/AAAAAAIAAADo////AAACAAAAAADo/wAAAAACAAAAAADo/wEAAAAAAAMAAADo/wIAAAACAAAAAADo/wMAAAAAAAAAAADo/wQAAAAAAAMAAADo/wUAAAAAAAEAAADo/wYAAAADAAEAAADo/wcAAAACAAIAAADo/wgAAAACAAEAAADo/wkAAAAAAAEAAADo/woAAAADAAEAAADo/wsAAAAAAAAAAADp//f/AAAAAAEAAADp//j/AAACAAEAAADp//n/AAADAAIAAADp//r/AAACAAEAAADp//v/AAADAAMAAADp//z/AAAAAAEAAADp//3/AAADAAIAAADp//7/AAAAAAMAAADp////AAABAAMAAADp/wAAAAABAAAAAADp/wEAAAACAAEAAADp/wIAAAAAAAMAAADp/wMAAAACAAIAAADp/wQAAAABAAAAAADp/wUAAAADAAIAAADp/wYAAAACAAMAAADp/wcAAAADAAMAAADp/wgAAAABAAAAAADp/wkAAAACAAIAAADp/woAAAABAAAAAADp/wsAAAACAAIAAADq//f/AAADAAAAAADq//j/AAABAAIAAADq//n/AAAAAAAAAADq//r/AAADAAIAAADq//v/AAAAAAEAAADq//z/AAADAAIAAADq//3/AAADAAEAAADq//7/AAADAAMAAADq////AAADAAEAAADq/wAAAAADAAMAAADq/wEAAAADAAIAAADq/wIAAAADAAMAAADq/wMAAAAAAAEAAADq/wQAAAACAAEAAADq/wUAAAADAAIAAADq/wYAAAADAAMAAADq/wcAAAADAAMAAADq/wgAAAAAAAAAAADq/wkAAAAAAAIAAADq/woAAAACAAEAAADq/wsAAAACAAIAAADr//f/AAACAAMAAADr//j/AAAAAAEAAADr//n/AAADAAMAAADr//r/AAABAAIAAADr//v/AAADAAAAAADr//z/AAAAAAEAAADr//3/AAACAAIAAADr//7/AAABAAMAAADr////AAAAAAAAAADr/wAAAAAAAAEAAADr/wEAAAADAAMAAADr/wIAAAACAAMAAADr/wMAAAACAAAAAADr/wQAAAADAAMAAADr/wUAAAABAAIAAADr/wYAAAAAAAAAAADr/wcAAAADAAEAAADr/wgAAAADAAAAAADr/wkAAAADAAMAAADr/woAAAABAAMAAADr/wsAAAADAAEAAADs//f/AAABAAMAAADs//j/AAACAAIAAADs//n/AAADAAEAAADs//r/AAABAAEAAADs//v/AAAAAAMAAADs//z/AAABAAAAAADs//3/AAACAAMAAADs//7/AAAAAAAAAADs////AAADAAAAAADs/wAAAAABAAEAAADs/wEAAAADAAMAAADs/wIAAAADAAMAAADs/wMAAAADAAMAAADs/wQAAAACAAMAAADs/wUAAAABAAIAAADs/wYAAAADAAMAAADs/wcAAAABAAAAAADs/wgAAAAAAAAAAADs/wkAAAABAAAAAADs/woAAAADAAEAAADs/wsAAAABAAAAAADt//f/AAABAAEAAADt//j/AAADAAAAAADt//n/AAAAAAAAAADt//r/AAACAAMAAADt//v/AAAAAAAAAADt//z/AAABAAIAAADt//3/AAACAAMAAADt//7/AAAAAAEAAADt////AAACAAEAAADt/wAAAAABAAMAAADt/wEAAAABAAEAAADt/wIAAAABAAIAAADt/wMAAAABAAIAAADt/wQAAAABAAEAAADt/wUAAAACAAIAAADt/wYAAAACAAMAAADt/wcAAAACAAIAAADt/wgAAAACAAIAAADt/wkAAAABAAEAAADt/woAAAABAAAAAADt/wsAAAAAAAMAAADu//f/AAADAAMAAADu//j/AAACAAMAAADu//n/AAACAAEAAADu//r/AAABAAAAAADu//v/AAAAAAMAAADu//z/AAANAAIAAADu//3/AAADAAEAAADu//7/AAANAAIAAADu////AAABAAMAAADu/wAAAAANAAIAAADu/wEAAAADAAAAAADu/wIAAAANAAIAAADu/wMAAAADAAAAAADu/wQAAAABAAMAAADu/wUAAAACAAMAAADu/wYAAAADAAIAAADu/wcAAAACAAIAAADu/wgAAAACAAMAAADu/wkAAAADAAAAAADu/woAAAABAAIAAADu/wsAAAAAAAIAAADv//f/AAACAAMAAADv//j/AAAAAAEAAADv//n/AAACAAMAAADv//r/AAADAAEAAADv//v/AAADAAMAAADv//z/AAABAAIAAADv//3/AAANAAIAAADv//7/AAADAAIAAADv////AAANAAIAAADv/wAAAAAAAAMAAADv/wEAAAANAAIAAADv/wIAAAABAAAAAADv/wMAAAACAAIAAADv/wQAAAACAAEAAADv/wUAAAADAAIAAADv/wYAAAABAAAAAADv/wcAAAADAAAAAADv/wgAAAACAAIAAADv/wkAAAACAAEAAADv/woAAAACAAEAAADv/wsAAAABAAIAAADw//f/AAAAAAIAAADw//j/AAAAAAIAAADw//n/AAAAAAIAAADw//r/AAADAAAAAADw//v/AAADAAIAAADw//z/AAANAAIAAADw//3/AAABAAEAAADw//7/AAANAAIAAADw////AAADAAAAAADw/wAAAAANAAIAAADw/wEAAAAAAAAAAADw/wIAAAANAAIAAADw/wMAAAACAAAAAADw/wQAAAADAAEAAADw/wUAAAAAAAAAAADw/wYAAAACAAEAAADw/wcAAAADAAEAAADw/wgAAAAAAAMAAADw/wkAAAABAAIAAADw/woAAAABAAIAAADw/wsAAAACAAAAAADx//f/AAAAAAAAAADx//j/AAAAAAIAAADx//n/AAABAAIAAADx//r/AAACAAMAAADx//v/AAAAAAEAAADx//z/AAACAAIAAADx//3/AAANAAIAAADx//7/AAADAAEAAADx////AAANAAIAAADx/wAAAAAAAAAAAADx/wEAAAANAAIAAADx/wIAAAABAAMAAADx/wMAAAACAAMAAADx/wQAAAAAAAAAAADx/wUAAAACAAEAAADx/wYAAAABAAIAAADx/wcAAAABAAMAAADx/wgAAAADAAEAAADx/wkAAAADAAEAAADx/woAAAABAAEAAADx/wsAAAADAAIAAAA=")
+metadata/_edit_lock_ = true
+
+[node name="Shop" parent="." instance=ExtResource("39_o7lp1")]
+tile_map_data = PackedByteArray("AADm//n/AQAKAAgAAADm//r/AQAKAAkAAADm//v/AQAKAAoAAADm//z/AQAKAAsAAADn//j/AQALAAcAAADn//n/AQALAAgAAADn//r/AQALAAkAAADn//v/AQALAAoAAADn//z/AQALAAsAAADn//3/AQAKAAwAAADo//j/AQALAAgAAADo//n/AQALAAkAAADo//r/AQALAAoAAADo//v/AQALAAsAAADo//z/AQAMAAwAAADo//3/AQAKAA4AAADp//n/AQAMAAkAAADp//r/AQAMAAoAAADp//v/AQAMAAsAAADp//z/AQAMAAwAAADo//f/AQALAAcAAADp//f/AQAMAAcAAADp//j/AQAMAAgAAADp//3/AQALAA4AAADq//f/AQANAAcAAADq//j/AQANAAgAAADq//n/AQANAAkAAADq//r/AQANAAoAAADq//v/AQANAAsAAADq//z/AQAMAAwAAADq//3/AQAMAA4AAADr//f/AQAOAAcAAADr//j/AQAOAAgAAADr//n/AQALAAkAAADr//r/AQAOAAoAAADr//v/AQAOAAsAAADr//z/AQAMAAwAAADr//3/AQANAA4AAADs//j/AQAOAAcAAADs//n/AQAOAAgAAADs//r/AQALAAkAAADs//v/AQAOAAoAAADs//z/AQAOAAsAAADs//3/AQAOAAwAAADt//n/AQAPAAgAAADt//r/AQAPAAkAAADt//v/AQAPAAoAAADt//z/AQAPAAsAAADn//7/AQAKAA0AAADo//7/AQAKAA8AAADp//7/AQALAA8AAADq//7/AQAMAA8AAADr//7/AQANAA8AAADs//7/AQAOAA0AAAA=")
+metadata/_edit_lock_ = true
+
+[node name="LevelTransition3" parent="Shop" instance=ExtResource("23_2o2ms")]
+z_index = 1
+position = Vector2(-672, -48)
+level = "uid://5wp7t5dq2iqw"
+side = 2
+
+[node name="InteractionArea" parent="Shop/LevelTransition3" instance=ExtResource("28_pgjdq")]
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/LevelTransition3/InteractionArea"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_eb3i7")
+
+[node name="PlantsTileMapLayer" parent="." instance=ExtResource("3_1xptk")]
+tile_map_data = PackedByteArray("AAD4//7/AAAAAAAAAQD4////AAAAAAAAAQD4/wAAAAAAAAAAAQD5/wAAAAAAAAAAAQD6/wAAAAAAAAAAAQD7/wAAAAAAAAAAAQD7////AAAAAAAAAQD7//7/AAAAAAAAAQD7//3/AAAAAAAAAQD6//3/AAAAAAAAAQD5//3/AAAAAAAAAQD4//3/AAAAAAAAAQD0/wgAAAAAAAAAAQD1/wgAAAAAAAAAAQD2/wgAAAAAAAAAAQD4/wgAAAAAAAAAAQD5/wgAAAAAAAAAAQD6/wgAAAAAAAAAAQAFAAMAAAAAAAAAAQAFAAQAAAAAAAAAAQAFAAUAAAAAAAAAAQAFAAYAAAAAAAAAAQAFAAcAAAAAAAAAAQAFAAgAAAAAAAAAAQAFAAkAAAAAAAAAAQAGAAkAAAAAAAAAAQAHAAkAAAAAAAAAAQAIAAkAAAAAAAAAAQAJAAkAAAAAAAAAAQAKAAkAAAAAAAAAAQALAAkAAAAAAAAAAQAMAAkAAAAAAAAAAQANAAkAAAAAAAAAAQAOAAkAAAAAAAAAAQAPAAkAAAAAAAAAAQAPAAgAAAAAAAAAAQAPAAYAAAAAAAAAAQAPAAUAAAAAAAAAAQAPAAQAAAAAAAAAAQAPAAMAAAAAAAAAAQAPAAcAAAAAAAAAAQAGAAMAAAAAAAAAAQAHAAMAAAAAAAAAAQAIAAMAAAAAAAAAAQAJAAMAAAAAAAAAAQAKAAMAAAAAAAAAAQALAAMAAAAAAAAAAQAMAAMAAAAAAAAAAQANAAMAAAAAAAAAAQAOAAMAAAAAAAAAAQD//wcAAAAAAAAAAQD//wgAAAAAAAAAAQAAAAgAAAAAAAAAAQABAAgAAAAAAAAAAQACAAgAAAAAAAAAAQACAAcAAAAAAAAAAQACAAYAAAAAAAAAAQABAAYAAAAAAAAAAQAAAAYAAAAAAAAAAQD//wYAAAAAAAAAAQD5/wEAAAAAAAAAAQD6/wEAAAAAAAAAAQD7/wEAAAAAAAAAAQD7/wIAAAAAAAAAAQD5/wIAAAAAAAAAAQD5/wMAAAAAAAAAAQD7/wMAAAAAAAAAAQD+/wIAAAAAAAAAAQD//wIAAAAAAAAAAQAAAAIAAAAAAAAAAQAAAAMAAAAAAAAAAQAAAAQAAAAAAAAAAQD//wQAAAAAAAAAAQD+/wQAAAAAAAAAAQA=")
+
+[node name="Flowey" parent="." instance=ExtResource("5_1xptk")]
+position = Vector2(-464, -24)
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_a4e00")]
+position = Vector2(-672, 72)
+
+[node name="Slime" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(88, -40)
+hp = 1
+
+[node name="Slime2" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(128, -32)
+hp = 1
+
+[node name="Slime3" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(128, -72)
+hp = 1
+
+[node name="Slime4" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(72, -80)
+hp = 1
+
+[node name="Slime5" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(184, -72)
+hp = 1
+
+[node name="Slime6" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(168, -24)
+hp = 1
+
+[node name="Slime7" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(64, 16)
+hp = 1
+
+[node name="Slime8" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(120, 24)
+hp = 1
+
+[node name="Slime9" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(64, 48)
+hp = 1
+
+[node name="Slime10" parent="." instance=ExtResource("6_7xp6x")]
+position = Vector2(96, 48)
+hp = 1
+
+[node name="TreasureChest" parent="." instance=ExtResource("7_aiwg5")]
+position = Vector2(-784, 120)
+item_data = ExtResource("30_o7lp1")
+quantity = 250
+
+[node name="TreasureChest2" parent="." instance=ExtResource("7_aiwg5")]
+position = Vector2(-728, 120)
+item_data = ExtResource("30_o7lp1")
+quantity = 250
+
+[node name="TreasureChest4" parent="." instance=ExtResource("7_aiwg5")]
+position = Vector2(-784, 168)
+item_data = ExtResource("13_qpian")
+quantity = 10
+
+[node name="TreasureChest5" parent="." instance=ExtResource("7_aiwg5")]
+position = Vector2(-728, 168)
+item_data = ExtResource("13_qpian")
+quantity = 10
+
+[node name="Goblin" parent="." instance=ExtResource("8_r5lpj")]
+position = Vector2(368, 160)
+hp = 50
+
+[node name="NPC_Toriel" parent="." instance=ExtResource("9_bfyo2")]
+position = Vector2(-464, -24)
+npc_can_wander = true
+npc_will_patrol = false
+
+[node name="PatrolLocation" parent="NPC_Toriel" instance=ExtResource("10_jqefb")]
+position = Vector2(-40, -35)
+wait_time = 1.0
+
+[node name="PatrolLocation2" parent="NPC_Toriel" instance=ExtResource("10_jqefb")]
+position = Vector2(-40, 21)
+wait_time = 2.0
+
+[node name="PatrolLocation3" parent="NPC_Toriel" instance=ExtResource("10_jqefb")]
+position = Vector2(72, 21)
+wait_time = 3.0
+
+[node name="PatrolLocation4" parent="NPC_Toriel" instance=ExtResource("10_jqefb")]
+position = Vector2(72, -35)
+wait_time = 4.0
+
+[node name="QuestActivatedSwitch2" parent="NPC_Toriel" instance=ExtResource("38_k3k78")]
+position = Vector2(464, 24)
+remove_when_activated = true
+react_to_global_signal = true
+linked_quest = ExtResource("19_ae78s")
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if player has quest"
+
+[node name="DialogInteraction" parent="NPC_Toriel/QuestActivatedSwitch2" instance=ExtResource("12_a4e00")]
+position = Vector2(-464, -28)
+interaction_type = 0
+
+[node name="DialogText" type="Node" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "Hello, my child."
+npc_info = ExtResource("14_7xp6x")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "Hello, Toriel."
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText3" type="Node" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "That tree over there is very interested in sausage."
+npc_info = ExtResource("14_7xp6x")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText4" type="Node" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "Would you go over there and show him your sausage?"
+npc_info = ExtResource("14_7xp6x")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogChoice" type="Node" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction"]
+script = ExtResource("21_fqeud")
+npc_info = ExtResource("14_7xp6x")
+metadata/_custom_type_script = "uid://cc6p7tnfd70ts"
+
+[node name="DialogBranch" type="Node" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction/DialogChoice"]
+script = ExtResource("22_2o2ms")
+text = "SURE!"
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="QuestAdvanceTrigger" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction/DialogChoice/DialogBranch" instance=ExtResource("35_g4v7i")]
+position = Vector2(-472, -48)
+signal_name = "selected"
+linked_quest = ExtResource("19_ae78s")
+settings_summary = "UPDATE QUEST: 
+Quest: Show Him Your Sausage
+Step: 0 - N/A
+Complete: false"
+
+[node name="DialogText" type="Node" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("13_7xp6x")
+text = "I'm sure he will be excited to see it."
+npc_info = ExtResource("14_7xp6x")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogBranch2" type="Node" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction/DialogChoice"]
+script = ExtResource("22_2o2ms")
+text = "My sausage. My business."
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="DialogText" type="Node" parent="NPC_Toriel/QuestActivatedSwitch2/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("13_7xp6x")
+text = "If you think you can hide it from him..."
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="QuestActivatedSwitch3" parent="NPC_Toriel" instance=ExtResource("38_k3k78")]
+check_type = 3
+remove_when_activated = true
+react_to_global_signal = true
+linked_quest = ExtResource("19_ae78s")
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if quest is complete"
+
+[node name="QuestActivatedSwitch" parent="NPC_Toriel/QuestActivatedSwitch3" instance=ExtResource("38_k3k78")]
+react_to_global_signal = true
+linked_quest = ExtResource("19_ae78s")
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if player has quest"
+
+[node name="DialogInteraction" parent="NPC_Toriel/QuestActivatedSwitch3/QuestActivatedSwitch" instance=ExtResource("12_a4e00")]
+
+[node name="DialogText" type="Node" parent="NPC_Toriel/QuestActivatedSwitch3/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "Go ahead. Show him your sausage."
+npc_info = ExtResource("14_7xp6x")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="QuestActivatedSwitch" parent="NPC_Toriel" instance=ExtResource("38_k3k78")]
+check_type = 3
+react_to_global_signal = true
+linked_quest = ExtResource("19_ae78s")
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if quest is complete"
+
+[node name="DialogInteraction" parent="NPC_Toriel/QuestActivatedSwitch" instance=ExtResource("12_a4e00")]
+
+[node name="DialogText" type="Node" parent="NPC_Toriel/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "He was very impressed with your sausage."
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="NPC_Toriel/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "Thanks. I think."
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="Newplayertest" parent="." instance=ExtResource("16_r5lpj")]
+position = Vector2(-200, 192)
+motion_mode = 1
+
+[node name="DialogInteraction" parent="Newplayertest" instance=ExtResource("12_a4e00")]
+
+[node name="DialogText" type="Node" parent="Newplayertest/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "This hero isn't ready yet."
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="TalkingPlant" parent="." instance=ExtResource("17_actbh")]
+position = Vector2(-272, 272)
+
+[node name="DialogInteraction" parent="TalkingPlant" instance=ExtResource("12_a4e00")]
+position = Vector2(0, 32)
+
+[node name="CollisionShape2D" parent="TalkingPlant/DialogInteraction" index="0"]
+position = Vector2(0, -32)
+
+[node name="DialogText" type="Node" parent="TalkingPlant/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "HEY KID DON'T TOUCH ME!"
+npc_info = ExtResource("18_actbh")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="TalkingPlant/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "...You can talk?! I've never met a talking bush before!"
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText3" type="Node" parent="TalkingPlant/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "YOU'D BETTER BELIEVE IT KID! WE'RE EVERYWHERE!"
+npc_info = ExtResource("18_actbh")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText4" type="Node" parent="TalkingPlant/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "...Everywhere?"
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText5" type="Node" parent="TalkingPlant/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "OF COURSE! I'VE GOT AN ENTIRE EXTENDED FAMILY ALL OVER THE WORLD!"
+npc_info = ExtResource("18_actbh")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText6" type="Node" parent="TalkingPlant/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "GET OUT OF HERE, KID!! BEFORE I UPROOT AND MAKE YOU REGRET IT!"
+npc_info = ExtResource("18_actbh")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText7" type="Node" parent="TalkingPlant/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = ". . ."
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="TalkingTree" parent="." instance=ExtResource("16_alciv")]
+position = Vector2(-312, 96)
+
+[node name="QuestActivatedSwitch2" parent="TalkingTree" instance=ExtResource("38_k3k78")]
+check_type = 3
+remove_when_activated = true
+react_to_global_signal = true
+linked_quest = ExtResource("19_ae78s")
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if quest is complete"
+
+[node name="QuestActivatedSwitch" parent="TalkingTree/QuestActivatedSwitch2" instance=ExtResource("38_k3k78")]
+react_to_global_signal = true
+linked_quest = ExtResource("19_ae78s")
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if player has quest"
+
+[node name="DialogInteraction" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch" instance=ExtResource("12_a4e00")]
+position = Vector2(0, 72)
+
+[node name="CollisionShape2D" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction" index="0"]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_alciv")
+
+[node name="DialogText" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "This tree has a weird look on its face."
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "Greetings.[br]
+Are you carrying a sausage, young fellow?"
+npc_info = ExtResource("20_ttusy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogChoice" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("21_fqeud")
+metadata/_custom_type_script = "uid://cc6p7tnfd70ts"
+
+[node name="DialogBranch" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("22_2o2ms")
+text = "What? This sausage?"
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="QuestAdvanceTrigger2" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch" instance=ExtResource("35_g4v7i")]
+position = Vector2(-320, 120)
+signal_name = "selected"
+linked_quest = ExtResource("19_ae78s")
+quest_step = 1
+quest_complete = true
+settings_summary = "UPDATE QUEST: 
+Quest: Show Him Your Sausage
+Step: 1 - Sausage Shown
+Complete: true"
+
+[node name="DialogText" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("13_7xp6x")
+text = "You are the holder of the sacred sausage!"
+npc_info = ExtResource("20_ttusy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("13_7xp6x")
+text = "ALL HAIL THE SACRED SAUSAGE!"
+npc_info = ExtResource("20_ttusy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText3" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("13_7xp6x")
+text = "I never imagined my sausage was so important."
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText4" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("13_7xp6x")
+text = "Oh!! Young Lad, take these apples!"
+npc_info = ExtResource("20_ttusy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText5" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("13_7xp6x")
+text = "Thanks, they'll go good with my sausage."
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogBranch2" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice"]
+script = ExtResource("22_2o2ms")
+text = "I don't have a sausage."
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="DialogText" type="Node" parent="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("13_7xp6x")
+text = "I could swear I smelt a sausage."
+npc_info = ExtResource("20_ttusy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="QuestActivatedSwitch" parent="TalkingTree" instance=ExtResource("38_k3k78")]
+check_type = 3
+react_to_global_signal = true
+linked_quest = ExtResource("19_ae78s")
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Show Him Your Sausage
+Checking if quest is complete"
+
+[node name="DialogInteraction" parent="TalkingTree/QuestActivatedSwitch" instance=ExtResource("12_a4e00")]
+position = Vector2(0, 64)
+interaction_type = 0
+
+[node name="CollisionShape2D" parent="TalkingTree/QuestActivatedSwitch/DialogInteraction" index="0"]
+position = Vector2(0, 8)
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TalkingTree/QuestActivatedSwitch/DialogInteraction"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_k3k78")
+
+[node name="DialogText" type="Node" parent="TalkingTree/QuestActivatedSwitch/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "SUCH A FINE SAUSAGE!"
+npc_info = ExtResource("20_ttusy")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="LevelTransition" parent="." instance=ExtResource("23_2o2ms")]
+position = Vector2(-672, 56)
+level = ""
+target_transition_area = "w"
+side = 3
+delete_on_load = true
+
+[node name="LevelTransition2" parent="." instance=ExtResource("23_2o2ms")]
+position = Vector2(32, 224)
+level = "uid://de34kxyl1ndmm"
+target_transition_area = "LevelTransition3"
+side = 3
+
+[node name="ItemPickup" parent="." instance=ExtResource("26_fy2uq")]
+position = Vector2(272, -56)
+item_data = ExtResource("30_o7lp1")
+sound_effect = ExtResource("31_eb3i7")
+
+[node name="ItemPickup4" parent="." instance=ExtResource("26_fy2uq")]
+position = Vector2(288, -56)
+item_data = ExtResource("30_o7lp1")
+sound_effect = ExtResource("31_eb3i7")
+
+[node name="ItemPickup5" parent="." instance=ExtResource("26_fy2uq")]
+position = Vector2(272, -40)
+item_data = ExtResource("30_o7lp1")
+sound_effect = ExtResource("31_eb3i7")
+
+[node name="NPCTerra" parent="." instance=ExtResource("31_pgjdq")]
+position = Vector2(-712, -40)
+
+[node name="ItemPickup6" parent="." instance=ExtResource("26_fy2uq")]
+position = Vector2(288, -40)
+item_data = ExtResource("30_o7lp1")
+sound_effect = ExtResource("31_eb3i7")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("26_fy2uq")]
+position = Vector2(320, -56)
+item_data = ExtResource("30_o7lp1")
+sound_effect = ExtResource("31_eb3i7")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("26_fy2uq")]
+position = Vector2(376, -56)
+item_data = ExtResource("27_cavkb")
+
+[node name="FallenHero" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fcthe")
+position = Vector2(112, 160)
+texture = ExtResource("24_t5roo")
+offset = Vector2(0, -17)
+hframes = 16
+vframes = 8
+frame = 76
+
+[node name="DialogInteraction" parent="FallenHero" instance=ExtResource("12_a4e00")]
+visible = false
+
+[node name="DialogText" type="Node" parent="FallenHero/DialogInteraction"]
+script = ExtResource("13_7xp6x")
+text = "A statue of a fallen hero."
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogChoice" type="Node" parent="FallenHero/DialogInteraction"]
+script = ExtResource("21_fqeud")
+metadata/_custom_type_script = "uid://cc6p7tnfd70ts"
+
+[node name="DialogBranch" type="Node" parent="FallenHero/DialogInteraction/DialogChoice"]
+script = ExtResource("22_2o2ms")
+text = "Look closer."
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="DialogText" type="Node" parent="FallenHero/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("13_7xp6x")
+text = "The statue seems to have soiled itself in confusion."
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogText2" type="Node" parent="FallenHero/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("13_7xp6x")
+text = "I sure hope I don't end up like this."
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="DialogBranch2" type="Node" parent="FallenHero/DialogInteraction/DialogChoice"]
+script = ExtResource("22_2o2ms")
+text = "Ignore it."
+metadata/_custom_type_script = "uid://dbswhyu86v88g"
+
+[node name="DialogText" type="Node" parent="FallenHero/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("13_7xp6x")
+text = "Probably best to walk away."
+npc_info = ExtResource("15_aiwg5")
+metadata/_custom_type_script = "uid://2xetjgqu041s"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FallenHero"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallenHero/StaticBody2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_5a6p3")
+
+[node name="Pot" parent="." instance=ExtResource("30_m0o5y")]
+position = Vector2(0, -16)
+
+[node name="Pot2" parent="." instance=ExtResource("30_m0o5y")]
+position = Vector2(-112, -112)
+
+[node name="Pot3" parent="." instance=ExtResource("30_m0o5y")]
+position = Vector2(-112, 16)
+
+[node name="Pot5" parent="." instance=ExtResource("30_m0o5y")]
+position = Vector2(-112, -80)
+
+[node name="Pot6" parent="." instance=ExtResource("30_m0o5y")]
+position = Vector2(-80, -80)
+
+[node name="Pot7" parent="." instance=ExtResource("30_m0o5y")]
+position = Vector2(-144, -112)
+
+[node name="Pot8" parent="." instance=ExtResource("30_m0o5y")]
+position = Vector2(-176, -112)
+
+[node name="Pot9" parent="." instance=ExtResource("30_m0o5y")]
+position = Vector2(-208, -112)
+
+[node name="Pot4" parent="." instance=ExtResource("30_m0o5y")]
+position = Vector2(-48, -80)
+
+[node name="Torch" parent="." instance=ExtResource("31_cavkb")]
+position = Vector2(384, 16)
+
+[node name="OrbEmitter" parent="." instance=ExtResource("32_u0vv8")]
+position = Vector2(168, -272)
+
+[node name="BeamEmitter" parent="." instance=ExtResource("33_lkrsv")]
+position = Vector2(472, -272)
+
+[node name="PressurePlate" parent="." instance=ExtResource("34_a3nys")]
+position = Vector2(-1016, 24)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate" instance=ExtResource("35_g4v7i")]
+signal_name = "activated"
+linked_quest = ExtResource("36_0bsnb")
+settings_summary = "UPDATE QUEST: 
+Quest: Long Quest
+Step: 0 - N/A
+Complete: false"
+
+[node name="Label" type="Label" parent="PressurePlate"]
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 147.0
+offset_bottom = 7.0
+text = "Give Long Quest"
+
+[node name="PressurePlate2" parent="." instance=ExtResource("34_a3nys")]
+position = Vector2(-1016, 64)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate2" instance=ExtResource("35_g4v7i")]
+signal_name = "activated"
+linked_quest = ExtResource("36_0bsnb")
+quest_step = 1
+settings_summary = "UPDATE QUEST: 
+Quest: Long Quest
+Step: 1 - Step 1
+Complete: false"
+
+[node name="Label" type="Label" parent="PressurePlate2/QuestAdvanceTrigger"]
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 72.0
+offset_bottom = 15.0
+text = "Step 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="PressurePlate3" parent="." instance=ExtResource("34_a3nys")]
+position = Vector2(-1016, 104)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate3" instance=ExtResource("35_g4v7i")]
+signal_name = "activated"
+linked_quest = ExtResource("36_0bsnb")
+quest_step = 2
+settings_summary = "UPDATE QUEST: 
+Quest: Long Quest
+Step: 1 - Step 1
+Complete: false"
+
+[node name="Label" type="Label" parent="PressurePlate3/QuestAdvanceTrigger"]
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 72.0
+offset_bottom = 15.0
+text = "Step 2"
+metadata/_edit_use_anchors_ = true
+
+[node name="PressurePlate4" parent="." instance=ExtResource("34_a3nys")]
+position = Vector2(-1016, 144)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate4" instance=ExtResource("35_g4v7i")]
+signal_name = "activated"
+linked_quest = ExtResource("36_0bsnb")
+quest_step = 3
+settings_summary = "UPDATE QUEST: 
+Quest: Long Quest
+Step: 1 - Step 1
+Complete: false"
+
+[node name="Label" type="Label" parent="PressurePlate4/QuestAdvanceTrigger"]
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 72.0
+offset_bottom = 15.0
+text = "Step 3"
+metadata/_edit_use_anchors_ = true
+
+[node name="PressurePlate5" parent="." instance=ExtResource("34_a3nys")]
+position = Vector2(-1016, 184)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate5" instance=ExtResource("35_g4v7i")]
+signal_name = "activated"
+linked_quest = ExtResource("36_0bsnb")
+quest_step = 4
+settings_summary = "UPDATE QUEST: 
+Quest: Long Quest
+Step: 1 - Step 1
+Complete: false"
+
+[node name="Label" type="Label" parent="PressurePlate5/QuestAdvanceTrigger"]
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 72.0
+offset_bottom = 15.0
+text = "Step 4"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestActivatedSwitch" parent="." instance=ExtResource("38_k3k78")]
+position = Vector2(-968, 232)
+check_type = 1
+react_to_global_signal = true
+linked_quest = ExtResource("36_0bsnb")
+quest_step = 4
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if player has completed step: N/A"
+
+[node name="PressurePlate6" parent="QuestActivatedSwitch" instance=ExtResource("34_a3nys")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch/PressurePlate6" instance=ExtResource("35_g4v7i")]
+signal_name = "activated"
+linked_quest = ExtResource("36_0bsnb")
+quest_step = 5
+settings_summary = "UPDATE QUEST: 
+Quest: Long Quest
+Step: 1 - Step 1
+Complete: false"
+
+[node name="Label" type="Label" parent="QuestActivatedSwitch/PressurePlate6/QuestAdvanceTrigger"]
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 72.0
+offset_bottom = 15.0
+text = "Step 5"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestActivatedSwitch" parent="QuestActivatedSwitch" instance=ExtResource("38_k3k78")]
+position = Vector2(-48, 64)
+check_type = 1
+react_to_global_signal = true
+linked_quest = ExtResource("36_0bsnb")
+quest_step = 5
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if player has completed step: step 5"
+
+[node name="PressurePlate7" parent="QuestActivatedSwitch/QuestActivatedSwitch" instance=ExtResource("34_a3nys")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch/QuestActivatedSwitch/PressurePlate7" instance=ExtResource("35_g4v7i")]
+linked_quest = ExtResource("36_0bsnb")
+quest_complete = true
+settings_summary = "UPDATE QUEST: 
+Quest: Long Quest
+Step: 5 - Step 5
+Complete: true"
+
+[node name="Label" type="Label" parent="QuestActivatedSwitch/QuestActivatedSwitch/PressurePlate7/QuestAdvanceTrigger"]
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 72.0
+offset_bottom = 15.0
+text = "Complete"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="player_interacted" from="Shop/LevelTransition3/InteractionArea" to="Shop/LevelTransition3" method="_change_level"]
+[connection signal="activated" from="QuestActivatedSwitch/QuestActivatedSwitch/PressurePlate7" to="QuestActivatedSwitch/QuestActivatedSwitch/PressurePlate7/QuestAdvanceTrigger" method="advance_quest"]
+
+[editable path="TalkingPlant/DialogInteraction"]
+[editable path="TalkingTree/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction"]
+[editable path="TalkingTree/QuestActivatedSwitch/DialogInteraction"]

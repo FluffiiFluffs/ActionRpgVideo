@@ -1,0 +1,199 @@
+[gd_resource type="Theme" load_steps=28 format=3 uid="uid://v3g7k24h8ox3"]
+
+[ext_resource type="FontFile" uid="uid://b8pjrx1k5m76o" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorMono8-Bold.ttf" id="1_cgf3e"]
+[ext_resource type="FontFile" uid="uid://bh2qajolgv3oc" path="res://ASSETS/FONTS/PixelOperator/PixelOperatorHB8.ttf" id="1_y1h0p"]
+[ext_resource type="StyleBox" uid="uid://dld3x6kbbeh8t" path="res://GUI/goldbox_StyleBoxTexture.tres" id="2_2hjeb"]
+[ext_resource type="Texture2D" uid="uid://bcvs2lo77u08p" path="res://ASSETS/HUD/Inventory/items.png" id="2_k1i2c"]
+[ext_resource type="FontFile" uid="uid://dvkdxpwvqxvk5" path="res://ASSETS/FONTS/PixelOperator/PixelOperator.ttf" id="2_n0o8k"]
+[ext_resource type="FontFile" uid="uid://b4d17s52o0wjs" path="res://ASSETS/FONTS/PixelOperator/PixelOperator8.ttf" id="2_qqw41"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5kwgn"]
+load_path = "res://.godot/imported/items.png-b727d202f8d9a2e40932136eb3c3a7af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb7ki"]
+atlas = SubResource("CompressedTexture2D_5kwgn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwm52"]
+texture = SubResource("AtlasTexture_eb7ki")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_top = 2.0
+region_rect = Rect2(0, 0, 32, 32)
+modulate_color = Color(0.18046874, 0.18046874, 0.18046874, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rwm52"]
+load_path = "res://.godot/imported/items.png-b727d202f8d9a2e40932136eb3c3a7af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thvoa"]
+atlas = SubResource("CompressedTexture2D_rwm52")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ww7kn"]
+texture = SubResource("AtlasTexture_thvoa")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_top = 2.0
+region_rect = Rect2(0, 0, 32, 32)
+modulate_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n0o8k"]
+load_path = "res://.godot/imported/text-bubble.png-1532be9a003b63312bcb5546a8ffc908.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1h0p"]
+texture = SubResource("CompressedTexture2D_n0o8k")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0, 0, 0, 0.29411766)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2hjeb"]
+load_path = "res://.godot/imported/text-bubble.png-1532be9a003b63312bcb5546a8ffc908.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nop73"]
+texture = SubResource("CompressedTexture2D_2hjeb")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.84313726, 0.4392157, 0.2627451, 0.5019608)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_scmjq"]
+load_path = "res://.godot/imported/text-bubble.png-1532be9a003b63312bcb5546a8ffc908.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5kwgn"]
+texture = SubResource("CompressedTexture2D_scmjq")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.13725491, 0.13725491, 0.13725491, 0.5019608)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y1h0p"]
+load_path = "res://.godot/imported/text-bubble.png-1532be9a003b63312bcb5546a8ffc908.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2hjeb"]
+texture = SubResource("CompressedTexture2D_y1h0p")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0, 0, 0, 0.5)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cgf3e"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+color = Color(0, 0, 0, 0.5882353)
+grow_begin = -10.0
+grow_end = -10.0
+thickness = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0o8k"]
+bg_color = Color(0.58383155, 0.58383155, 0.58383155, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.821875, 0.5680607, 0.16920952, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1h0p"]
+bg_color = Color(0.58383155, 0.58383155, 0.58383155, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8235295, 0.788366, 0.4734916, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqw41"]
+bg_color = Color(0.58383155, 0.58383155, 0.58383155, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hjeb"]
+bg_color = Color(0.58383155, 0.58383155, 0.58383155, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1.353256, 1.353256, 1.353256, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqw41"]
+atlas = ExtResource("2_k1i2c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n0o8k"]
+texture = SubResource("AtlasTexture_qqw41")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+draw_center = false
+
+[resource]
+BorderButton/base_type = &"Button"
+BorderButton/colors/font_color = Color(1, 1, 1, 1)
+BorderButton/colors/font_disabled_color = Color(0.25, 0.25, 0.25, 1)
+BorderButton/colors/font_focus_color = Color(1, 1, 1, 1)
+BorderButton/colors/font_hover_color = Color(1, 1, 1, 1)
+BorderButton/fonts/font = ExtResource("1_y1h0p")
+BorderButton/styles/disabled = SubResource("StyleBoxTexture_rwm52")
+BorderButton/styles/focus = SubResource("StyleBoxTexture_ww7kn")
+BorderButton/styles/hover = SubResource("StyleBoxTexture_ww7kn")
+BorderButton/styles/normal = ExtResource("2_2hjeb")
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_focus_color = Color(1, 0.32, 0.32, 1)
+Button/colors/font_hover_color = Color(1, 0.5882353, 0.5882353, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 3
+Button/fonts/font = ExtResource("1_cgf3e")
+ChoiceButton/base_type = &"Button"
+ChoiceButton/colors/font_color = Color(1, 1, 1, 1)
+ChoiceButton/colors/font_disabled_color = Color(0.421875, 0.421875, 0.421875, 1)
+ChoiceButton/colors/font_focus_color = Color(1, 1, 1, 1)
+ChoiceButton/colors/font_hover_color = Color(1, 1, 1, 1)
+ChoiceButton/colors/font_outline_color = Color(0, 0, 0, 1)
+ChoiceButton/colors/font_pressed_color = Color(0.759375, 0.759375, 0.759375, 1)
+ChoiceButton/fonts/font = ExtResource("2_n0o8k")
+ChoiceButton/styles/disabled = SubResource("StyleBoxTexture_y1h0p")
+ChoiceButton/styles/focus = SubResource("StyleBoxTexture_nop73")
+ChoiceButton/styles/hover = SubResource("StyleBoxTexture_5kwgn")
+ChoiceButton/styles/normal = SubResource("StyleBoxTexture_2hjeb")
+HSeparator/styles/separator = SubResource("StyleBoxLine_cgf3e")
+InventoryButton/base_type = &"Button"
+InventoryButton/fonts/font = ExtResource("2_qqw41")
+InventoryButton/styles/focus = SubResource("StyleBoxFlat_n0o8k")
+InventoryButton/styles/hover = SubResource("StyleBoxFlat_y1h0p")
+InventoryButton/styles/normal = SubResource("StyleBoxFlat_qqw41")
+InventoryButton/styles/pressed = SubResource("StyleBoxFlat_2hjeb")
+Inventory_Main/base_type = &"PanelContainer"
+Inventory_Main/styles/panel = SubResource("StyleBoxTexture_n0o8k")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/fonts/font = ExtResource("1_cgf3e")

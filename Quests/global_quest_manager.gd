@@ -7,7 +7,8 @@ signal quest_updated(q) ##q is a dictionary
 #This file needs to ONLY contain quest resource files
 const QUEST_DATA_LOCATION:String="res://Quests/quest_data"
 #keeps track of all quests in the game
-var quests:Array[Quest]
+@export var quests:Array[Quest]
+
 
 ##Array of dictionaries. Dictionaries are in format:[br]
 ##{title="NOT FOUND", is_complete=false, completed_steps=[""]
@@ -18,7 +19,7 @@ var current_quests:Array=[
 
 func _ready()->void:
 #gather all quests
-	gather_quest_data()
+	#gather_quest_data()
 	pass
 
 #func _unhandled_input(event:InputEvent):
@@ -42,15 +43,16 @@ func _ready()->void:
 		#pass
 
 ##Gathered all quest resource data
-func gather_quest_data()->void:
-	#finds all files in /quest_data
-	var quest_files:PackedStringArray=DirAccess.get_files_at(QUEST_DATA_LOCATION)
-	#clears quests array
-	quests.clear()
-	for q in quest_files:
-		#uses the string to load the quest file and appends the name as a string to array as Quest
-			quests.append(load(QUEST_DATA_LOCATION + "/" + q) as Quest)
-	print("Quests.size() = " + str(quests.size()))
+##has an issue during compile for some reason
+#func gather_quest_data()->void:
+	##finds all files in /quest_data
+	#var quest_files:PackedStringArray=DirAccess.get_files_at(QUEST_DATA_LOCATION)
+	##clears quests array
+	#quests.clear()
+	#for q in quest_files:
+		##uses the string to load the quest file and appends the name as a string to array as Quest
+			#quests.append(load(QUEST_DATA_LOCATION + "/" + q) as Quest)
+	#print("Quests.size() = " + str(quests.size()))
 	#print("Quest Resources: "+ str(quests))
 	pass
 

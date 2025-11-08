@@ -419,7 +419,7 @@ reparent_to_player = true
 metadata/_custom_type_script = "uid://bf6e03iwjap4"
 
 [node name="NPC_Toriel3" parent="." instance=ExtResource("15_2no3h")]
-position = Vector2(64, -96)
+position = Vector2(160, 40)
 npc_will_patrol = false
 
 [node name="DialogInteraction" parent="NPC_Toriel3" instance=ExtResource("19_xehyn")]
@@ -470,7 +470,7 @@ script = ExtResource("14_y4skn")
 metadata/_custom_type_script = "uid://7uohgdxwjgjq"
 
 [node name="CutsceneActionPlayer" type="Node2D" parent="NPC_Toriel3/DialogInteraction/DialogCutscene"]
-position = Vector2(176, -104)
+position = Vector2(280, 16)
 script = ExtResource("19_y2s3v")
 forced_finish_direction = "left"
 timing_method = 1
@@ -593,7 +593,7 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("24_ih66x")
-damage = 10
+damage = 99
 metadata/_custom_type_script = "uid://bb55h8g3ssnxs"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallenHeroPoop/HurtBox"]

@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://dnqoy1klts45y" path="res://Common/AutoSaver/auto_saver.gd" id="1_ayvmy"]
 [ext_resource type="Theme" uid="uid://v3g7k24h8ox3" path="res://GUI/UITHEME.tres" id="2_hg0v0"]
 
+[sub_resource type="Animation" id="Animation_oyd72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_hg0v0"]
 resource_name = "game_saved"
 length = 2.0
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_oyd72"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Label:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oyd72"]
 _data = {
 &"RESET": SubResource("Animation_oyd72"),
@@ -42,6 +42,7 @@ _data = {
 }
 
 [node name="AutoSaver" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_ayvmy")
 
 [node name="AutoSaveNode2D" type="Node2D" parent="."]
@@ -74,6 +75,7 @@ text = "GAME SAVED"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_oyd72")
 }

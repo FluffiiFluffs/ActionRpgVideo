@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://c56ft0gchn6do"]
+
+[ext_resource type="Script" uid="uid://bjlrp8mmtfu81" path="res://Quests/global_quest_manager.gd" id="1_kqo3o"]
+[ext_resource type="Script" uid="uid://dvqmvnexrn7rg" path="res://Quests/quest_resource.gd" id="2_0c5u4"]
+[ext_resource type="Resource" uid="uid://x0uh23s60f3g" path="res://Quests/quest_data/long_quest.tres" id="3_l5mb6"]
+[ext_resource type="Resource" uid="uid://c40l3rrko24vr" path="res://Quests/quest_data/sausage_quest.tres" id="4_y3y78"]
+
+[node name="GlobalQuestManager" type="Node2D"]
+script = ExtResource("1_kqo3o")
+quests = Array[ExtResource("2_0c5u4")]([ExtResource("3_l5mb6"), ExtResource("4_y3y78")])

@@ -29,9 +29,9 @@ SceneTransition="*res://00_Globals/scene_transition.tscn"
 InventoryMenu="*res://GUI/Inventory/inventory_menu.tscn"
 DialogSystem="*res://Common/DialogInteraction/dialog_system/dialog_system.tscn"
 GameOverScreen="*res://00_Globals/game_over_screen.tscn"
-GlobalQuestManager="*res://Quests/global_quest_manager.gd"
 NotifyPanel="*res://GUI/Notification/notify_panel.tscn"
 ShopMenu="*res://GUI/ShopMenu/shop_menu.tscn"
+GlobalQuestManager="*res://Quests/global_quest_manager.tscn"
 
 [debug]
 

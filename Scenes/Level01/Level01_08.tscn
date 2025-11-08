@@ -271,8 +271,8 @@ metadata/_custom_type_script = "uid://2xetjgqu041s"
 
 [node name="AutoSaver" parent="." instance=ExtResource("20_xj27e")]
 
+[connection signal="dialogtextfinished" from="TalkingTreeGiveQuest/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogText5" to="AutoSaver" method="save_game"]
 [connection signal="dialogtextfinished" from="TalkingTreeGiveQuest/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogText6" to="TalkingTreeGiveQuest/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/QuestAdvanceTrigger2" method="advance_quest"]
-[connection signal="dialogtextfinished" from="TalkingTreeGiveQuest/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction/DialogChoice/DialogBranch/DialogText6" to="AutoSaver" method="save_game"]
 
 [editable path="TalkingTreeGiveQuest/QuestActivatedSwitch2/QuestActivatedSwitch/DialogInteraction"]
 [editable path="TalkingTreeGiveQuest/QuestActivatedSwitch/DialogInteraction"]
